@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.intive.selftraining.selftraining.R
@@ -18,6 +19,8 @@ class ListMoviesActivity : AppCompatActivity() {
         title = "ListMoviesActivity"
         text.text = listMoviesViewModel.sayMovie()
 
-
+        btn.setOnClickListener { _ ->
+            startActivity(Intent(this, DetailsScopeActivity::class.java))
+        }
     }
 }

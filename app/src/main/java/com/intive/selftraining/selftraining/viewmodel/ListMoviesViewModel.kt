@@ -5,5 +5,5 @@ import com.intive.selftraining.selftraining.repository.ListMoviesRepository
 
 class ListMoviesViewModel(val repo : ListMoviesRepository) : ViewModel() {
 
-    fun sayMovie() = "${repo.showMovie()} from $this"
+    fun sayMovie() = "${repo.showMovie()}"
 }

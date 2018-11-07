@@ -12,9 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         startKoin(this, listOf(appmodule))
 
+        title = "MainActivity"
         startActivity(Intent(this, ListMoviesActivity::class.java))
     }
 }
