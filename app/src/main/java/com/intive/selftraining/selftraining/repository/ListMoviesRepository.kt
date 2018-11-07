@@ -1,9 +1,9 @@
 package com.intive.selftraining.selftraining.repository
 
-interface ListMoviesRepository{
+interface ListMoviesRepository {
     fun showMovie(): String
 }
 
-class ListMoviesRepositoryImpl() : ListMoviesRepository{
+class ListMoviesRepositoryImpl() : ListMoviesRepository {
     override fun showMovie() = "Mission Impossible"
 }

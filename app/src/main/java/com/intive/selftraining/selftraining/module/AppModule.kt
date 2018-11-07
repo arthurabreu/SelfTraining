@@ -10,13 +10,12 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 
 import org.koin.dsl.module.module
 
-val appmodule = module{
+val appmodule = module {
 
     single<ListMoviesRepository> { ListMoviesRepositoryImpl() }
     single<DetailsRepository> { DetailsRespositoryImpl() }
 
     scope("movies") { DetailsScopeViewModel(get()) }
 
-    viewModel {ListMoviesViewModel(get())}
-
+    viewModel { ListMoviesViewModel(get()) }
 }
