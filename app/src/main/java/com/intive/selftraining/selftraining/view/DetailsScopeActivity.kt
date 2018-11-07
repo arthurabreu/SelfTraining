@@ -11,7 +11,7 @@ import org.koin.android.scope.ext.android.getOrCreateScope
 
 class DetailsScopeActivity : AppCompatActivity() {
 
-    val detailsScopeViewModel : DetailsScopeViewModel by inject()
+    val detailsScopeViewModel: DetailsScopeViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.module
 
+import com.intive.selftraining.selftraining.repository.DetailsRepository
 import com.intive.selftraining.selftraining.repository.DetailsRespositoryImpl
 import com.intive.selftraining.selftraining.repository.ListMoviesRepository
 import com.intive.selftraining.selftraining.repository.ListMoviesRepositoryImpl
@@ -12,8 +13,9 @@ import org.koin.dsl.module.module
 val appmodule = module{
 
     single<ListMoviesRepository> { ListMoviesRepositoryImpl() }
+    single<DetailsRepository> { DetailsRespositoryImpl() }
 
-    scope("movies") { DetailsRespositoryImpl() }
+    scope("movies") { DetailsScopeViewModel(get()) }
 
     viewModel {ListMoviesViewModel(get())}
 
