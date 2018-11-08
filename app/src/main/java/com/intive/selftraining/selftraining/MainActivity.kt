@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         title = "MainActivity"
-        
         startActivity(Intent(this, ListMoviesActivity::class.java))
     }
 }
