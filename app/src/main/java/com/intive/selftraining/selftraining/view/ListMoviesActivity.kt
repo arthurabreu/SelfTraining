@@ -15,12 +15,11 @@ class ListMoviesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        listMoviesViewModel.showMovies()
         title = "ListMoviesActivity"
         text.text = listMoviesViewModel.sayMovie()
 
-        btn.setOnClickListener { _ ->
-            startActivity(Intent(this, DetailsScopeActivity::class.java))
+        btn.setOnClickListener { startActivity(Intent(this, DetailsScopeActivity::class.java))
         }
     }
 }
