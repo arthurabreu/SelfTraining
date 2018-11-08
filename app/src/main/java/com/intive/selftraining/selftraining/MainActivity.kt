@@ -13,7 +13,5 @@ class MainActivity : AppCompatActivity() {
         title = "MainActivity"
         
         startActivity(Intent(this, ListMoviesActivity::class.java))
-
-
     }
 }
