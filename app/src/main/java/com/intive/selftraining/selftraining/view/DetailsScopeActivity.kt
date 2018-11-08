@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.viewmodel.DetailsScopeViewModel
-import kotlinx.android.synthetic.main.details_scope.*
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.ext.android.bindScope
 import org.koin.android.scope.ext.android.getOrCreateScope
