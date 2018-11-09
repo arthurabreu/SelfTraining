@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.intive.selftraining.selftraining.BuildConfig
 import com.intive.selftraining.selftraining.Utils.AppConstants
+import com.intive.selftraining.selftraining.network.Models.MoviesResponse
 import com.intive.selftraining.selftraining.network.NetworkClient
 import com.intive.selftraining.selftraining.repository.ListMoviesRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,9 +26,13 @@ class ListMoviesViewModel(val repo: ListMoviesRepositoryImpl) : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> Log.v("ARTICLES", "" + result) },
+                { result -> getResponse(result)  },
                 { error -> Log.e("ERROR", error.message) }
             )
+    }
+
+    private fun getResponse(result: MoviesResponse?) {
+        Log.v("ARTICLES", "" + result)
     }
 
     override fun onCleared() {
