@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.Utils
+package com.intive.selftraining.selftraining.utils
 
 class AppConstants {
     companion object {

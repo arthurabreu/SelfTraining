@@ -1,6 +1,6 @@
-package com.intive.selftraining.selftraining.network.Models
+package com.intive.selftraining.selftraining.network.models
 
-data class Movie(
+data class Result(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,

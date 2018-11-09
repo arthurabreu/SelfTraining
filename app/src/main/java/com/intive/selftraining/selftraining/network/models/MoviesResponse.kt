@@ -1,8 +1,8 @@
-package com.intive.selftraining.selftraining.network.Models
+package com.intive.selftraining.selftraining.network.models
 
 data class MoviesResponse(
     val page: Int,
-    val movies: List<Movie>,
+    val results: List<Result>,
     val total_pages: Int,
     val total_results: Int
 )
