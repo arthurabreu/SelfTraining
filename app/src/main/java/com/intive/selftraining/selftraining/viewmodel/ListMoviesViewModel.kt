@@ -26,7 +26,7 @@ class ListMoviesViewModel(val repo: ListMoviesRepositoryImpl) : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> getResponse(result)  },
+                { result -> getResponse(result) },
                 { error -> Log.e("ERROR", error.message) }
             )
     }
