@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -15,6 +17,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+
     buildTypes {
         debug {
             buildConfigField 'String', "ApiKey", tmdbApiKey
@@ -27,6 +30,10 @@ android {
             resValue 'string', "api_key", tmdbApiKey
         }
     }
+    dataBinding {
+        enabled = true
+    }
+
 }
 
 configurations {
@@ -96,4 +103,5 @@ dependencies {
 
     //Ktlint
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
+
 }
