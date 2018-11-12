@@ -18,7 +18,6 @@ class ListMoviesViewModel(repo: ListMoviesRepositoryImpl) : ViewModel() {
 
     fun getListMovies() = moviesListMutableLive
 
-
     override fun onCleared() {
         listMoviesRepository.dispose()
         super.onCleared()
