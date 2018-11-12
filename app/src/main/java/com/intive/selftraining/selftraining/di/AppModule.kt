@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.module
+package com.intive.selftraining.selftraining.di
 
 import com.intive.selftraining.selftraining.repository.DetailsRespositoryImpl
 import com.intive.selftraining.selftraining.repository.ListMoviesRepositoryImpl

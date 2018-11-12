@@ -27,6 +27,9 @@ android {
             resValue 'string', "api_key", tmdbApiKey
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 configurations {
