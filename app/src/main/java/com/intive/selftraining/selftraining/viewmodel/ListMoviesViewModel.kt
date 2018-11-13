@@ -3,14 +3,15 @@ package com.intive.selftraining.selftraining.viewmodel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
 import com.intive.selftraining.selftraining.models.MoviesResponse
-import com.intive.selftraining.selftraining.repository.ListMoviesRepositoryImpl
+import com.intive.selftraining.selftraining.repository.ListMoviesRepository
 
-class ListMoviesViewModel(repo: ListMoviesRepositoryImpl) : ViewModel() {
+class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
 
     private var moviesResponseObservable: LiveData<MoviesResponse>? = null
 
     init {
         moviesResponseObservable = repo.getMoviesResponse()
+        repo.onCleared()
     }
 
     /**
@@ -18,5 +19,10 @@ class ListMoviesViewModel(repo: ListMoviesRepositoryImpl) : ViewModel() {
      */
     fun getProjectListObservable(): LiveData<MoviesResponse>? {
         return moviesResponseObservable
+    }
+
+    override fun onCleared() {
+
+        super.onCleared()
     }
 }

@@ -10,7 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class ListMoviesRepositoryImpl {
+class ListMoviesRepository {
 
     private var disposable: Disposable? = null
 
