@@ -11,7 +11,6 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
 
     init {
         moviesResponseObservable = repo.getMoviesResponse()
-        repo.onCleared()
     }
 
     /**
@@ -19,10 +18,5 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
      */
     fun getProjectListObservable(): LiveData<MoviesResponse>? {
         return moviesResponseObservable
-    }
-
-    override fun onCleared() {
-
-        super.onCleared()
     }
 }
