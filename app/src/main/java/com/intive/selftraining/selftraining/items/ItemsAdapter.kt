@@ -25,12 +25,10 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        items?.let {  }
+        items?.let { }
         if (holder is ItemViewHolder && items.size > position) {
-            items?.let {  }
+            items?.let { }
                 holder.bind(items[position])
-
-
         }
     }
 
@@ -44,10 +42,8 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         @BindingAdapter("items")
         fun RecyclerView.bindItems(items: List<Result>?) {
 
-            items?.let {  val adapter = adapter as ItemsAdapter
+            items?.let { val adapter = adapter as ItemsAdapter
                 adapter.update(items) }
-
-
         }
     }
 

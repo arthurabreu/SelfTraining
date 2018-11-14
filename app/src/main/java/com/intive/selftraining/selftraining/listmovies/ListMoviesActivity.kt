@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import com.ciandt.recyclerviewbinding.presentation.items.ItemsAdapter
 import com.intive.selftraining.selftraining.R
@@ -19,7 +18,6 @@ class ListMoviesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMainBinding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
 
         activityMainBinding?.run {
             this.viewModel = listMoviesViewModel
