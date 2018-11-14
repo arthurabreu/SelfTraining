@@ -1,10 +1,9 @@
-package com.intive.selftraining.selftraining.view
+package com.intive.selftraining.selftraining.detailsmovies
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.network.models.Result
-import com.intive.selftraining.selftraining.viewmodel.DetailsScopeViewModel
 import kotlinx.android.synthetic.main.activity_details.details_title
 import kotlinx.android.synthetic.main.activity_details.overview
 import kotlinx.android.synthetic.main.activity_details.release_date

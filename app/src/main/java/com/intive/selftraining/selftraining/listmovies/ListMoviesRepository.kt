@@ -1,6 +1,6 @@
-package com.intive.selftraining.selftraining.repository
+package com.intive.selftraining.selftraining.listmovies
 
-import com.intive.selftraining.selftraining.models.MoviesResponse
+import com.intive.selftraining.selftraining.network.models.MoviesResponse
 import com.intive.selftraining.selftraining.network.NetworkClient
 import com.intive.selftraining.selftraining.utils.AppConstants
 import io.reactivex.Observable

@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.adapter
+package com.intive.selftraining.selftraining.listmovies
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding

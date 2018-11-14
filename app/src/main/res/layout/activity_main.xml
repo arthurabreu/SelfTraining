@@ -6,14 +6,14 @@
 
         <variable
                 name="viewModel"
-                type="com.intive.selftraining.selftraining.viewmodel.ListMoviesViewModel" />
+                type="com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel" />
     </data>
 
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.intive.selftraining.selftraining.view.ListMoviesActivity"
+            tools:context="com.intive.selftraining.selftraining.listmovies.ListMoviesActivity"
             android:foregroundGravity="center_vertical|fill_vertical|center_horizontal">
         <TextView
                 android:text="@{viewModel.title}"
