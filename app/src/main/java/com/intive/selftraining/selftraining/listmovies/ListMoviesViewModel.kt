@@ -10,28 +10,23 @@ import io.reactivex.disposables.Disposable
 
 class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
 
-//    private val disposable: Disposable = repo.showMovies().subscribe(
-//                    { result -> getResponse(result) },
-//                { error -> Log.e("ERROR", error.message) }
-//            )
+//    val title = MutableLiveData<String>()
 
-    val title = MutableLiveData<String>()
+    var items : MutableLiveData<List<Result>>? = MutableLiveData<List<Result>>()
 
-    private fun getResponse(result: List<Result>) {
-        title.value = result[2].title
-    }
-
-    private val observable: Observable<MoviesResponse> = repo.showMovies()
+    private var observable: Observable<MoviesResponse>  =  repo.showMovies()
     private var disposable: Disposable? = null
-
-    fun getTitle() {
-        disposable = observable.subscribe(
-            { result -> getResponse(result.results) },
-            { error -> Log.e("ERROR", error.message) })
-    }
 
     override fun onCleared() {
         disposable?.dispose()
         super.onCleared()
+    }
+
+    fun getResult() {
+        disposable = observable.subscribe(
+            { result ->
+                Log.d("RESULT", result.results.toString())
+                items?.let { it.value  = result.results  } },
+            { error -> Log.e("ERROR", error.message) })
     }
 }
