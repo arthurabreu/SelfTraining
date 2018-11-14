@@ -3,13 +3,13 @@ package com.intive.selftraining.selftraining.viewmodel
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
-import com.intive.selftraining.selftraining.network.models.MoviesResponse
+import com.intive.selftraining.selftraining.models.MoviesResponse
 import com.intive.selftraining.selftraining.network.models.Result
-import com.intive.selftraining.selftraining.repository.ListMoviesRepositoryImpl
+import com.intive.selftraining.selftraining.repository.ListMoviesRepository
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 
-class ListMoviesViewModel(repo: ListMoviesRepositoryImpl) : ViewModel() {
+class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
 
 //    private val disposable: Disposable = repo.showMovies().subscribe(
 //                    { result -> getResponse(result) },
@@ -19,7 +19,7 @@ class ListMoviesViewModel(repo: ListMoviesRepositoryImpl) : ViewModel() {
     val title = MutableLiveData<String>()
 
     private fun getResponse(result: List<Result>) {
-        title.value = result[0].title
+        title.value = result[2].title
     }
 
     private val observable: Observable<MoviesResponse> = repo.showMovies()

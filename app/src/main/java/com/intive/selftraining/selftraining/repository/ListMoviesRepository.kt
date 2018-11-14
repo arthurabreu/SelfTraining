@@ -7,7 +7,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class ListMoviesRepositoryImpl {
+class ListMoviesRepository {
 
     private val client by lazy {
         NetworkClient.create(AppConstants.url)
