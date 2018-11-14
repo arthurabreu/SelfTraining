@@ -1,4 +1,5 @@
-package com.intive.selftraining.selftraining.models
+package com.intive.selftraining.selftraining.network.models
+import java.io.Serializable
 
 data class Result(
     val adult: Boolean,
@@ -15,4 +16,4 @@ data class Result(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+) : Serializable
