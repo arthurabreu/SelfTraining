@@ -1,6 +1,5 @@
 package com.intive.selftraining.selftraining.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.databinding.ViewDataBinding
 import android.support.v4.content.ContextCompat.startActivity
@@ -9,7 +8,7 @@ import com.intive.selftraining.selftraining.BR
 import com.intive.selftraining.selftraining.network.models.Result
 import com.intive.selftraining.selftraining.view.DetailsScopeActivity
 
-class MoviesBinderHolder (private val viewDataBinding: ViewDataBinding) : RecyclerView.ViewHolder(viewDataBinding.root) {
+class MoviesBinderHolder(private val viewDataBinding: ViewDataBinding) : RecyclerView.ViewHolder(viewDataBinding.root) {
 
     fun bind(movie: Result) {
         viewDataBinding.setVariable(BR.movie, movie)
@@ -20,5 +19,4 @@ class MoviesBinderHolder (private val viewDataBinding: ViewDataBinding) : Recycl
             it.context?.startActivity(intent)
             }
         }
-
 }

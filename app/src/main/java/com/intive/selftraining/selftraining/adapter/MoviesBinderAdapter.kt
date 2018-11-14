@@ -1,6 +1,5 @@
 package com.intive.selftraining.selftraining.adapter
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
@@ -29,5 +28,4 @@ class MoviesBinderAdapter : RecyclerView.Adapter<MoviesBinderHolder>() {
     fun setMoviesList(movieList: List<Result>) {
         this.movieList = movieList
     }
-
 }

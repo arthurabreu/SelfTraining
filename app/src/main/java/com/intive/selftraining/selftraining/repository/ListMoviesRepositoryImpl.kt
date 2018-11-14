@@ -13,11 +13,9 @@ class ListMoviesRepositoryImpl {
         NetworkClient.create(AppConstants.url)
     }
 
-    fun showMovies() : Observable<MoviesResponse> {
-       return client.getListMovies()
+    fun showMovies(): Observable<MoviesResponse> {
+        return client.getListMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
-
 }
-

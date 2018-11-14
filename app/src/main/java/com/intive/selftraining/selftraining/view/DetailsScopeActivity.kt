@@ -22,7 +22,7 @@ class DetailsScopeActivity : AppCompatActivity() {
 
         bindScope(getOrCreateScope("movies"))
 
-        val movie =intent.getSerializableExtra("VALUE") as Result
+        val movie = intent.getSerializableExtra("VALUE") as Result
         title = movie.title
         details_title.text = movie.title
         release_date.text = movie.release_date
