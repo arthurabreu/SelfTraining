@@ -1,12 +1,11 @@
-package com.intive.selftraining.selftraining.adapter
+package com.intive.selftraining.selftraining.listmovies
 
 import android.content.Intent
 import android.databinding.ViewDataBinding
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import com.intive.selftraining.selftraining.BR
 import com.intive.selftraining.selftraining.network.models.Result
-import com.intive.selftraining.selftraining.view.DetailsScopeActivity
+import com.intive.selftraining.selftraining.detailsmovies.DetailsScopeActivity
 
 class MoviesBinderHolder(private val viewDataBinding: ViewDataBinding) : RecyclerView.ViewHolder(viewDataBinding.root) {
 

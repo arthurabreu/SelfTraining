@@ -1,11 +1,11 @@
-package com.intive.selftraining.selftraining.viewmodel
+package com.intive.selftraining.selftraining.listmovies
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
-import com.intive.selftraining.selftraining.models.MoviesResponse
+import com.intive.selftraining.selftraining.network.models.MoviesResponse
 import com.intive.selftraining.selftraining.network.models.Result
-import com.intive.selftraining.selftraining.repository.ListMoviesRepository
+import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 

@@ -1,8 +1,8 @@
-package com.intive.selftraining.selftraining.view
+package com.intive.selftraining.selftraining.listmovies
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.intive.selftraining.selftraining.models.MoviesResponse
+import com.intive.selftraining.selftraining.network.models.MoviesResponse
 import kotlinx.android.synthetic.main.list_movies_item.view.list_item_title
 
 class ListItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
