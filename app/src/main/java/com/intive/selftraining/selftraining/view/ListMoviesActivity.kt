@@ -29,7 +29,7 @@ class ListMoviesActivity : AppCompatActivity() {
 //        initAdapter()
 //        initRecycler()
 
-        val moviesViewModel = ViewModelProviders.of(this).get(listMoviesViewModel.javaClass)
+//        val moviesViewModel = ViewModelProviders.of(this).get(listMoviesViewModel.javaClass)
 //
 //        moviesViewModel.getListMovies().observe(this, Observer {
 //            it?.run {
@@ -39,7 +39,7 @@ class ListMoviesActivity : AppCompatActivity() {
 //        })
 
         activityMainBinding?.run {
-            this.viewModel = moviesViewModel
+            this.viewModel = listMoviesViewModel
             setLifecycleOwner(this@ListMoviesActivity)
         }
     }
