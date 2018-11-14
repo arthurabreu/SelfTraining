@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.network.models.MoviesResponse
-import com.intive.selftraining.selftraining.listmovies.ListItemViewHolder
 
 class ListMoviesAdapter(val onClick: (MoviesResponse) -> Unit) : RecyclerView.Adapter<ListItemViewHolder>() {
     var items: List<MoviesResponse> = emptyList()

@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.intive.selftraining.selftraining.network.models.MoviesResponse
 import com.intive.selftraining.selftraining.network.models.Result
-import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 
@@ -26,7 +25,6 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
     private var disposable: Disposable? = null
 
     fun getTitle() {
-//        disposable = observable.map { title ->  title.results[0].title}
         disposable = observable.subscribe(
             { result -> getResponse(result.results) },
             { error -> Log.e("ERROR", error.message) })
