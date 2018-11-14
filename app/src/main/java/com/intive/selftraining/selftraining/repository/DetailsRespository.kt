@@ -1,5 +1,5 @@
 package com.intive.selftraining.selftraining.repository
 
-class DetailsRespositoryImpl() {
+class DetailsRespository() {
     fun showDetails() = "Tom Cruise is the star of the movie"
 }

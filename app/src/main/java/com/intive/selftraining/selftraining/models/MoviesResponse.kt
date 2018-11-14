@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.network.models
+package com.intive.selftraining.selftraining.models
 
 data class MoviesResponse(
     val page: Int,
