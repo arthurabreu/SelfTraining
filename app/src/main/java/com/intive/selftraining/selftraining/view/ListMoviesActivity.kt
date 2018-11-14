@@ -20,37 +20,15 @@ class ListMoviesActivity : AppCompatActivity() {
 
     private val listMoviesViewModel: ListMoviesViewModel by viewModel()
 
-    private lateinit var moviesBinderAdapter: MoviesBinderAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMainBinding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
-//
-//        initAdapter()
-//        initRecycler()
-
-//        val moviesViewModel = ViewModelProviders.of(this).get(listMoviesViewModel.javaClass)
-//
-//        moviesViewModel.getListMovies().observe(this, Observer {
-//            it?.run {
-//                moviesBinderAdapter.setMoviesList(it.results)
-//                moviesBinderAdapter.notifyDataSetChanged()
-//            }
-//        })
 
         activityMainBinding?.run {
             this.viewModel = listMoviesViewModel
+            listMoviesViewModel.getTitle()
             setLifecycleOwner(this@ListMoviesActivity)
         }
     }
 
-//    private fun initAdapter() {
-//        moviesBinderAdapter = MoviesBinderAdapter()
-//    }
-//
-//    private fun initRecycler() {
-//        recycler_movies.layoutManager =  GridLayoutManager(this, 1)
-//        recycler_movies.setHasFixedSize(true)
-//        recycler_movies.adapter = moviesBinderAdapter
-//    }
 }
