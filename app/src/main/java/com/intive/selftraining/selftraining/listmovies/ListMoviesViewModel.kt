@@ -30,6 +30,6 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel(), LifecycleOb
                 Log.d("RESULT", result.results.toString())
                 resultsList?.let { it.value = result.results } },
             { error -> Log.e("ERROR", error.message) })
-        compositeDisposable?.addAll(disposable)
+        compositeDisposable?.add(disposable)
     }
 }
