@@ -1,5 +1,7 @@
 package com.intive.selftraining.selftraining.listmovies
 
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.LifecycleOwner
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -19,13 +21,17 @@ class ListMoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val activityMainBinding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        observeLifecycleIn(listMoviesViewModel)
+
         activityMainBinding?.run {
             this.viewModel = listMoviesViewModel
-            listMoviesViewModel.getResult()
             initRecycler()
             setLifecycleOwner(this@ListMoviesActivity)
         }
     }
+
+    fun LifecycleOwner.observeLifecycleIn(observer: LifecycleObserver) =
+        lifecycle.addObserver(observer)
 
     private fun initRecycler() {
         val layoutManager = LinearLayoutManager(this)
