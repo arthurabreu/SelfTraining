@@ -1,8 +1,5 @@
-@file:JvmName("ItemsAdapter")
+package com.intive.selftraining.selftraining.listmovies.adapter
 
-package com.ciandt.recyclerviewbinding.presentation.items
-
-import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -33,16 +30,6 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     fun update(items: List<Result>) {
         this.resultsList = items
         notifyDataSetChanged()
-    }
-
-    companion object {
-        @JvmStatic
-        @BindingAdapter("resultsList")
-        fun RecyclerView.bindItems(items: List<Result>?) {
-
-            items?.let { val adapter = adapter as ItemsAdapter
-                adapter.update(items) }
-        }
     }
 
     abstract class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
