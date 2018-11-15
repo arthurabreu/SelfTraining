@@ -15,7 +15,6 @@ import com.intive.selftraining.selftraining.network.models.Result
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private var resultsList: List<Result> = emptyList()
-    private val item = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
