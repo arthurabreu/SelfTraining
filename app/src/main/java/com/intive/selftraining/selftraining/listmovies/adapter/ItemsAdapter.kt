@@ -1,6 +1,4 @@
-@file:JvmName("ItemsAdapter")
-
-package com.ciandt.recyclerviewbinding.presentation.items
+package com.intive.selftraining.selftraining.listmovies.adapter
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView

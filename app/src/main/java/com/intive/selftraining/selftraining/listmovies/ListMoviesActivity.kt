@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import com.ciandt.recyclerviewbinding.presentation.items.ItemsAdapter
+import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.recycler_movies
