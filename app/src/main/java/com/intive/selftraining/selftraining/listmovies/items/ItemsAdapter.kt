@@ -14,7 +14,7 @@ import com.intive.selftraining.selftraining.network.models.Result
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var items: List<Result> = emptyList()
+    private var resultsList: List<Result> = emptyList()
     private val item = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,24 +22,23 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         return ItemViewHolder(parent)
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = resultsList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        items?.let { }
-        if (holder is ItemViewHolder && items.size > position) {
-            items?.let { }
-                holder.bind(items[position])
+        if (holder is ItemViewHolder && resultsList.size > position) {
+            resultsList.let { }
+                holder.bind(resultsList[position])
         }
     }
 
     fun update(items: List<Result>) {
-        this.items = items
+        this.resultsList = items
         notifyDataSetChanged()
     }
 
     companion object {
         @JvmStatic
-        @BindingAdapter("items")
+        @BindingAdapter("resultsList")
         fun RecyclerView.bindItems(items: List<Result>?) {
 
             items?.let { val adapter = adapter as ItemsAdapter

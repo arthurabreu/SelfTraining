@@ -10,9 +10,7 @@ import io.reactivex.disposables.Disposable
 
 class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
 
-//    val title = MutableLiveData<String>()
-
-    var items: MutableLiveData<List<Result>>? = MutableLiveData<List<Result>>()
+    var resultsList: MutableLiveData<List<Result>>? = MutableLiveData()
 
     private var observable: Observable<MoviesResponse> = repo.showMovies()
     private var disposable: Disposable? = null
@@ -26,7 +24,7 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel() {
         disposable = observable.subscribe(
             { result ->
                 Log.d("RESULT", result.results.toString())
-                items?.let { it.value = result.results } },
+                resultsList?.let { it.value = result.results } },
             { error -> Log.e("ERROR", error.message) })
     }
 }
