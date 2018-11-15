@@ -24,7 +24,7 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel(), LifecycleOb
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    open fun onCreate(){
+    open fun onCreate() {
         val disposable = observable.subscribe(
             { result ->
                 Log.d("RESULT", result.results.toString())
