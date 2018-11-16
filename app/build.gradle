@@ -68,10 +68,10 @@ dependencies {
     androidTestImplementation "com.android.support:support-annotations:$support_annotations"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     testImplementation "androidx.arch.core:core-testing:$core_testing"
-//    testImplementation "io.mockk:mockk:1.8.13.kotlin13"
-    testImplementation "org.mockito:mockito-inline:2.23.0"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin"
+    testImplementation "org.amshove.kluent:kluent:$kluent"
+    testImplementation "org.mockito:mockito-inline:$mockito_inline"
+
     //Androis Support Libraries
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$constraintLayout"

@@ -2,80 +2,49 @@ package com.intive.selftraining.selftraining.listmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.network.models.MoviesResponse
-import io.reactivex.Observable
 import org.junit.Test
 
-import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Rule
-import org.junit.rules.TestRule
-import org.mockito.Mockito.mock
-import org.mockito.Mock
 import com.intive.selftraining.selftraining.network.models.Result
-import org.mockito.Mockito.`when`
-
-
-
-
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
+import org.amshove.kluent.`should equal`
+import org.junit.rules.TestRule
 
 class ListMoviesViewModelTest {
 
-//    lateinit var listMoviesRepository: ListMoviesRepository
-
-//    lateinit var networkClient: NetworkClient
-//    lateinit var observable: Observable<MoviesResponse>
-
-    @Mock
-    lateinit var listMoviesRepository: ListMoviesRepository
-
-    @Mock
-    lateinit var result: Result
-
-    @Mock
-    lateinit var moviesResponse: MoviesResponse
+    var listMoviesViewModel = mock<ListMoviesViewModel>()
 
     @Rule
     @JvmField
     val rule: TestRule = InstantTaskExecutorRule()
 
-    @Before
-    fun setup() {
-        listMoviesRepository = mock(ListMoviesRepository::class.java)
-//        result = mock(Result::class.java)
-//        moviesResponse = MoviesResponse()
-//        observable = listMoviesRepository.showMovies()
-    }
     @Test
-    fun getResultsList() {
+    fun getMoviesResponse() {
 
-        val result = Result(false, "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg", listOf(878), 335983, "en", "Venom",
+        /* Given */
+        val response = getResponse()
+
+        /* When */
+        whenever(listMoviesViewModel.getMoviesResponse()).thenReturn(response)
+
+        /* Then */
+        listMoviesViewModel.getMoviesResponse() `should equal` response
+    }
+
+    private fun getResponse(): MoviesResponse {
+        val result = Result(
+            false, "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg", listOf(878), 335983, "en", "Venom",
             "When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego \"Venom\" to save his life.",
             228.224,
             "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
             "2018-10-03",
             "Venom",
-        false,
+            false,
             6.6,
-            2192)
-        val movieResponse = MoviesResponse(1, listOf(result),19401, 388003)
+            2192
+        )
 
-        val response = Observable.just(movieResponse)
-
-        `when`(listMoviesRepository.showMovies())
-            .thenReturn(response)
-//        `when`(listMoviesRepository.getnnum()).thenReturn(10)
-        val num =  listMoviesRepository.showMovies()
-
-        assertEquals(listMoviesRepository.showMovies(),response)
-
-
-    }
-
-    @Test
-    fun getResult() {
-    }
-
-    @Test
-    fun onCleared() {
+        return MoviesResponse(1, listOf(result), 19401, 388003)
     }
 }

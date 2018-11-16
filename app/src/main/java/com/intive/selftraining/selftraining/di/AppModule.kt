@@ -10,9 +10,8 @@ import org.koin.dsl.module.module
 
 val appmodule = module {
     single { NetworkClient() }
-    single { ListMoviesRepository(get())}
+    single { ListMoviesRepository(get()) }
     single { DetailsRespository() }
-
 
     scope("movies") { DetailsScopeViewModel(get()) }
     viewModel { ListMoviesViewModel(get()) }

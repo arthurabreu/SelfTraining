@@ -29,6 +29,7 @@ ext {
 
 //  testing
     core_testing = "2.0.0"
-    moshiVersion = '1.5.0'
-
+    mockito_kotlin = "2.0.0"
+    kluent = "1.42"
+    mockito_inline = "2.23.0"
 }

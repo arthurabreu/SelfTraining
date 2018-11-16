@@ -18,12 +18,7 @@ class ListMoviesRepository(networkClient: NetworkClient) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getClient(url: String) : NetworkInterface {
+    fun getClient(url: String): NetworkInterface {
         return networkClient.create(url)
     }
-
-    fun getnnum() : Int{
-        return 5+5
-    }
-
 }
