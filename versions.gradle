@@ -26,4 +26,10 @@ ext {
 
     //instrumentalTesting
     support_annotations = "27.0.0"
+
+//  testing
+    core_testing = "2.0.0"
+    mockito_kotlin = "2.0.0"
+    kluent = "1.42"
+    mockito_inline = "2.23.0"
 }

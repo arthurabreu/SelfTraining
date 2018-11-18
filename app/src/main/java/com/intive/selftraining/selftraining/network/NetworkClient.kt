@@ -6,9 +6,12 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkClient {
-    companion object {
 
         private val client = OkHttpClient().newBuilder().addInterceptor(KeyInterceptor).build()
+
+//        init {
+//            create(AppConstants.url)
+//        }
 
         fun create(url: String): NetworkInterface {
 
@@ -21,5 +24,4 @@ class NetworkClient {
 
             return retrofit.create(NetworkInterface::class.java)
         }
-    }
 }

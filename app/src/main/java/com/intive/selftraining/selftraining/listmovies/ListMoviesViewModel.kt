@@ -25,11 +25,20 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel(), LifecycleOb
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     open fun onCreate() {
+        getMoviesResponse()
+    }
+
+    fun getMoviesResponse(): MoviesResponse? {
+        var results: MoviesResponse? = null
         val disposable = observable.subscribe(
             { result ->
-                Log.d("RESULT", result.results.toString())
-                resultsList?.let { it.value = result.results } },
+                Log.i("RESULT", result.results.toString())
+                results = result
+                resultsList?.let { it.value = result.results }
+            },
             { error -> Log.e("ERROR", error.message) })
         compositeDisposable?.add(disposable)
+
+        return results
     }
 }
