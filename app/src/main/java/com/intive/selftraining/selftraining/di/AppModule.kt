@@ -7,7 +7,7 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val appmodule = module {
-    single { NetworkClient() }
+    factory { NetworkClient().networkResponse }
     single { ListMoviesRepository(get()) }
 
     viewModel { ListMoviesViewModel(get()) }

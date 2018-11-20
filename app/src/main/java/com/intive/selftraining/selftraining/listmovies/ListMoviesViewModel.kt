@@ -25,7 +25,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
         getMoviesResponse()
     }
 
-    fun getMoviesResponse() {
+    private fun getMoviesResponse() {
         val disposable = repo.showMovies().subscribe(
             { result ->
                 Log.i("RESULT", result.results.toString())
