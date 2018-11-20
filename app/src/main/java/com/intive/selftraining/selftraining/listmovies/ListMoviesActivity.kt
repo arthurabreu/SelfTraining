@@ -1,7 +1,5 @@
 package com.intive.selftraining.selftraining.listmovies
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.LifecycleOwner
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
+import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import kotlinx.android.synthetic.main.activity_main.recycler_movies
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -30,8 +29,7 @@ class ListMoviesActivity : AppCompatActivity() {
         }
     }
 
-    private fun LifecycleOwner.observeLifecycleIn(observer: LifecycleObserver) =
-        lifecycle.addObserver(observer)
+
 
     private fun initRecycler() {
         val layoutManager = LinearLayoutManager(this)
