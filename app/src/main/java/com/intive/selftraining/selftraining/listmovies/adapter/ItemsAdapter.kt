@@ -45,7 +45,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     ) : ViewHolder(binding.root) {
 
         fun bind(item: Result) {
-            binding.item = item.title
+            binding.text = item.title
         }
     }
 }
