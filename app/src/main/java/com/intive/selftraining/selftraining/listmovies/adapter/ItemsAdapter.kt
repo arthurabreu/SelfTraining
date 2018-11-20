@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
+import com.intive.selftraining.selftraining.network.models.Configuration
 import com.intive.selftraining.selftraining.network.models.Result
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private var resultsList: List<Result> = emptyList()
+    private lateinit var configuration: Configuration
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -23,12 +25,17 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
             resultsList.let { }
-                holder.bind(resultsList[position])
+                holder.bind(resultsList[position], configuration)
         }
     }
 
     fun update(items: List<Result>) {
         this.resultsList = items
+        notifyDataSetChanged()
+    }
+
+    fun updateConfig(items: Configuration) {
+        this.configuration = items
         notifyDataSetChanged()
     }
 
@@ -44,8 +51,12 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         )
     ) : ViewHolder(binding.root) {
 
-        fun bind(item: Result) {
+        fun bind(
+            item: Result,
+            configuration: Configuration?
+        ) {
             binding.text = item.title
+            binding.image = configuration?.images?.base_url + configuration?.images?.logo_sizes?.get(5) + item.poster_path
         }
     }
 }

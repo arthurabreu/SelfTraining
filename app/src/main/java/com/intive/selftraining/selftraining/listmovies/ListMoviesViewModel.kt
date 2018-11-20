@@ -43,20 +43,12 @@ class ListMoviesViewModel(repo: ListMoviesRepository) : ViewModel(), LifecycleOb
     }
 
     private fun getImageUrl() {
-        //var posterPath = resultsList.value?.get(0)?.poster_path
-        //TODO another endpoint
+
         compositeDisposable?.add(configObservable.subscribe(
             { result ->
-                //Log.i("RESULT", result)
+                Log.i("CONFIGURATION", result.toString())
                 configuration.let { it.value = result }
             },
-            { error -> Log.e("ERROR", error.message) }))
-
-        val baseUrl = configuration.value?.images?.base_url
-        val logoSize = configuration.value?.images?.logo_sizes
-        val url = baseUrl + logoSize
-        val completeUrl = url + resultsList.value?.get(0)?.poster_path
-
-
+            { error -> Log.e("CONFIGURATION", error.message) }))
     }
 }

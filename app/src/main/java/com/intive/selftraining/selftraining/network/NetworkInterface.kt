@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface NetworkInterface {
 
-    @GET("movie/")
+    @GET("discover/movie/")
     fun getListMovies(): Observable<MoviesResponse>
 
     @GET("configuration")
