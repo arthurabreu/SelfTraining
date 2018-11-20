@@ -9,10 +9,6 @@ class NetworkClient {
 
         private val client = OkHttpClient().newBuilder().addInterceptor(KeyInterceptor).build()
 
-//        init {
-//            create(AppConstants.url)
-//        }
-
         fun create(url: String): NetworkInterface {
 
             val retrofit = Retrofit.Builder()

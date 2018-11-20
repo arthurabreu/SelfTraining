@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
+import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import kotlinx.android.synthetic.main.activity_main.recycler_movies
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -21,7 +21,7 @@ class ListMoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val activityMainBinding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        observeLifecycleIn(listMoviesViewModel)
+        this.observeLifecycleIn(listMoviesViewModel)
 
         activityMainBinding?.run {
             this.viewModel = listMoviesViewModel
@@ -30,7 +30,7 @@ class ListMoviesActivity : AppCompatActivity() {
         }
     }
 
-    fun LifecycleOwner.observeLifecycleIn(observer: LifecycleObserver) =
+    private fun LifecycleOwner.observeLifecycleIn(observer: LifecycleObserver) =
         lifecycle.addObserver(observer)
 
     private fun initRecycler() {
