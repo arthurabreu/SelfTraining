@@ -29,8 +29,6 @@ class ListMoviesActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun initRecycler() {
         val layoutManager = LinearLayoutManager(this)
 
