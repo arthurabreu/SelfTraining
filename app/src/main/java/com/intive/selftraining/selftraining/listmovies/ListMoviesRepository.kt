@@ -15,9 +15,7 @@ class ListMoviesRepository(private val networkClient: NetworkInterface) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getConfiguration(): Observable<Configuration> {
-        return networkClient.getConfiguration()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
+    fun getConfiguration(): Observable<Configuration> = networkClient.getConfiguration()
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
 }

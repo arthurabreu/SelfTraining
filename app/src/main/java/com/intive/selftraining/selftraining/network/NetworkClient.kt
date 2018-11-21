@@ -10,7 +10,7 @@ class NetworkClient {
 
     var networkResponse: NetworkInterface = create()
 
-    fun create(): NetworkInterface {
+    private fun create(): NetworkInterface {
 
         val retrofit = Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

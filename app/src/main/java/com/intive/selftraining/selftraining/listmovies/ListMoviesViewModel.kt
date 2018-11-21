@@ -25,7 +25,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
         getMoviesResponse()
     }
 
-    fun getMoviesResponse() {
+    private fun getMoviesResponse() {
         val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
             s, n ->
             ZipListMovies(s, n)
