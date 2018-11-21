@@ -6,17 +6,17 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
 import android.util.Log
-import com.intive.selftraining.selftraining.network.models.Result
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.Observables
 
 class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
 
-    var resultsList: MutableLiveData<List<Result>> = MutableLiveData()
+    var resultsList: MutableLiveData<ZipListMovies> = MutableLiveData()
 
-    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var compositeDisposable: CompositeDisposable? = CompositeDisposable()
 
     override fun onCleared() {
-        compositeDisposable.dispose()
+        compositeDisposable?.dispose()
         super.onCleared()
     }
 
@@ -26,12 +26,14 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
     }
 
     private fun getMoviesResponse() {
-        val disposable = repo.showMovies().subscribe(
-            { result ->
-                Log.i("RESULT", result.results.toString())
-                resultsList.value = result.results
-            },
-            { error -> Log.e("ERROR", error.message) })
-        compositeDisposable.add(disposable)
+        val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
+            s, n ->
+            ZipListMovies(s, n)
+        }
+        compositeDisposable?.add(res.subscribe({
+            resultsList.value = it
+            Log.d("RESULT_MOVIES", it.moviesResponse.results.toString())
+            Log.d("CONFIGURATION", it.configuration.toString())
+        }, { error -> Log.e("ERROR", error.message) }))
     }
 }
