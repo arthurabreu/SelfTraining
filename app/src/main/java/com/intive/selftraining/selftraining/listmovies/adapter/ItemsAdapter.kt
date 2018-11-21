@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.network.models.Configuration
+import com.intive.selftraining.selftraining.listmovies.ZipListMovies
 import com.intive.selftraining.selftraining.network.models.Result
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
@@ -20,7 +21,9 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         return ItemViewHolder(parent)
     }
 
-    override fun getItemCount() = resultsList.size
+    override fun getItemCount(): Int {
+        return resultsList.size
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
@@ -29,13 +32,9 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         }
     }
 
-    fun update(items: List<Result>) {
-        this.resultsList = items
-        notifyDataSetChanged()
-    }
-
-    fun updateConfig(items: Configuration) {
-        this.configuration = items
+    fun update(items: ZipListMovies) {
+        this.resultsList = items.moviesResponse.results
+        this.configuration = items.configuration
         notifyDataSetChanged()
     }
 
@@ -53,10 +52,10 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
         fun bind(
             item: Result,
-            configuration: Configuration?
+            configuration: Configuration
         ) {
             binding.text = item.title
-            binding.image = configuration?.images?.base_url + configuration?.images?.logo_sizes?.get(5) + item.poster_path
+            binding.image = configuration.images.base_url + configuration.images.logo_sizes[5] + item.poster_path
         }
     }
 }

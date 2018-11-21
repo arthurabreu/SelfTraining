@@ -19,7 +19,7 @@ class ListMoviesRepository(networkClient: NetworkClient) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getConfiguration(): Observable<Configuration>{
+    fun getConfiguration(): Observable<Configuration> {
         return getClient(AppConstants.url).getConfiguration()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
