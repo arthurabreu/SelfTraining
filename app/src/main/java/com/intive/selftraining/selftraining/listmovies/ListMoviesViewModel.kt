@@ -9,7 +9,7 @@ import android.util.Log
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.Observables
 
-class ListMoviesViewModel(val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
+class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
 
     var resultsList: MutableLiveData<ZipListMovies> = MutableLiveData()
 

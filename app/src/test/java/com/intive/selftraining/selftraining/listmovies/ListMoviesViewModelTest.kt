@@ -3,7 +3,6 @@ package com.intive.selftraining.selftraining.listmovies
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.network.models.MoviesResponse
 import org.junit.Test
-
 import org.junit.Rule
 import com.intive.selftraining.selftraining.network.models.Result
 import com.nhaarman.mockitokotlin2.mock
