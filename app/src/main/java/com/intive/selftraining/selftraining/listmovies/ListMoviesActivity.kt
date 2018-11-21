@@ -4,7 +4,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
@@ -30,7 +30,7 @@ class ListMoviesActivity : AppCompatActivity() {
     }
 
     private fun initRecycler() {
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = GridLayoutManager(this, 3)
 
         recycler_movies.layoutManager = layoutManager
         recycler_movies.hasFixedSize()

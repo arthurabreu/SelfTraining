@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
-import com.intive.selftraining.selftraining.network.models.Configuration
 import com.intive.selftraining.selftraining.listmovies.ZipListMovies
+import com.intive.selftraining.selftraining.network.models.Configuration
 import com.intive.selftraining.selftraining.network.models.Result
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
@@ -55,7 +55,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
             configuration: Configuration
         ) {
             binding.text = item.title
-            binding.image = configuration.images.base_url + configuration.images.logo_sizes[5] + item.poster_path
+            binding.image = configuration.images.base_url + configuration.images.backdrop_sizes[2] + item.poster_path
         }
     }
 }
