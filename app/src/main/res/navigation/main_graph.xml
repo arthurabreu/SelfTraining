@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_graph" app:startDestination="@id/fragment_list_movies">
+    <fragment android:id="@+id/fragment_list_movies" android:name="com.intive.selftraining.selftraining.listmovies.ListMoviesFragment"
+              android:label="fragment_list_movies.xml">
+    </fragment>
+</navigation>
