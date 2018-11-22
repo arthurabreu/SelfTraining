@@ -1,13 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".listmovies.ListMoviesFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel" />
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="test"/>
+            tools:context="com.intive.selftraining.selftraining.listmovies.ListMoviesActivity"
+            android:foregroundGravity="center_vertical|fill_vertical|center_horizontal">
 
-</FrameLayout>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_movies"
+                tools:listitem="@layout/item_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:resultsList="@{viewModel.resultsList}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
