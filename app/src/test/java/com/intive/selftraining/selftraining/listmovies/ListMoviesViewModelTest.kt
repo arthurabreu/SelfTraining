@@ -8,24 +8,20 @@ import com.intive.selftraining.selftraining.network.models.MoviesResponse
 import org.junit.Test
 import org.junit.Rule
 import com.intive.selftraining.selftraining.network.models.Result
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
 import org.amshove.kluent.`should equal`
 import org.junit.rules.TestRule
-import org.junit.Before
 
 class ListMoviesViewModelTest {
 
-    var resultsList: MutableLiveData<ZipListMovies> = mock()
+    var resultsList: MutableLiveData<ZipListMovies> = mock {
+        on { value } doReturn getZipListMovies()
+    }
 
     @Rule
     @JvmField
     val rule: TestRule = InstantTaskExecutorRule()
-
-    @Before
-    fun setUp() {
-        whenever(resultsList.value).thenReturn(getZipListMovies())
-    }
 
     @Test
     fun `when should assert zipListMovies`() {
