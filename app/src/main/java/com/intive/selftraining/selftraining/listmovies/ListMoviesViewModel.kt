@@ -13,24 +13,24 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
 
     var resultsList: MutableLiveData<ZipListMovies> = MutableLiveData()
 
-    private var compositeDisposable: CompositeDisposable? = CompositeDisposable()
-
-    override fun onCleared() {
-        compositeDisposable?.dispose()
-        super.onCleared()
-    }
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
         getMoviesResponse()
     }
 
+    override fun onCleared() {
+        compositeDisposable.dispose()
+        super.onCleared()
+    }
+
     private fun getMoviesResponse() {
         val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
-            s, n ->
-            ZipListMovies(s, n)
+            movies, configuration ->
+            ZipListMovies(movies, configuration)
         }
-        compositeDisposable?.add(res.subscribe({
+        compositeDisposable.add(res.subscribe({
             resultsList.value = it
             Log.d("RESULT_MOVIES", it.moviesResponse.results.toString())
             Log.d("CONFIGURATION", it.configuration.toString())
