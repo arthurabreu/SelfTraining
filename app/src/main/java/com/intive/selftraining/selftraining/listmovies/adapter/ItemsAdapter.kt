@@ -51,11 +51,11 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     ) : ViewHolder(binding.root) {
 
         fun bind(
-            item: Result,
+            result: Result,
             configuration: Configuration
         ) {
-            binding.text = item.title
-            binding.image = configuration.images.base_url + configuration.images.backdrop_sizes[2] + item.poster_path
+            binding.text = result.title
+            binding.image = configuration.images.base_url + configuration.images.logo_sizes[5] + result.poster_path
         }
     }
 }
