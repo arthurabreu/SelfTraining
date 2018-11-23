@@ -1,12 +1,12 @@
 package com.intive.selftraining.selftraining.base
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.intive.selftraining.selftraining.R
 
-class BaseActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     internal var navController: NavController? = null
 
