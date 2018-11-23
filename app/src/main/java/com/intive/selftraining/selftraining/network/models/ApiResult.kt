@@ -1,7 +1,6 @@
 package com.intive.selftraining.selftraining.network.models
-import java.io.Serializable
 
-data class Result(
+data class ApiResult(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
@@ -16,4 +15,4 @@ data class Result(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-) : Serializable
+)

@@ -7,17 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
-import com.intive.selftraining.selftraining.listmovies.ZipListMovies
-import com.intive.selftraining.selftraining.network.models.Configuration
-import com.intive.selftraining.selftraining.network.models.Result
+import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
+import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var resultsList: List<Result> = emptyList()
-    private lateinit var configuration: Configuration
+    private var resultsList: List<ListMoviesMapper.Results> = emptyList()
+    private lateinit var apiConfiguration: ApiConfiguration
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ItemViewHolder(parent)
     }
 
@@ -28,13 +26,12 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
             resultsList.let { }
-                holder.bind(resultsList[position], configuration)
+                holder.bind(resultsList[position])
         }
     }
 
-    fun update(items: ZipListMovies) {
-        this.resultsList = items.moviesResponse.results
-        this.configuration = items.configuration
+    fun update(items: ListMoviesMapper) {
+        this.resultsList = items.results
         notifyDataSetChanged()
     }
 
@@ -51,11 +48,10 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     ) : ViewHolder(binding.root) {
 
         fun bind(
-            result: Result,
-            configuration: Configuration
+            mapper: ListMoviesMapper.Results
         ) {
-            binding.text = result.title
-            binding.image = configuration.images.base_url + configuration.images.logo_sizes[5] + result.poster_path
+            binding.text = mapper.title
+            binding.image = mapper.completeImageUrl
         }
     }
 }

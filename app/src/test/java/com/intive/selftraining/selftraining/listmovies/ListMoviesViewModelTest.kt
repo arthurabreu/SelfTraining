@@ -2,12 +2,12 @@ package com.intive.selftraining.selftraining.listmovies
 
 import android.arch.lifecycle.MutableLiveData
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.network.models.Configuration
+import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import com.intive.selftraining.selftraining.network.models.Images
-import com.intive.selftraining.selftraining.network.models.MoviesResponse
+import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
 import org.junit.Test
 import org.junit.Rule
-import com.intive.selftraining.selftraining.network.models.Result
+import com.intive.selftraining.selftraining.network.models.ApiResult
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.amshove.kluent.`should equal`
@@ -39,13 +39,13 @@ class ListMoviesViewModelTest {
             "",
             emptyList()
         )
-        val conf = Configuration(emptyList(), img)
+        val conf = ApiConfiguration(emptyList(), img)
         return ZipListMovies(getMovieResponse(), conf)
     }
 
-    private fun getMovieResponse(): MoviesResponse {
+    private fun getMovieResponse(): ApiMoviesResponse {
 
-        val result = Result(
+        val result = ApiResult(
             false, "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg", listOf(878), 335983, "en", "Venom",
             "When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego \"Venom\" to save his life.",
             228.224,
@@ -57,6 +57,6 @@ class ListMoviesViewModelTest {
             2192
         )
 
-        return MoviesResponse(1, listOf(result), 19401, 388003)
+        return ApiMoviesResponse(1, listOf(result), 19401, 388003)
     }
 }
