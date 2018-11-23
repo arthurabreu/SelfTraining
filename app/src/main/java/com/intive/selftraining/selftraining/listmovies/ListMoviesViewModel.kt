@@ -35,6 +35,6 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
         compositeDisposable.add(res.subscribe({
             resultsList.value = it
             Log.d("LIST MOVIES MAPPER", it.toString())
-        }, { error -> Log.e("ERROR", error.message) }))
+        }, { error -> Log.e("LIST MOVIES ERROR", error.message) }))
     }
 }

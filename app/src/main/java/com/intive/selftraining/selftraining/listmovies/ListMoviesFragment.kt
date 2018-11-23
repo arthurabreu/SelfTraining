@@ -9,39 +9,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
-import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
+import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
-import kotlinx.android.synthetic.main.activity_main.recycler_movies
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListMoviesFragment : Fragment() {
 
     private val listMoviesViewModel: ListMoviesViewModel by viewModel()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         this.observeLifecycleIn(listMoviesViewModel)
+        val activityMainBinding: FragmentListMoviesBinding? =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_list_movies, container, false)
 
-        // Inflate the layout for this fragment
-        val binding : ActivityMainBinding? = DataBindingUtil.inflate(inflater, R.layout.activity_main,container, false)
-        var myView : View  = binding!!.root
-
-        binding?.run {
-                        this.viewModel = listMoviesViewModel
-            initRecycler()
+        val view = activityMainBinding?.root
+        activityMainBinding?.run {
+            this.viewModel = listMoviesViewModel
+            initRecycler(activityMainBinding)
             setLifecycleOwner(this@ListMoviesFragment)
         }
 
-        return myView
+        return view
     }
 
-    private fun initRecycler() {
+    private fun initRecycler(
+        activityMainBinding: FragmentListMoviesBinding
+    ) {
         val layoutManager = GridLayoutManager(context, 3)
 
-        recycler_movies.layoutManager = layoutManager
-        recycler_movies.hasFixedSize()
-        recycler_movies.adapter = ItemsAdapter()
-        recycler_movies.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
+        val recyclerMovies = activityMainBinding.recyclerMovies
+        recyclerMovies.layoutManager = layoutManager
+        recyclerMovies.hasFixedSize()
+        recyclerMovies.adapter = ItemsAdapter()
+        recyclerMovies.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
     }
 }
