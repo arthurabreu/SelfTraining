@@ -74,16 +74,15 @@ class ListMoviesMapper {
         secureImageBaseUrl = apiConfiguration.images.secure_base_url
         stillSizes = apiConfiguration.images.still_sizes
 
-        var tempResults: MutableList<Results> = mutableListOf()
+        val tempResults: MutableList<Results> = mutableListOf()
 
-        var i = 0
-        while (i != apiMoviesResponse.results.size) {
-            var result = Results()
+        for (i in 0 until apiMoviesResponse.results.size) {
+            val result = Results()
             result.fromApi(apiMoviesResponse.results[i])
             result.completeImageUrl = baseImageUrl + logoSizes[6] + apiMoviesResponse.results[i].poster_path
             tempResults.add(result)
-            i++
         }
+
         results.addAll(tempResults)
     }
 }
