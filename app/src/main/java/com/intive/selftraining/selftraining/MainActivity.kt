@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.intive.selftraining.selftraining.R
 
 class MainActivity : AppCompatActivity() {
 

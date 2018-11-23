@@ -11,7 +11,7 @@ class ListMoviesMapper {
     var totalResults: Int = 0
     var results: ArrayList<Results> = arrayListOf()
 
-    //Image data class model
+    // Image data class model
     var changeKeys: List<String> = emptyList()
     var backdropSizes: List<String> = emptyList()
     var baseImageUrl: String = ""
@@ -21,8 +21,8 @@ class ListMoviesMapper {
     var secureImageBaseUrl: String = ""
     var stillSizes: List<String> = emptyList()
 
-    //Api Result data class model
-    class Results  {
+    // Api Result data class model
+    class Results {
         var id: Int = 0
         var title: String = ""
         var releaseDate: String = ""
@@ -38,7 +38,7 @@ class ListMoviesMapper {
         var voteAverage: Double = 0.0
         var voteCount: Int = 0
 
-        fun fromApi(apiResults: ApiResult){
+        fun fromApi(apiResults: ApiResult) {
             id = apiResults.id
             title = apiResults.title
             releaseDate = apiResults.release_date
@@ -55,11 +55,11 @@ class ListMoviesMapper {
             voteCount = apiResults.vote_count
         }
 
-        //Special field for image url
+        // Special field for image url
         var completeImageUrl: String = ""
     }
 
-    fun fromApi(apiMoviesResponse: ApiMoviesResponse, apiConfiguration: ApiConfiguration)= ListMoviesMapper().apply {
+    fun fromApi(apiMoviesResponse: ApiMoviesResponse, apiConfiguration: ApiConfiguration) = ListMoviesMapper().apply {
 
         page = apiMoviesResponse.page
         totalPages = apiMoviesResponse.total_pages
@@ -87,4 +87,3 @@ class ListMoviesMapper {
         results.addAll(tempResults)
     }
 }
-
