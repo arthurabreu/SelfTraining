@@ -6,12 +6,13 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
 import android.util.Log
+import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.Observables
 
 class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
 
-    var resultsList: MutableLiveData<ZipListMovies> = MutableLiveData()
+    var resultsList: MutableLiveData<ListMoviesMapper> = MutableLiveData()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -28,11 +29,12 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
     private fun getMoviesResponse() {
         val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
             movies, configuration ->
-            ZipListMovies(movies, configuration)
+            var listMoviesMapper: ListMoviesMapper
+            listMoviesMapper.fromApi(movies.apiResults, configuration)
         }
         compositeDisposable.add(res.subscribe({
             resultsList.value = it
-            Log.d("RESULT_MOVIES", it.moviesResponse.results.toString())
+            Log.d("RESULT_MOVIES", it.apiMoviesResponse.apiResults.toString())
             Log.d("CONFIGURATION", it.configuration.toString())
         }, { error -> Log.e("ERROR", error.message) }))
     }

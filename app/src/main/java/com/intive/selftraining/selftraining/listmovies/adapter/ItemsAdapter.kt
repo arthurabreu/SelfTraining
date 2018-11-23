@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.ZipListMovies
-import com.intive.selftraining.selftraining.network.models.Configuration
-import com.intive.selftraining.selftraining.network.models.Result
+import com.intive.selftraining.selftraining.network.models.ApiConfiguration
+import com.intive.selftraining.selftraining.network.models.ApiResult
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var resultsList: List<Result> = emptyList()
-    private lateinit var configuration: Configuration
+    private var resultsList: List<ApiResult> = emptyList()
+    private lateinit var apiConfiguration: ApiConfiguration
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -28,13 +28,13 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
             resultsList.let { }
-                holder.bind(resultsList[position], configuration)
+                holder.bind(resultsList[position], apiConfiguration)
         }
     }
 
     fun update(items: ZipListMovies) {
-        this.resultsList = items.moviesResponse.results
-        this.configuration = items.configuration
+        this.resultsList = items.apiMoviesResponse.apiResults
+        this.apiConfiguration = items.apiConfiguration
         notifyDataSetChanged()
     }
 
@@ -51,11 +51,11 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     ) : ViewHolder(binding.root) {
 
         fun bind(
-            result: Result,
-            configuration: Configuration
+            apiResult: ApiResult,
+            apiConfiguration: ApiConfiguration
         ) {
-            binding.text = result.title
-            binding.image = configuration.images.base_url + configuration.images.logo_sizes[5] + result.poster_path
+            binding.text = apiResult.title
+            binding.image = apiConfiguration.images.base_url + apiConfiguration.images.logo_sizes[5] + apiResult.poster_path
         }
     }
 }

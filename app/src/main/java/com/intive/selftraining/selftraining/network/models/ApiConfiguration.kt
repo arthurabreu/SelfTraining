@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.network.models
 
-data class Configuration(
+data class ApiConfiguration(
     val change_keys: List<String>,
     val images: Images
 )
