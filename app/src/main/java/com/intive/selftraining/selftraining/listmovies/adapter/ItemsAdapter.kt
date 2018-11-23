@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
-import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private var resultsList: List<ListMoviesMapper.Results> = emptyList()
-    private lateinit var apiConfiguration: ApiConfiguration
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ItemViewHolder(parent)
