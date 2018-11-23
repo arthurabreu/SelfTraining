@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.ZipListMovies
+import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import com.intive.selftraining.selftraining.network.models.ApiResult
 
@@ -51,10 +52,9 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     ) : ViewHolder(binding.root) {
 
         fun bind(
-            apiResult: ApiResult,
-            apiConfiguration: ApiConfiguration
+            mapper: ListMoviesMapper
         ) {
-            binding.text = apiResult.title
+            binding.text = mapper.apiResults.
             binding.image = apiConfiguration.images.base_url + apiConfiguration.images.logo_sizes[5] + apiResult.poster_path
         }
     }

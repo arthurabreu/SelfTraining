@@ -29,13 +29,12 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
     private fun getMoviesResponse() {
         val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
             movies, configuration ->
-            var listMoviesMapper: ListMoviesMapper
-            listMoviesMapper.fromApi(movies.apiResults, configuration)
+            var listMoviesMapper: ListMoviesMapper? = null
+            listMoviesMapper?.fromApi(movies, configuration)
         }
         compositeDisposable.add(res.subscribe({
             resultsList.value = it
-            Log.d("RESULT_MOVIES", it.apiMoviesResponse.apiResults.toString())
-            Log.d("CONFIGURATION", it.configuration.toString())
+            Log.d("LIST MOVIES MAPPER", it.toString())
         }, { error -> Log.e("ERROR", error.message) }))
     }
 }
