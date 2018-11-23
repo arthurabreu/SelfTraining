@@ -10,6 +10,6 @@ interface NetworkInterface {
     @GET("discover/movie/")
     fun getListMovies(): Observable<ApiMoviesResponse>
 
-    @GET("apiConfiguration")
+    @GET("configuration")
     fun getConfiguration(): Observable<ApiConfiguration>
 }
