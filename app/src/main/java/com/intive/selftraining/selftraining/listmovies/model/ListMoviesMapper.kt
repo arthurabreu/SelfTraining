@@ -6,20 +6,20 @@ import com.intive.selftraining.selftraining.network.models.ApiResult
 
 class ListMoviesMapper {
 
-    private var page: Int = 0
-    private var totalPages: Int = 0
-    private var totalResults: Int = 0
-    var results: MutableList<Results> = mutableListOf()
+    var page: Int = 0
+    var totalPages: Int = 0
+    var totalResults: Int = 0
+    var results: ArrayList<Results> = arrayListOf()
 
     //Image data class model
-    private var changeKeys: List<String> = emptyList()
-    private var backdropSizes: List<String> = emptyList()
-    private var baseImageUrl: String = ""
-    private var logoSizes: List<String> = emptyList()
-    private var posterSizes: List<String> = emptyList()
-    private var profileSizes: List<String> = emptyList()
-    private var secureImageBaseUrl: String = ""
-    private var stillSizes: List<String> = emptyList()
+    var changeKeys: List<String> = emptyList()
+    var backdropSizes: List<String> = emptyList()
+    var baseImageUrl: String = ""
+    var logoSizes: List<String> = emptyList()
+    var posterSizes: List<String> = emptyList()
+    var profileSizes: List<String> = emptyList()
+    var secureImageBaseUrl: String = ""
+    var stillSizes: List<String> = emptyList()
 
     //Api Result data class model
     class Results  {
@@ -65,19 +65,6 @@ class ListMoviesMapper {
         totalPages = apiMoviesResponse.total_pages
         totalResults = apiMoviesResponse.total_results
 
-        var result = Results()
-        var tempResults: MutableList<Results> = mutableListOf()
-
-        var i = 0
-        while (i != apiMoviesResponse.results.size) {
-
-            result.fromApi(apiMoviesResponse.results[i])
-            result.completeImageUrl = baseImageUrl + logoSizes + apiMoviesResponse.results[i].poster_path
-            tempResults.add(result)
-        }
-
-        results.addAll(tempResults)
-
         changeKeys = apiConfiguration.change_keys
         backdropSizes = apiConfiguration.images.backdrop_sizes
         baseImageUrl = apiConfiguration.images.base_url
@@ -86,6 +73,20 @@ class ListMoviesMapper {
         profileSizes = apiConfiguration.images.profile_sizes
         secureImageBaseUrl = apiConfiguration.images.secure_base_url
         stillSizes = apiConfiguration.images.still_sizes
+
+        var result = Results()
+        var tempResults: MutableList<Results> = mutableListOf()
+
+        var i = 0
+        while (i != apiMoviesResponse.results.size) {
+
+            result.fromApi(apiMoviesResponse.results[i])
+            result.completeImageUrl = baseImageUrl + logoSizes[6] + apiMoviesResponse.results[i].poster_path
+            tempResults.add(result)
+            i++
+        }
+
+        results.addAll(tempResults)
     }
 }
 
