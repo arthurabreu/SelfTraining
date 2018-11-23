@@ -1,5 +1,4 @@
 package com.intive.selftraining.selftraining.network.models
-import java.io.Serializable
 
 data class ApiResult(
     val adult: Boolean,
@@ -16,4 +15,4 @@ data class ApiResult(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)  : ResultInterface
+)

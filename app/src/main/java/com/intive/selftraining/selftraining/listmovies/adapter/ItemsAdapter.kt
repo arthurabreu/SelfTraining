@@ -7,18 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
-import com.intive.selftraining.selftraining.listmovies.ZipListMovies
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
-import com.intive.selftraining.selftraining.network.models.ApiResult
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var resultsList: List<ApiResult> = emptyList()
+    private var resultsList: List<ListMoviesMapper.Results> = emptyList()
     private lateinit var apiConfiguration: ApiConfiguration
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ItemViewHolder(parent)
     }
 
@@ -29,13 +26,12 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
             resultsList.let { }
-                holder.bind(resultsList[position], apiConfiguration)
+                holder.bind(resultsList[position])
         }
     }
 
-    fun update(items: ZipListMovies) {
-        this.resultsList = items.apiMoviesResponse.apiResults
-        this.apiConfiguration = items.apiConfiguration
+    fun update(items: ListMoviesMapper) {
+        this.resultsList = items.apiResults
         notifyDataSetChanged()
     }
 
@@ -52,10 +48,10 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     ) : ViewHolder(binding.root) {
 
         fun bind(
-            mapper: ListMoviesMapper
+            mapper: ListMoviesMapper.Results
         ) {
-            binding.text = mapper.apiResults.
-            binding.image = apiConfiguration.images.base_url + apiConfiguration.images.logo_sizes[5] + apiResult.poster_path
+            binding.text = mapper.title
+            binding.image = mapper.completeImageUrl
         }
     }
 }

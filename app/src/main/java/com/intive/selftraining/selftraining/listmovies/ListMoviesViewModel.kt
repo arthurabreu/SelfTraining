@@ -29,8 +29,8 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
     private fun getMoviesResponse() {
         val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
             movies, configuration ->
-            var listMoviesMapper: ListMoviesMapper? = null
-            listMoviesMapper?.fromApi(movies, configuration)
+            var listMoviesMapper = ListMoviesMapper()
+            listMoviesMapper.fromApi(movies, configuration)
         }
         compositeDisposable.add(res.subscribe({
             resultsList.value = it
