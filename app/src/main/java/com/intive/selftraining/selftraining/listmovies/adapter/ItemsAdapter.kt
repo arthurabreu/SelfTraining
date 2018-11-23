@@ -35,6 +35,10 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun sendToMoviesDetails() {
+
+    }
+
     abstract class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     class ItemViewHolder(

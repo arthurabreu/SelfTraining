@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="text"
-            type="String" />
+                name="text"
+                type="String"/>
 
         <variable
-            name="image"
-            type="String" />
+                name="image"
+                type="String"/>
+
+        <variable
+                name="adapter"
+                type="com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true">
+            android:onClick="@{() -> adapter.sendToMoviesDetails()}">
 
         <TextView
                 android:layout_width="0dp"
