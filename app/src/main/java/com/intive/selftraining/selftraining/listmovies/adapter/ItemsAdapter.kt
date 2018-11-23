@@ -31,7 +31,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
     }
 
     fun update(items: ListMoviesMapper) {
-        this.resultsList = items.apiResults
+        this.resultsList = items.results
         notifyDataSetChanged()
     }
 

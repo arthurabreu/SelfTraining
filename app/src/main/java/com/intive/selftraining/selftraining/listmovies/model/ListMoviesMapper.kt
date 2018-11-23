@@ -2,13 +2,24 @@ package com.intive.selftraining.selftraining.listmovies.model
 
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
+import com.intive.selftraining.selftraining.network.models.ApiResult
 
 class ListMoviesMapper {
 
-    var page: Int = 0
-    var apiResults: List<Results> = emptyList()
-    var totalPages: Int = 0
-    var totalResults: Int = 0
+    private var page: Int = 0
+    private var totalPages: Int = 0
+    private var totalResults: Int = 0
+    var results: MutableList<Results> = mutableListOf()
+
+    //Image data class model
+    private var changeKeys: List<String> = emptyList()
+    private var backdropSizes: List<String> = emptyList()
+    private var baseImageUrl: String = ""
+    private var logoSizes: List<String> = emptyList()
+    private var posterSizes: List<String> = emptyList()
+    private var profileSizes: List<String> = emptyList()
+    private var secureImageBaseUrl: String = ""
+    private var stillSizes: List<String> = emptyList()
 
     //Api Result data class model
     class Results  {
@@ -27,19 +38,26 @@ class ListMoviesMapper {
         var voteAverage: Double = 0.0
         var voteCount: Int = 0
 
+        fun fromApi(apiResults: ApiResult){
+            id = apiResults.id
+            title = apiResults.title
+            releaseDate = apiResults.release_date
+            posterPath = apiResults.poster_path
+            adult = apiResults.adult
+            backdropPath = apiResults.backdrop_path
+            genreIds = apiResults.genre_ids
+            originalLanguage = apiResults.original_language
+            originalTitle = apiResults.original_title
+            overview = apiResults.overview
+            popularity = apiResults.popularity
+            video = apiResults.video
+            voteAverage = apiResults.vote_average
+            voteCount = apiResults.vote_count
+        }
+
         //Special field for image url
         var completeImageUrl: String = ""
     }
-
-    //Image data class model
-    var changeKeys: List<String> = emptyList()
-    var backdropSizes: List<String> = emptyList()
-    var baseImageUrl: String = ""
-    var logoSizes: List<String> = emptyList()
-    var posterSizes: List<String> = emptyList()
-    var profileSizes: List<String> = emptyList()
-    var secureImageBaseUrl: String = ""
-    var stillSizes: List<String> = emptyList()
 
     fun fromApi(apiMoviesResponse: ApiMoviesResponse, apiConfiguration: ApiConfiguration)= ListMoviesMapper().apply {
 
@@ -47,23 +65,18 @@ class ListMoviesMapper {
         totalPages = apiMoviesResponse.total_pages
         totalResults = apiMoviesResponse.total_results
 
+        var result = Results()
+        var tempResults: MutableList<Results> = mutableListOf()
+
         var i = 0
-        while (i != apiMoviesResponse.apiResults.size) {
-            apiResults[i].id = apiMoviesResponse.apiResults[i].id
-            apiResults[i].title = apiMoviesResponse.apiResults[i].title
-            apiResults[i].releaseDate = apiMoviesResponse.apiResults[i].release_date
-            apiResults[i].posterPath = apiMoviesResponse.apiResults[i].poster_path
-            apiResults[i].adult = apiMoviesResponse.apiResults[i].adult
-            apiResults[i].backdropPath = apiMoviesResponse.apiResults[i].backdrop_path
-            apiResults[i].genreIds = apiMoviesResponse.apiResults[i].genre_ids
-            apiResults[i].originalLanguage = apiMoviesResponse.apiResults[i].original_language
-            apiResults[i].originalTitle = apiMoviesResponse.apiResults[i].original_title
-            apiResults[i].popularity = apiMoviesResponse.apiResults[i].popularity
-            apiResults[i].video = apiMoviesResponse.apiResults[i].video
-            apiResults[i].voteAverage = apiMoviesResponse.apiResults[i].vote_average
-            apiResults[i].voteCount = apiMoviesResponse.apiResults[i].vote_count
-            apiResults[i].completeImageUrl = baseImageUrl + logoSizes + apiMoviesResponse.apiResults[i].poster_path
+        while (i != apiMoviesResponse.results.size) {
+
+            result.fromApi(apiMoviesResponse.results[i])
+            result.completeImageUrl = baseImageUrl + logoSizes + apiMoviesResponse.results[i].poster_path
+            tempResults.add(result)
         }
+
+        results.addAll(tempResults)
 
         changeKeys = apiConfiguration.change_keys
         backdropSizes = apiConfiguration.images.backdrop_sizes
