@@ -16,4 +16,4 @@ data class ApiResult(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-) : Serializable
+)  : ResultInterface

@@ -2,16 +2,17 @@ package com.intive.selftraining.selftraining.listmovies.model
 
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
+import com.intive.selftraining.selftraining.network.models.ResultInterface
 
 class ListMoviesMapper {
 
     var page: Int = 0
-    var apiResults: List<Results> = emptyList()
+    var apiResults: List<ResultInterface> = emptyList()
     var totalPages: Int = 0
     var totalResults: Int = 0
 
     //Api Result data class model
-    class Results{
+    class Results : ResultInterface {
         var id: Int = 0
         var title: String = ""
         var releaseDate: String = ""
@@ -48,7 +49,7 @@ class ListMoviesMapper {
         totalPages = apiMoviesResponse.total_pages
         totalResults = apiMoviesResponse.total_results
 
-
+        apiResults = apiMoviesResponse.apiResults
         //id = results.id
 
 
