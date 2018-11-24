@@ -8,7 +8,6 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.Observables
 
 class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
 
@@ -27,12 +26,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
     }
 
     private fun getMoviesResponse() {
-        val res = Observables.zip(repo.showMovies(), repo.getConfiguration()) {
-            movies, configuration ->
-            var listMoviesMapper = ListMoviesMapper()
-            listMoviesMapper.fromApi(movies, configuration)
-        }
-        compositeDisposable.add(res.subscribe({
+        compositeDisposable.add(repo.getZipResult().subscribe({
             resultsList.value = it
             Log.d("LIST MOVIES MAPPER", it.toString())
         }, { error -> Log.e("LIST MOVIES ERROR", error.message) }))

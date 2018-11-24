@@ -11,14 +11,12 @@ import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import com.intive.selftraining.selftraining.listmovies.model.Results
 import com.intive.selftraining.selftraining.movieDetails.ItemListener
-import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import android.os.Bundle
 import com.intive.selftraining.selftraining.utils.AppConstants.Companion.ID
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private var resultsList: List<Results> = emptyList()
-    private lateinit var apiConfiguration: ApiConfiguration
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ItemViewHolder(parent)
@@ -30,8 +28,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
-            resultsList.let { }
-            holder.bind(resultsList[position])
+                holder.bind(resultsList[position])
         }
     }
 
