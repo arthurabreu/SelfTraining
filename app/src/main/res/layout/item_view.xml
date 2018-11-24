@@ -15,7 +15,7 @@
 
         <variable
                 name="adapter"
-                type="com.intive.selftraining.selftraining.movie_details.ItemListener"/>
+                type="com.intive.selftraining.selftraining.movieDetails.ItemListener"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

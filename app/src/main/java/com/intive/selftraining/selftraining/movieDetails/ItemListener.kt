@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.movie_details
+package com.intive.selftraining.selftraining.movieDetails
 
 import android.view.View
 
