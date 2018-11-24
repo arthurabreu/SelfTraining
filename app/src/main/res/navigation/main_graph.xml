@@ -4,5 +4,10 @@
             android:id="@+id/main_graph" app:startDestination="@id/fragment_list_movies">
     <fragment android:id="@+id/fragment_list_movies" android:name="com.intive.selftraining.selftraining.listmovies.ListMoviesFragment"
               android:label="fragment_list_movies.xml">
+        <action android:id="@+id/action_fragment_list_movies_to_movieDetailsFragment"
+                app:destination="@id/movieDetailsFragment"/>
     </fragment>
+    <fragment android:id="@+id/movieDetailsFragment"
+              android:name="com.intive.selftraining.selftraining.movie_details.MovieDetailsFragment"
+              android:label="MovieDetailsFragment"/>
 </navigation>

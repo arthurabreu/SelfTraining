@@ -5,9 +5,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
+import com.intive.selftraining.selftraining.movie_details.ItemListener
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
@@ -35,10 +37,6 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun sendToMoviesDetails() {
-
-    }
-
     abstract class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     class ItemViewHolder(
@@ -49,11 +47,15 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
             parent,
             false
         )
-    ) : ViewHolder(binding.root) {
+    ) : ViewHolder(binding.root), ItemListener {
+        override fun onClick(v: View) {
+            Navigation.findNavController(v).navigate(R.id.movieDetailsFragment)
+        }
 
         fun bind(
             mapper: ListMoviesMapper.Results
         ) {
+            binding.adapter = this
             binding.text = mapper.title
             binding.image = mapper.completeImageUrl
         }
