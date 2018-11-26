@@ -25,7 +25,6 @@ class ListMoviesViewModelTest {
         resultsList.value `should equal` getMovieResponse()
     }
 
-
     private fun getMovieResponse(): List<Movies> {
 
         val numbers: MutableList<Int> = mutableListOf(1, 2, 3)
