@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="movie"
+                type="com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel" />
+
+    </data>
+
     <android.support.design.widget.CoordinatorLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <android.support.design.widget.AppBarLayout
-                android:id="@+id/main.appbar"
+                android:id="@+id/main_appbar"
                 android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/app_bar_height"
@@ -67,7 +76,7 @@
                         style="@style/right_column_normal"
                         app:layout_column="1"
                         app:layout_row="0"
-                        tools:text="@string/example_title"/>
+                        tools:text="@{movie.movie.title}"/>
                 <TextView
                         style="@style/left_column_bold"
                         app:layout_column="0"
@@ -77,7 +86,7 @@
                         style="@style/right_column_normal"
                         app:layout_column="1"
                         app:layout_row="1"
-                        tools:text="@string/example_release"
+                        tools:text="@{movie.movie.release_date}"
                         android:id="@+id/grid_released"/>
 
                 <TextView
@@ -88,6 +97,7 @@
 
                 <TextView
                         android:id="@+id/grid_votes"
+                        tools:text="@{String.valueOf(movie.movie.vote_average)}"
                         style="@style/right_column_normal"
                         app:layout_column="1"
                         app:layout_row="2"/>
@@ -100,7 +110,7 @@
                         style="@style/right_column_normal"
                         app:layout_column="1"
                         app:layout_row="4"
-                        tools:text="@string/example_genre"
+                        tools:text="@{movie.movie.genres.toString()}"
                         android:id="@+id/grid_genre"/>
                 <TextView
                         app:layout_column="0"
@@ -110,7 +120,7 @@
                 <TextView
                         app:layout_column="1"
                         app:layout_row="7"
-                        tools:text="@string/example_full_plot"
+                        tools:text="@{String.valueOf(movie.movie.overview)}"
                         style="@style/right_column_normal"
                         android:id="@+id/grid_plot"/>
             </android.support.v7.widget.GridLayout>
@@ -125,6 +135,7 @@
                 android:clickable="true"
                 android:src="@drawable/movie"
                 app:backgroundTint="@color/colorPrimaryDark"
-                app:layout_anchor="@id/main.appbar"
+                app:layout_anchor="@id/main_appbar"
                 app:layout_anchorGravity="bottom|right|end"/>
     </android.support.design.widget.CoordinatorLayout>
+</layout>

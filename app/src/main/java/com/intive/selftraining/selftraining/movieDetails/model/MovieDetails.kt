@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.movieDetails.model
 
-data class Movie(
+data class MovieDetails(
     val adult: Boolean,
     val backdrop_path: String,
     val belongs_to_collection: BelongsToCollection,
