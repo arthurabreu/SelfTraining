@@ -7,5 +7,5 @@ import com.intive.selftraining.selftraining.network.models.ImagesEntity
  */
 data class Configuration(
     val changeKeys: List<String>,
-    val images: ImagesEntity
+    val images: ImagesEntity // TODO shouldn't imagesEntities here be of type Images instead?
 )

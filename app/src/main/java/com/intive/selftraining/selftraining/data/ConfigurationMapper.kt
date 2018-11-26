@@ -11,7 +11,7 @@ class ConfigurationMapper : Mapper<ConfigurationEntity, Configuration> {
     override fun mapFromEntity(type: ConfigurationEntity): Configuration {
         return Configuration(
             type.change_keys,
-            type.images
+            type.images // TODO shouldn't imagesEntities here be of type Images instead?
         )
     }
 

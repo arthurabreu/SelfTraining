@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import com.intive.selftraining.selftraining.network.models.Images
-import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
+import com.intive.selftraining.selftraining.network.models.MoviesResponseEntity
 import org.junit.Test
 import org.junit.Rule
 import com.intive.selftraining.selftraining.network.models.ResultEntity
@@ -43,7 +43,7 @@ class ListMoviesViewModelTest {
         return ZipListMovies(getMovieResponse(), conf)
     }
 
-    private fun getMovieResponse(): ApiMoviesResponse {
+    private fun getMovieResponse(): MoviesResponseEntity {
 
         val result = ResultEntity(
             false, "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg", listOf(878), 335983, "en", "Venom",
@@ -57,6 +57,6 @@ class ListMoviesViewModelTest {
             2192
         )
 
-        return ApiMoviesResponse(1, listOf(result), 19401, 388003)
+        return MoviesResponseEntity(1, listOf(result), 19401, 388003)
     }
 }

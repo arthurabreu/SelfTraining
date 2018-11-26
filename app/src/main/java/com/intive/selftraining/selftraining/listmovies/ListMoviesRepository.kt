@@ -3,7 +3,7 @@ package com.intive.selftraining.selftraining.listmovies
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
-import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
+import com.intive.selftraining.selftraining.network.models.MoviesResponseEntity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.Observables
@@ -18,7 +18,7 @@ class ListMoviesRepository(private val networkClient: NetworkInterface) {
         }
     }
 
-    private fun showMovies(): Observable<ApiMoviesResponse> {
+    private fun showMovies(): Observable<MoviesResponseEntity> {
         return networkClient.getListMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
