@@ -12,6 +12,7 @@ import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import com.intive.selftraining.selftraining.listmovies.model.Results
 import com.intive.selftraining.selftraining.movieDetails.ItemListener
 import android.os.Bundle
+import com.intive.selftraining.selftraining.R.id.movieDetailsFragment
 import com.intive.selftraining.selftraining.utils.AppConstants.Companion.ID
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
@@ -52,7 +53,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         override fun onClick(view: View) {
             val args = Bundle()
             results?.id?.let { args.putInt(ID, it) }
-            Navigation.findNavController(view).navigate(R.id.movieDetailsFragment, args)
+            Navigation.findNavController(view).navigate(movieDetailsFragment, args)
         }
 
         fun bind(
