@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
+        setContentView(R.layout.activity_main)
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navController?.navigate(R.id.fragment_list_movies)
     }

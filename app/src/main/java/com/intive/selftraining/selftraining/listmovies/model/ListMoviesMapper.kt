@@ -11,7 +11,6 @@ class ListMoviesMapper {
     var totalResults: Int = 0
     var results: ArrayList<Results> = arrayListOf()
 
-    // Image data class model
     var changeKeys: List<String> = emptyList()
     var backdropSizes: List<String> = emptyList()
     var baseImageUrl: String = ""
@@ -21,7 +20,6 @@ class ListMoviesMapper {
     var secureImageBaseUrl: String = ""
     var stillSizes: List<String> = emptyList()
 
-    // Api Result data class model
     class Results {
         var id: Int = 0
         var title: String = ""
@@ -55,7 +53,6 @@ class ListMoviesMapper {
             voteCount = apiResults.vote_count
         }
 
-        // Special field for image url
         var completeImageUrl: String = ""
     }
 
