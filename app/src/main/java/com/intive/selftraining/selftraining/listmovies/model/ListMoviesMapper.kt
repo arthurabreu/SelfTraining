@@ -2,7 +2,7 @@ package com.intive.selftraining.selftraining.listmovies.model
 
 import com.intive.selftraining.selftraining.network.models.ApiConfiguration
 import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
-import com.intive.selftraining.selftraining.network.models.ApiResult
+import com.intive.selftraining.selftraining.network.models.ResultEntity
 
 class ListMoviesMapper {
 
@@ -36,21 +36,21 @@ class ListMoviesMapper {
         var voteAverage: Double = 0.0
         var voteCount: Int = 0
 
-        fun fromApi(apiResults: ApiResult) {
-            id = apiResults.id
-            title = apiResults.title
-            releaseDate = apiResults.release_date
-            posterPath = apiResults.poster_path
-            adult = apiResults.adult
-            backdropPath = apiResults.backdrop_path
-            genreIds = apiResults.genre_ids
-            originalLanguage = apiResults.original_language
-            originalTitle = apiResults.original_title
-            overview = apiResults.overview
-            popularity = apiResults.popularity
-            video = apiResults.video
-            voteAverage = apiResults.vote_average
-            voteCount = apiResults.vote_count
+        fun fromApi(resultsEntity: ResultEntity) {
+            id = resultsEntity.id
+            title = resultsEntity.title
+            releaseDate = resultsEntity.release_date
+            posterPath = resultsEntity.poster_path
+            adult = resultsEntity.adult
+            backdropPath = resultsEntity.backdrop_path
+            genreIds = resultsEntity.genre_ids
+            originalLanguage = resultsEntity.original_language
+            originalTitle = resultsEntity.original_title
+            overview = resultsEntity.overview
+            popularity = resultsEntity.popularity
+            video = resultsEntity.video
+            voteAverage = resultsEntity.vote_average
+            voteCount = resultsEntity.vote_count
         }
 
         var completeImageUrl: String = ""
@@ -73,10 +73,10 @@ class ListMoviesMapper {
 
         val tempResults: MutableList<Results> = mutableListOf()
 
-        for (i in 0 until apiMoviesResponse.results.size) {
+        for (i in 0 until apiMoviesResponse.resultEntities.size) {
             val result = Results()
-            result.fromApi(apiMoviesResponse.results[i])
-            result.completeImageUrl = baseImageUrl + logoSizes[6] + apiMoviesResponse.results[i].poster_path
+            result.fromApi(apiMoviesResponse.resultEntities[i])
+            result.completeImageUrl = baseImageUrl + logoSizes[6] + apiMoviesResponse.resultEntities[i].poster_path
             tempResults.add(result)
         }
 

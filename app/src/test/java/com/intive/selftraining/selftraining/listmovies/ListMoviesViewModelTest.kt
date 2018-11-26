@@ -7,7 +7,7 @@ import com.intive.selftraining.selftraining.network.models.Images
 import com.intive.selftraining.selftraining.network.models.ApiMoviesResponse
 import org.junit.Test
 import org.junit.Rule
-import com.intive.selftraining.selftraining.network.models.ApiResult
+import com.intive.selftraining.selftraining.network.models.ResultEntity
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.amshove.kluent.`should equal`
@@ -45,7 +45,7 @@ class ListMoviesViewModelTest {
 
     private fun getMovieResponse(): ApiMoviesResponse {
 
-        val result = ApiResult(
+        val result = ResultEntity(
             false, "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg", listOf(878), 335983, "en", "Venom",
             "When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego \"Venom\" to save his life.",
             228.224,
