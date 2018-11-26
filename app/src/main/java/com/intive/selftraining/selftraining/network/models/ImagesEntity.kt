@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.network.models
 
-data class ImagesEntity (
+data class ImagesEntity(
     val backdrop_sizes: List<String>,
     val base_url: String,
     val logo_sizes: List<String>,

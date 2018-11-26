@@ -3,7 +3,7 @@ package com.intive.selftraining.selftraining.data
 import com.intive.selftraining.selftraining.listmovies.model.Images
 import com.intive.selftraining.selftraining.network.models.ImagesEntity
 
-class ImagesMapper: Mapper<ImagesEntity, Images> {
+class ImagesMapper : Mapper<ImagesEntity, Images> {
 
     /**
      * Map a [ImagesEntity] instance to a [Images] instance

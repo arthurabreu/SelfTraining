@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.listmovies.model
 
-data class Images (
+data class Images(
     val backdropSizes: List<String>,
     val baseUrl: String,
     val logoSizes: List<String>,
