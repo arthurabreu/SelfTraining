@@ -10,7 +10,7 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
 import com.intive.selftraining.selftraining.listmovies.model.Results
-import com.intive.selftraining.selftraining.movieDetails.ItemListener
+import com.intive.selftraining.selftraining.listmovies.ItemListener
 import android.os.Bundle
 import com.intive.selftraining.selftraining.R.id.movieDetailsFragment
 import com.intive.selftraining.selftraining.utils.AppConstants.Companion.ID
