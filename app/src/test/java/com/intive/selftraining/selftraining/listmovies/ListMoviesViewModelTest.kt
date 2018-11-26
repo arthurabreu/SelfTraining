@@ -7,10 +7,8 @@ import com.intive.selftraining.selftraining.network.models.Images
 import com.intive.selftraining.selftraining.network.models.MoviesResponseEntity
 import org.junit.Test
 import org.junit.Rule
-import com.intive.selftraining.selftraining.network.models.ResultEntity
-import com.nhaarman.mockitokotlin2.doReturn
+import com.intive.selftraining.selftraining.network.models.MoviesEntity
 import com.nhaarman.mockitokotlin2.mock
-import org.amshove.kluent.`should equal`
 import org.junit.rules.TestRule
 
 class ListMoviesViewModelTest {
@@ -45,7 +43,7 @@ class ListMoviesViewModelTest {
 
     private fun getMovieResponse(): MoviesResponseEntity {
 
-        val result = ResultEntity(
+        val result = MoviesEntity(
             false, "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg", listOf(878), 335983, "en", "Venom",
             "When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego \"Venom\" to save his life.",
             228.224,
