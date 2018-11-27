@@ -9,11 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
-import com.intive.selftraining.selftraining.databinding.ActivityDetailsBinding
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
-import kotlinx.android.synthetic.main.activity_details.title
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsFragment : Fragment() {
