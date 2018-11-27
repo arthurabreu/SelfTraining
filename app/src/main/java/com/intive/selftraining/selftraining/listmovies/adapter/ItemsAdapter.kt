@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
-import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
+import com.intive.selftraining.selftraining.listmovies.model.Movies
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var resultsList: List<ListMoviesMapper.Results> = emptyList()
+    private var resultsList: List<Movies> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ItemViewHolder(parent)
@@ -28,8 +28,8 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         }
     }
 
-    fun update(items: ListMoviesMapper) {
-        this.resultsList = items.results
+    fun update(items: List<Movies>) {
+        this.resultsList = items
         notifyDataSetChanged()
     }
 
@@ -45,11 +45,9 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         )
     ) : ViewHolder(binding.root) {
 
-        fun bind(
-            mapper: ListMoviesMapper.Results
-        ) {
-            binding.text = mapper.title
-            binding.image = mapper.completeImageUrl
+        fun bind(item: Movies) {
+            binding.text = item.title
+            binding.image = item.completeImageUrl
         }
     }
 }
