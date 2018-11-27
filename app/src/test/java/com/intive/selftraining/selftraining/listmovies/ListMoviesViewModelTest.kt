@@ -12,8 +12,10 @@ import kotlin.test.assertEquals
 
 class ListMoviesViewModelTest {
 
+    var response = getMovieResponse()
+
     var resultsList: MutableLiveData<List<Movies>> = mock {
-        on { value } doReturn getMovieResponse()
+        on { value } doReturn response
     }
 
     @Rule
@@ -21,8 +23,8 @@ class ListMoviesViewModelTest {
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun `when should assert Movies title`() {
-        assertEquals("Fantastic Beasts: The Crimes of Grindelwald", resultsList.value?.get(0)?.title)
+    fun `when should assert Movies`() {
+        assertEquals(resultsList.value, response)
     }
 
     private fun getMovieResponse(): List<Movies> {
