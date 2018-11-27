@@ -1,13 +1,18 @@
 package com.intive.selftraining.selftraining.listmovies.adapter
 
 import android.databinding.DataBindingUtil
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.intive.selftraining.selftraining.R
+import com.intive.selftraining.selftraining.R.id.movieDetailsFragment
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
+import com.intive.selftraining.selftraining.listmovies.ItemListener
 import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.utils.ID
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
@@ -23,7 +28,6 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is ItemViewHolder && resultsList.size > position) {
-            resultsList.let { }
                 holder.bind(resultsList[position])
         }
     }
@@ -43,9 +47,17 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
             parent,
             false
         )
-    ) : ViewHolder(binding.root) {
+    ) : ViewHolder(binding.root), ItemListener {
+        var movies: Movies? = null
+        override fun onClick(view: View) {
+            val args = Bundle()
+            movies?.id?.let { args.putInt(ID, it) }
+            Navigation.findNavController(view).navigate(movieDetailsFragment, args)
+        }
 
         fun bind(item: Movies) {
+            this.movies = item
+            binding.adapter = this
             binding.text = item.title
             binding.image = item.completeImageUrl
         }
