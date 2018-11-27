@@ -5,10 +5,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.listmovies.model.Movies
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
+import kotlin.test.assertEquals
 
 class ListMoviesViewModelTest {
 
@@ -21,14 +21,14 @@ class ListMoviesViewModelTest {
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun `when should assert Movies`() {
-        resultsList.value `should equal` getMovieResponse()
+    fun `when should assert Movies title`() {
+        assertEquals("Fantastic Beasts: The Crimes of Grindelwald", resultsList.value?.get(0)?.title)
     }
 
     private fun getMovieResponse(): List<Movies> {
 
         val numbers: MutableList<Int> = mutableListOf(1, 2, 3)
-        val readOnlyList: List<Int> = numbers
+        val numbersList: List<Int> = numbers
         val mutList = mutableListOf<Movies>()
 
         var movies = Movies()
@@ -38,7 +38,7 @@ class ListMoviesViewModelTest {
         movies.posterPath = "/uyJgTzAsp3Za2TaPiZt2yaKYRIR.jpg"
         movies.adult = false
         movies.backdropPath = "/xgbeBCjmFpRYHDF7tQ7U98EREWp.jpg"
-        movies.genreIds = readOnlyList
+        movies.genreIds = numbersList
         movies.originalLanguage = "en"
         movies.originalTitle = "Fantastic Beasts: The Crimes of Grindelwald"
         movies.overview = "Gellert Grindelwald has escaped imprisonment and has begun gathering followers..."
