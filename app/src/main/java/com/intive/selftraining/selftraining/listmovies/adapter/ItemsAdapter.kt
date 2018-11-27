@@ -1,23 +1,22 @@
 package com.intive.selftraining.selftraining.listmovies.adapter
 
 import android.databinding.DataBindingUtil
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.intive.selftraining.selftraining.R
-import com.intive.selftraining.selftraining.databinding.ItemViewBinding
-import com.intive.selftraining.selftraining.listmovies.model.ListMoviesMapper
-import com.intive.selftraining.selftraining.listmovies.model.Results
-import com.intive.selftraining.selftraining.listmovies.ItemListener
-import android.os.Bundle
 import com.intive.selftraining.selftraining.R.id.movieDetailsFragment
-import com.intive.selftraining.selftraining.utils.AppConstants.Companion.ID
+import com.intive.selftraining.selftraining.databinding.ItemViewBinding
+import com.intive.selftraining.selftraining.listmovies.ItemListener
+import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.utils.ID
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var resultsList: List<Results> = emptyList()
+    private var resultsList: List<Movies> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ItemViewHolder(parent)
@@ -33,8 +32,8 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         }
     }
 
-    fun update(items: ListMoviesMapper) {
-        this.resultsList = items.results
+    fun update(items: List<Movies>) {
+        this.resultsList = items
         notifyDataSetChanged()
     }
 
@@ -49,20 +48,18 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
             false
         )
     ) : ViewHolder(binding.root), ItemListener {
-        var results: Results? = null
+        var movies: Movies? = null
         override fun onClick(view: View) {
             val args = Bundle()
-            results?.id?.let { args.putInt(ID, it) }
+            movies?.id?.let { args.putInt(ID, it) }
             Navigation.findNavController(view).navigate(movieDetailsFragment, args)
         }
 
-        fun bind(
-            results: Results
-        ) {
-            this.results = results
+        fun bind(item: Movies) {
+            this.movies = item
             binding.adapter = this
-            binding.text = results.title
-            binding.image = results.completeImageUrl
+            binding.text = item.title
+            binding.image = item.completeImageUrl
         }
     }
 }

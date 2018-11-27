@@ -1,11 +1,6 @@
 package com.intive.selftraining.selftraining.network.models
 
-data class ApiConfiguration(
-    val change_keys: List<String>,
-    val images: Images
-)
-
-data class Images(
+data class ImagesEntity(
     val backdrop_sizes: List<String>,
     val base_url: String,
     val logo_sizes: List<String>,

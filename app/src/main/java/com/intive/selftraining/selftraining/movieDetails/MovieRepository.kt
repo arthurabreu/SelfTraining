@@ -8,10 +8,9 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieRepository(private val networkClient: NetworkInterface) {
 
-    fun getMovieResult(): Observable<MovieDetails> {
-        return networkClient.getMovieById(338952)
+    fun getMovieResult(id: Int): Observable<MovieDetails> {
+        return networkClient.getMovieDetails(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
-
 }

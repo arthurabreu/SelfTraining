@@ -3,16 +3,14 @@ package com.intive.selftraining.selftraining.movieDetails
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
-import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
+import com.intive.selftraining.selftraining.utils.ID
 
 class MovieDetailsFragment : Fragment() {
 
@@ -27,6 +25,11 @@ class MovieDetailsFragment : Fragment() {
         val activityDetails: MoviesDetailsFragmentBinding? =
             DataBindingUtil.inflate(inflater, R.layout.movies_details_fragment, container, false)
 
+        arguments?.let {
+            val id = it.getInt(ID)
+            movieDetailsViewModel.getMovie(id)
+        }
+
         val view = activityDetails?.root
         activityDetails?.run {
             this.movie = movieDetailsViewModel
@@ -35,6 +38,4 @@ class MovieDetailsFragment : Fragment() {
 
         return view
     }
-
-
 }
