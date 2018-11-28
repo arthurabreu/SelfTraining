@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.listmovies
+package com.intive.selftraining.selftraining.test
 
 import android.arch.lifecycle.MutableLiveData
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
