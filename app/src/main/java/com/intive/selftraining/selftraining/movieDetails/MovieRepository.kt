@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieRepository(private val networkClient: NetworkInterface) {
 
-    fun getMovieResult(id: Int): Observable<MovieDetails> {
+    fun getMovieDetails(id: Int): Observable<MovieDetails> {
         return Observables.zip(showMovieDetails(id), getConfiguration()) {
                 movie, configuration ->
             MovieDetailsMapper().mapFromEntity(movie, configuration.images)
