@@ -3,8 +3,8 @@ package com.intive.selftraining.selftraining.test
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.data.MoviesMapper
 import com.intive.selftraining.selftraining.listmovies.model.Movies
-import com.intive.selftraining.selftraining.network.models.ImagesEntity
-import com.intive.selftraining.selftraining.network.models.MoviesResponseEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import com.nhaarman.mockitokotlin2.mock
 import org.amshove.kluent.`should equal`
 import org.junit.Rule
