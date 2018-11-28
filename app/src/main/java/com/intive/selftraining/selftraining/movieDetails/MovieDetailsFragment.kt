@@ -27,7 +27,7 @@ class MovieDetailsFragment : Fragment() {
 
         arguments?.let {
             val id = it.getInt(ID)
-            movieDetailsViewModel.getMovie(id)
+            movieDetailsViewModel.getMovieDetails(id)
         }
 
         val view = activityDetails?.root

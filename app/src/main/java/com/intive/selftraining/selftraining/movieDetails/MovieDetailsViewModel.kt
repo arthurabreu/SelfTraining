@@ -18,7 +18,7 @@ class MovieDetailsViewModel(private val repo: MovieRepository) : ViewModel(), Li
         super.onCleared()
     }
 
-    fun getMovie(id: Int) {
+    fun getMovieDetails(id: Int) {
         compositeDisposable.add(repo.getMovieDetails(id).subscribe({
             movie.value = it
             Log.d("MOVIE DETAILS", it.toString())
