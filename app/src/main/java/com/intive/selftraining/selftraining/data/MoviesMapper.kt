@@ -1,8 +1,8 @@
 package com.intive.selftraining.selftraining.data
 
 import com.intive.selftraining.selftraining.listmovies.model.Movies
-import com.intive.selftraining.selftraining.network.models.ImagesEntity
-import com.intive.selftraining.selftraining.network.models.MoviesResponseEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 
 class MoviesMapper {
 

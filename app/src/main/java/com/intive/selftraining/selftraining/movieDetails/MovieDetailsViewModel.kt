@@ -18,8 +18,8 @@ class MovieDetailsViewModel(private val repo: MovieRepository) : ViewModel(), Li
         super.onCleared()
     }
 
-    fun getMovie(id: Int) {
-        compositeDisposable.add(repo.getMovieResult(id).subscribe({
+    fun getMovieDetails(id: Int) {
+        compositeDisposable.add(repo.getMovieDetails(id).subscribe({
             movie.value = it
             Log.d("MOVIE DETAILS", it.toString())
         }, { error -> Log.e("MOVIE DETAILS ERROR", error.message) }))

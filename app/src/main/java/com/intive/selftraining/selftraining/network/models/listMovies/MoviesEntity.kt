@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.network.models
+package com.intive.selftraining.selftraining.network.models.listMovies
 
 data class MoviesEntity(
     val adult: Boolean,

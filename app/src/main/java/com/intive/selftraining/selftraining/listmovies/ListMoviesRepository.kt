@@ -3,8 +3,8 @@ package com.intive.selftraining.selftraining.listmovies
 import com.intive.selftraining.selftraining.data.MoviesMapper
 import com.intive.selftraining.selftraining.listmovies.model.Movies
 import com.intive.selftraining.selftraining.network.NetworkInterface
-import com.intive.selftraining.selftraining.network.models.ConfigurationEntity
-import com.intive.selftraining.selftraining.network.models.MoviesResponseEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.Observables
