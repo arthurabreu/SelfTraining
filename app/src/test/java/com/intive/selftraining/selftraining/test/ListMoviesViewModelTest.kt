@@ -5,10 +5,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.listmovies.model.Movies
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import kotlin.test.assertEquals
 
 class ListMoviesViewModelTest {
 
@@ -24,7 +24,7 @@ class ListMoviesViewModelTest {
 
     @Test
     fun `when should assert Movies`() {
-        assertEquals(resultsList.value, response)
+        resultsList.value `should equal` response
     }
 
     private fun getMovieResponse(): List<Movies> {
