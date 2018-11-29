@@ -20,14 +20,23 @@
                 android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/app_bar_height"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:minHeight="?attr/actionBarSize">
 
             <android.support.design.widget.CollapsingToolbarLayout
                     android:id="@+id/main_collapsing"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:contentScrim="@color/colorPrimary"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    android:minHeight="?attr/actionBarSize">
+
+                <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:minHeight="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"/>
 
                 <ImageView
                         android:id="@+id/main_backdrop"
