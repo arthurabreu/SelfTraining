@@ -22,7 +22,7 @@ class MovieDetailsMapperTest {
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun mapFromEntity() {
+    fun `map from entity`() {
         `when`(mapper.mapFromEntity(movieDetailsEntity, imagesEntity)).thenReturn(movieDetail)
     }
 
