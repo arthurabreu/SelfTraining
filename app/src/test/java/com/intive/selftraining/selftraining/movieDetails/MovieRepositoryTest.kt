@@ -17,11 +17,11 @@ import org.mockito.Mockito.`when`
 
 class MovieRepositoryTest {
 
-    private val movieDetailsData = mock<MovieDetailsEntitiy> {
+    private val movieDetails = mock<MovieDetailsEntitiy> {
         on { it.poster_path } doReturn getMovieDetailsEntity().poster_path
     }
 
-    private val configurationEntityData = mock<ConfigurationEntity> {
+    private val configuration = mock<ConfigurationEntity> {
         on { it.images } doReturn getConfigurationEntity().images
     }
 
@@ -36,28 +36,28 @@ class MovieRepositoryTest {
     @Test
     fun `should return MovieDetailsEntity when ask for getMovieDetails(id)`() {
 
-        val movieDetailsObservable = Observable.just(movieDetailsData)
+        val movieDetailsObservable = Observable.just(movieDetails)
 
         `when`(networkClient.getMovieDetails(335983)).thenReturn(movieDetailsObservable)
 
-        networkClient.getMovieDetails(335983).test().assertValue(movieDetailsData)
+        networkClient.getMovieDetails(335983).test().assertValue(movieDetails)
     }
 
     @Test
     fun `should return ConfigurationEntity when ask for getConfiguration()`() {
 
-        val configurationObservable = Observable.just(configurationEntityData)
+        val configurationObservable = Observable.just(configuration)
 
         `when`(networkClient.getConfiguration()).thenReturn(configurationObservable)
 
-        networkClient.getConfiguration().test().assertValue(configurationEntityData)
+        networkClient.getConfiguration().test().assertValue(configuration)
     }
 
     @Test
     fun `should return image url after zip getConfiguration() and getMovieDetails(id)`() {
 
         val urlCommon =
-            configurationEntityData.images.base_url + configurationEntityData.images.logo_sizes[0] + movieDetailsData.poster_path
+            configuration.images.base_url + configuration.images.logo_sizes[0] + movieDetails.poster_path
 
         urlCommon `should equal` url
     }
