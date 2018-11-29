@@ -5,7 +5,6 @@ import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEnti
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 
 class MoviesMapper {
-
     fun mapFromEntity(moviesResponseEntity: MoviesResponseEntity, imagesEntity: ImagesEntity) =
         mutableListOf<Movies>().apply {
             moviesResponseEntity.results.forEach {
