@@ -54,12 +54,12 @@ class MovieRepositoryTest {
     }
 
     @Test
-    fun `should return image url when `() {
+    fun `should return image url after zip getConfiguration() and getMovieDetails(id)`() {
 
-        val urlRes =
+        val urlCommon =
             configurationEntityData.images.base_url + configurationEntityData.images.logo_sizes[0] + movieDetailsData.poster_path
 
-        urlRes `should equal` url
+        urlCommon `should equal` url
     }
 
     private fun getMovieDetailsEntity(): MovieDetailsEntitiy {
