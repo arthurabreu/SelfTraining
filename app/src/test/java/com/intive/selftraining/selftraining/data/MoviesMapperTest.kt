@@ -14,7 +14,7 @@ import org.mockito.Mockito.`when`
 class MoviesMapperTest {
 
     val mapper = mock<MoviesMapper>()
-    val movies: List<Movies> = getMoviesList()
+    val movies: MutableList<Movies> = getMoviesList()
 
     var moviesResponseEntity = mock<MoviesResponseEntity>()
     var imagesEntity = mock<ImagesEntity>()
@@ -29,7 +29,7 @@ class MoviesMapperTest {
         mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` movies
     }
 
-    private fun getMoviesList(): List<Movies> {
+    private fun getMoviesList(): MutableList<Movies> {
         val movies = Movies()
         movies.id = 335983
         movies.title = "Venom"
@@ -48,6 +48,6 @@ class MoviesMapperTest {
         movies.voteCount = 2192
         movies.completeImageUrl = "http://imagesEntity.tmdb.org/t/p/w500/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
 
-        return listOf(movies)
+        return mutableListOf(movies)
     }
 }
