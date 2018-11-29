@@ -1,7 +1,6 @@
-package com.intive.selftraining.selftraining.test
+package com.intive.selftraining.selftraining.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.data.MoviesMapper
 import com.intive.selftraining.selftraining.listmovies.model.Movies
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
@@ -25,7 +24,7 @@ class MoviesMapperTest {
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun mapFromEntity() {
+    fun `map from entity`() {
         `when`(mapper.mapFromEntity(moviesResponseEntity, imagesEntity)).thenReturn(movies)
         mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` movies
     }
