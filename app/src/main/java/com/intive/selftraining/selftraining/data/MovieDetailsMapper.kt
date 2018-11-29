@@ -5,19 +5,16 @@ import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEnti
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
 
 class MovieDetailsMapper {
-    fun mapFromEntity(movieDetailsEntitiy: MovieDetailsEntitiy, imagesEntity: ImagesEntity): MovieDetails {
-        val movieDetails = MovieDetails()
-        movieDetails.backdrop_path = movieDetailsEntitiy.backdrop_path
-        movieDetails.apply { movieDetailsEntitiy.genres.forEach { this.genre = this.genre + " " + it.name } }
-        movieDetails.id = movieDetailsEntitiy.id
-        movieDetails.overview = movieDetailsEntitiy.overview
-        movieDetails.poster_path = movieDetailsEntitiy.poster_path
-        movieDetails.release_date = movieDetailsEntitiy.release_date
-        movieDetails.title = movieDetailsEntitiy.title
-        movieDetails.vote_average = movieDetailsEntitiy.vote_average
-        movieDetails.completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[6] +
-            movieDetailsEntitiy.poster_path
-
-        return movieDetails
-    }
+    fun mapFromEntity(movieDetailsEntitiy: MovieDetailsEntitiy, imagesEntity: ImagesEntity) =
+        MovieDetails().apply {
+            backdrop_path = movieDetailsEntitiy.backdrop_path
+            movieDetailsEntitiy.genres.forEach { this.genre = this.genre + " " + it.name }
+            id = movieDetailsEntitiy.id
+            overview = movieDetailsEntitiy.overview
+            poster_path = movieDetailsEntitiy.poster_path
+            release_date = movieDetailsEntitiy.release_date
+            title = movieDetailsEntitiy.title
+            vote_average = movieDetailsEntitiy.vote_average
+            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[6] + movieDetailsEntitiy.poster_path
+        }
 }

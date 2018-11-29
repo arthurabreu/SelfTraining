@@ -5,35 +5,28 @@ import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEnti
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 
 class MoviesMapper {
+    fun mapFromEntity(moviesResponseEntity: MoviesResponseEntity, imagesEntity: ImagesEntity) =
+        mutableListOf<Movies>().apply {
+            moviesResponseEntity.results.forEach {
+                Movies().run {
+                    id = it.id
+                    title = it.title
+                    releaseDate = it.release_date
+                    posterPath = it.poster_path
+                    adult = it.adult
+                    backdropPath = it.backdrop_path
+                    genreIds = it.genre_ids
+                    originalLanguage = it.original_language
+                    originalTitle = it.original_title
+                    overview = it.overview
+                    popularity = it.popularity
+                    video = it.video
+                    voteAverage = it.vote_average
+                    voteCount = it.vote_count
+                    completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[6] + posterPath
 
-    fun mapFromEntity(moviesResponseEntity: MoviesResponseEntity, imagesEntity: ImagesEntity): List<Movies> {
-
-        val moviesListTemp = mutableListOf<Movies>()
-        val moviesList = mutableListOf<Movies>()
-
-        for (i in 0 until moviesResponseEntity.results.size) {
-            val movies = Movies()
-            movies.id = moviesResponseEntity.results[i].id
-            movies.title = moviesResponseEntity.results[i].title
-            movies.releaseDate = moviesResponseEntity.results[i].release_date
-            movies.posterPath = moviesResponseEntity.results[i].poster_path
-            movies.adult = moviesResponseEntity.results[i].adult
-            movies.backdropPath = moviesResponseEntity.results[i].backdrop_path
-            movies.genreIds = moviesResponseEntity.results[i].genre_ids
-            movies.originalLanguage = moviesResponseEntity.results[i].original_language
-            movies.originalTitle = moviesResponseEntity.results[i].original_title
-            movies.overview = moviesResponseEntity.results[i].overview
-            movies.popularity = moviesResponseEntity.results[i].popularity
-            movies.video = moviesResponseEntity.results[i].video
-            movies.voteAverage = moviesResponseEntity.results[i].vote_average
-            movies.voteCount = moviesResponseEntity.results[i].vote_count
-            movies.completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[6] + movies.posterPath
-
-            moviesListTemp.add(movies)
+                    add(this)
+                }
+            }
         }
-
-        moviesList.addAll(moviesListTemp)
-
-        return moviesList
-    }
 }
