@@ -32,7 +32,17 @@ android {
     dataBinding {
         enabled = true
     }
+    sourceSets {
+        String sharedTestJavaDir = 'src/sharedTest/java'
 
+        test {
+            java.srcDirs += [sharedTestJavaDir]
+        }
+        androidTest {
+            java.srcDirs += [sharedTestJavaDir]
+            resources.srcDirs += ['src/test/resources']
+        }
+    }
 }
 
 configurations {
