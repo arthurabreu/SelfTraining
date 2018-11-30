@@ -124,6 +124,4 @@ dependencies {
 
     //Navigation
     implementation "android.arch.navigation:navigation-fragment:$navigation"
-
-    implementation 'com.google.code.gson:gson:2.8.5'
 }
