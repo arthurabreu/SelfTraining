@@ -1,6 +1,7 @@
 package com.intive.selftraining.selftraining.listmovies
 
 import com.intive.selftraining.selftraining.data.MoviesMapper
+import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.listmovies.model.Movies
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
@@ -22,10 +23,10 @@ class ListMoviesRepository(private val networkClient: NetworkInterface) {
     private fun showMovies(): Observable<MoviesResponseEntity> {
         return networkClient.getListMovies()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
     }
 
     private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
         .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+        .observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
 }
