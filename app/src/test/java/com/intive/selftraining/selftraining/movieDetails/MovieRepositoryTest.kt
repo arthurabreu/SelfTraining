@@ -5,7 +5,6 @@ import com.intive.selftraining.selftraining.model.Model
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import org.amshove.kluent.`should equal`
@@ -16,13 +15,9 @@ import org.mockito.Mockito.`when`
 
 class MovieRepositoryTest {
 
-    private val movieDetails = mock<MovieDetailsEntitiy> {
-        on { it.poster_path } doReturn getMovieDetailsEntity().poster_path
-    }
+    private val movieDetails = getMovieDetailsEntity()
 
-    private val configuration = mock<ConfigurationEntity> {
-        on { it.images } doReturn getConfigurationEntity().images
-    }
+    private val configuration = getConfigurationEntity()
 
     private val url = imgUrl()
 
