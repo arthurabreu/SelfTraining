@@ -1,10 +1,12 @@
 package com.intive.selftraining.selftraining.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.intive.selftraining.selftraining.model.Model
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
 import com.nhaarman.mockitokotlin2.mock
+import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -14,8 +16,8 @@ class MovieDetailsMapperTest {
 
     private val mapper = mock<MovieDetailsMapper>()
     private val movieDetail: MovieDetails = getMovieDetails()
-    private val movieDetailsEntity = mock<MovieDetailsEntitiy>()
-    private val imagesEntity = mock<ImagesEntity>()
+    private val movieDetailsEntity: MovieDetailsEntitiy = Model().getMovieDetailsEntity()
+    private val imagesEntity: ImagesEntity = Model().getImagesEntity()
 
     @Rule
     @JvmField
@@ -24,6 +26,7 @@ class MovieDetailsMapperTest {
     @Test
     fun `map from entity`() {
         `when`(mapper.mapFromEntity(movieDetailsEntity, imagesEntity)).thenReturn(movieDetail)
+        mapper.mapFromEntity(movieDetailsEntity, imagesEntity) `should equal` movieDetail
     }
 
     private fun getMovieDetails(): MovieDetails {
