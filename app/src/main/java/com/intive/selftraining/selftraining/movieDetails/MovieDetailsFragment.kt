@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
+import com.intive.selftraining.selftraining.utils.MOVIE_ID
 import org.koin.android.viewmodel.ext.android.viewModel
-import com.intive.selftraining.selftraining.utils.ID
 
 class MovieDetailsFragment : Fragment() {
 
@@ -26,7 +26,7 @@ class MovieDetailsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.movies_details_fragment, container, false)
 
         arguments?.let {
-            val id = it.getInt(ID)
+            val id = it.getInt(MOVIE_ID)
             movieDetailsViewModel.getMovieDetails(id)
         }
 
