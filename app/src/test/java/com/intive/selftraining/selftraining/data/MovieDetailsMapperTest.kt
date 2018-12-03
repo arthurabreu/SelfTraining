@@ -31,14 +31,14 @@ class MovieDetailsMapperTest {
 
     private fun getMovieDetails(): MovieDetails {
         val movieDetails = MovieDetails()
-        movieDetails.backdrop_path = "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg"
+        movieDetails.backdropPath = "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg"
         movieDetails.genre = ""
         movieDetails.id = 335983
         movieDetails.overview = "When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego \"Venom\" to save his life."
-        movieDetails.poster_path = "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
-        movieDetails.release_date = "2018-10-03"
+        movieDetails.posterPath = "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+        movieDetails.releaseDate = "2018-10-03"
         movieDetails.title = "Venom"
-        movieDetails.vote_average = 6.6
+        movieDetails.voteAverage = 6.6
         movieDetails.completeImageUrl = "http://imagesEntity.tmdb.org/t/p/w500/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
 
         return movieDetails
