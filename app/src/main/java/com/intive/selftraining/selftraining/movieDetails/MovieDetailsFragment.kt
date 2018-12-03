@@ -25,10 +25,7 @@ class MovieDetailsFragment : Fragment() {
         val activityDetails: MoviesDetailsFragmentBinding? =
             DataBindingUtil.inflate(inflater, R.layout.movies_details_fragment, container, false)
 
-        arguments?.let {
-            val id = it.getInt(MOVIE_ID)
-            movieDetailsViewModel.getMovieDetails(id)
-        }
+        getArgs()
 
         val view = activityDetails?.root
         activityDetails?.run {
@@ -37,5 +34,12 @@ class MovieDetailsFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun getArgs(){
+        arguments?.let {
+            val id = it.getInt(MOVIE_ID)
+            movieDetailsViewModel.getMovieDetails(id)
+        }
     }
 }
