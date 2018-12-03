@@ -12,10 +12,11 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
-import com.intive.selftraining.selftraining.utils.SPAN_COUNT
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListMoviesFragment : Fragment() {
+
+    private val SPAN_COUNT = 3
 
     private val listMoviesViewModel: ListMoviesViewModel by viewModel()
 

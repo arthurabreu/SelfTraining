@@ -14,10 +14,10 @@ import org.mockito.Mockito.`when`
 
 class MovieDetailsMapperTest {
 
-    private val mapper = mock<MovieDetailsMapper>()
-    private val movieDetail: MovieDetails = getMovieDetails()
-    private val movieDetailsEntity: MovieDetailsEntitiy = Model().getMovieDetailsEntity()
-    private val imagesEntity: ImagesEntity = Model().getImagesEntity()
+    val mapper = mock<MovieDetailsMapper>()
+    val movieDetail: MovieDetails = getMovieDetails()
+    val movieDetailsEntity: MovieDetailsEntitiy = Model().getMovieDetailsEntity()
+    val imagesEntity: ImagesEntity = Model().getImagesEntity()
 
     @Rule
     @JvmField
@@ -29,7 +29,7 @@ class MovieDetailsMapperTest {
         mapper.mapFromEntity(movieDetailsEntity, imagesEntity) `should equal` movieDetail
     }
 
-    private fun getMovieDetails(): MovieDetails {
+    fun getMovieDetails(): MovieDetails {
         val movieDetails = MovieDetails()
         movieDetails.backdropPath = "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg"
         movieDetails.genre = ""
