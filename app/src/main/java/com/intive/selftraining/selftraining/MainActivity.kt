@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 
 class MainActivity : AppCompatActivity() {
 
-    internal var navController: NavController? = null
+    private var navController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
