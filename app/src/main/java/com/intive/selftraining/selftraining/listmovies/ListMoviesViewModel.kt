@@ -30,7 +30,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
 
     private fun getMoviesResponse() {
         val showMoviesObservable = repo.showMovies().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
-        val configurationObservable  = repo.getConfiguration().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
+        val configurationObservable = repo.getConfiguration().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
 
         compositeDisposable.add(repo.getMovies(showMoviesObservable, configurationObservable).subscribe({
             resultsList.value = it
