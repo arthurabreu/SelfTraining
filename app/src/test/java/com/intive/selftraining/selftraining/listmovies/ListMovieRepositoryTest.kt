@@ -5,25 +5,19 @@ import com.intive.selftraining.selftraining.model.Model
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import org.amshove.kluent.`should equal`
-import org.junit.Test
-
 import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.Mockito
 
-class ListMoviesRepositoryTest {
+class ListMovieRepositoryTest {
 
-    private val movie = mock<MoviesResponseEntity> {
-        on { it.results } doReturn getMovieEntity().results
-    }
+    private val movie = getMovieEntity()
 
-    private val configuration = mock<ConfigurationEntity> {
-        on { it.images } doReturn getConfigurationEntity().images
-    }
+    private val configuration = getConfigurationEntity()
 
     private val url = imgUrl()
 

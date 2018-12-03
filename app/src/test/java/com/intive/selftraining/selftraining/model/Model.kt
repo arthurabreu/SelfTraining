@@ -41,7 +41,6 @@ class Model {
     }
 
     fun getMovieDetailsEntity(): MovieDetailsEntitiy {
-
         return MovieDetailsEntitiy(
             false,
             "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg",
@@ -72,12 +71,18 @@ class Model {
     }
 
     fun getConfigurationEntity(): ConfigurationEntity {
-
         return ConfigurationEntity(
             emptyList(), ImagesEntity(
                 emptyList(), "http://image.tmdb.org/t/p/",
                 listOf("original"), emptyList(), emptyList(), "", emptyList()
             )
         )
+    }
+
+    fun getImagesEntity(): ImagesEntity {
+        return ImagesEntity(
+                emptyList(), "http://image.tmdb.org/t/p/",
+                listOf("original"), emptyList(), emptyList(), "", emptyList()
+            )
     }
 }

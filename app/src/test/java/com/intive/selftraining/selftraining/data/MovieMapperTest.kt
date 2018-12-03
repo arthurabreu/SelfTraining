@@ -1,7 +1,7 @@
 package com.intive.selftraining.selftraining.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import com.nhaarman.mockitokotlin2.mock
@@ -11,10 +11,10 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.Mockito.`when`
 
-class MoviesMapperTest {
+class MovieMapperTest {
 
     val mapper = mock<MoviesMapper>()
-    val movies: MutableList<Movies> = getMoviesList()
+    val movies: MutableList<Movie> = getMoviesList()
 
     var moviesResponseEntity = mock<MoviesResponseEntity>()
     var imagesEntity = mock<ImagesEntity>()
@@ -29,8 +29,8 @@ class MoviesMapperTest {
         mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` movies
     }
 
-    private fun getMoviesList(): MutableList<Movies> {
-        val movies = Movies()
+    private fun getMoviesList(): MutableList<Movie> {
+        val movies = Movie()
         movies.id = 335983
         movies.title = "Venom"
         movies.releaseDate = "2018-10-03"

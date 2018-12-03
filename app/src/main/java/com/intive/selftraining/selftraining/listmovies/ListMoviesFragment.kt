@@ -16,6 +16,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListMoviesFragment : Fragment() {
 
+    private val SPAN_COUNT = 3
+
     private val listMoviesViewModel: ListMoviesViewModel by viewModel()
 
     override fun onCreateView(
@@ -40,7 +42,7 @@ class ListMoviesFragment : Fragment() {
     private fun initRecycler(
         activityMainBinding: FragmentListMoviesBinding
     ) {
-        val layoutManager = GridLayoutManager(context, 3)
+        val layoutManager = GridLayoutManager(context, SPAN_COUNT)
 
         val recyclerMovies = activityMainBinding.recyclerMovies
         recyclerMovies.layoutManager = layoutManager

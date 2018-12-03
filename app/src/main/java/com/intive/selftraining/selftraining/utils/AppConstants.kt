@@ -1,4 +1,4 @@
 package com.intive.selftraining.selftraining.utils
 
-const val URL = "https://api.themoviedb.org/3/"
-const val ID = "movieId"
+const val BASE_URL = "https://api.themoviedb.org/3/"
+const val MOVIE_ID = "movieId"

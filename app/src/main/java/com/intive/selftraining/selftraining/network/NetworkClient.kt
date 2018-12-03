@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.network
 
-import com.intive.selftraining.selftraining.utils.URL
+import com.intive.selftraining.selftraining.utils.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -15,7 +15,7 @@ class NetworkClient {
         val retrofit = Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(URL)
+            .baseUrl(BASE_URL)
             .client(getClient())
             .build()
         return retrofit.create(NetworkInterface::class.java)

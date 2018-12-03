@@ -8,7 +8,7 @@ import com.intive.selftraining.selftraining.network.NetworkClient
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
-val appmodule = module {
+val appModule = module {
     factory { NetworkClient().networkResponse }
     single { ListMoviesRepository(get()) }
     single { MovieRepository(get()) }
