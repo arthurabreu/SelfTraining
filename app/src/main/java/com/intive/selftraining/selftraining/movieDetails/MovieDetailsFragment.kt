@@ -14,8 +14,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsFragment : Fragment() {
 
-    val MOVIE_ID = "movieId"
-
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
 
     override fun onCreateView(
@@ -32,7 +30,7 @@ class MovieDetailsFragment : Fragment() {
             setLifecycleOwner(this@MovieDetailsFragment)
         }
 
-        arguments?.getArgs(movieDetailsViewModel, MOVIE_ID)
+        arguments?.getArgs(movieDetailsViewModel)
 
         return activityDetails?.root
     }
