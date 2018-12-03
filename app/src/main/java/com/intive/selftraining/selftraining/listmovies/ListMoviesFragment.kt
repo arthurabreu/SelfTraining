@@ -12,6 +12,7 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
+import com.intive.selftraining.selftraining.utils.SPAN_COUNT
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListMoviesFragment : Fragment() {
@@ -40,7 +41,7 @@ class ListMoviesFragment : Fragment() {
     private fun initRecycler(
         activityMainBinding: FragmentListMoviesBinding
     ) {
-        val layoutManager = GridLayoutManager(context, 3)
+        val layoutManager = GridLayoutManager(context, SPAN_COUNT)
 
         val recyclerMovies = activityMainBinding.recyclerMovies
         recyclerMovies.layoutManager = layoutManager
