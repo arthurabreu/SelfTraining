@@ -2,7 +2,7 @@ package com.intive.selftraining.selftraining.test
 
 import android.arch.lifecycle.MutableLiveData
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.amshove.kluent.`should equal`
@@ -10,11 +10,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 
-class ListMoviesViewModelTest {
+class ListMovieViewModelTest {
 
     var response = getMovieResponse()
 
-    var resultsList: MutableLiveData<List<Movies>> = mock {
+    var resultsList: MutableLiveData<List<Movie>> = mock {
         on { value } doReturn response
     }
 
@@ -27,13 +27,13 @@ class ListMoviesViewModelTest {
         resultsList.value `should equal` response
     }
 
-    private fun getMovieResponse(): List<Movies> {
+    private fun getMovieResponse(): List<Movie> {
 
         val numbers: MutableList<Int> = mutableListOf(1, 2, 3)
         val numbersList: List<Int> = numbers
-        val mutList = mutableListOf<Movies>()
+        val mutList = mutableListOf<Movie>()
 
-        var movies = Movies()
+        var movies = Movie()
         movies.id = 1
         movies.title = "Fantastic Beasts: The Crimes of Grindelwald"
         movies.releaseDate = "2018-11-14"

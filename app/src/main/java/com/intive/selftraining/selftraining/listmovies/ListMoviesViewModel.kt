@@ -6,12 +6,12 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
 import android.util.Log
-import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import io.reactivex.disposables.CompositeDisposable
 
 class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
 
-    var resultsList: MutableLiveData<List<Movies>> = MutableLiveData()
+    val resultsList: MutableLiveData<List<Movie>> = MutableLiveData()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 

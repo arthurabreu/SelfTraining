@@ -15,7 +15,7 @@ import org.junit.Rule
 import org.junit.rules.TestRule
 import org.mockito.Mockito
 
-class ListMoviesRepositoryTest {
+class ListMovieRepositoryTest {
 
     private val movie = mock<MoviesResponseEntity> {
         on { it.results } doReturn getMovieEntity().results

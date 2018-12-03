@@ -2,7 +2,7 @@ package com.intive.selftraining.selftraining.listmovies
 
 import com.intive.selftraining.selftraining.data.MoviesMapper
 import com.intive.selftraining.selftraining.data.mapNetworkErrors
-import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 
 class ListMoviesRepository(private val networkClient: NetworkInterface) {
 
-    fun getMovies(): Observable<List<Movies>> {
+    fun getMovies(): Observable<List<Movie>> {
         return Observables.zip(showMovies(), getConfiguration()) {
                 movies, configuration ->
             MoviesMapper().mapFromEntity(movies, configuration.images)

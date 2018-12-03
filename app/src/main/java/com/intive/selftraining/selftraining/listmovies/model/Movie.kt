@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.listmovies.model
 
-class Movies {
+class Movie {
     var id: Int = 0
     var title: String = ""
     var releaseDate: String = ""

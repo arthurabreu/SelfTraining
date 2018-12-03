@@ -11,12 +11,12 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.R.id.movieDetailsFragment
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.ItemListener
-import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.utils.ID
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var resultsList: List<Movies> = emptyList()
+    private var resultsList: List<Movie> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ItemViewHolder(parent)
@@ -32,7 +32,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         }
     }
 
-    fun update(items: List<Movies>) {
+    fun update(items: List<Movie>) {
         this.resultsList = items
         notifyDataSetChanged()
     }
@@ -48,15 +48,15 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
             false
         )
     ) : ViewHolder(binding.root), ItemListener {
-        var movies: Movies? = null
+        var movie: Movie? = null
         override fun onClick(view: View) {
             val args = Bundle()
-            movies?.id?.let { args.putInt(ID, it) }
+            movie?.id?.let { args.putInt(ID, it) }
             Navigation.findNavController(view).navigate(movieDetailsFragment, args)
         }
 
-        fun bind(item: Movies) {
-            this.movies = item
+        fun bind(item: Movie) {
+            this.movie = item
             binding.adapter = this
             binding.text = item.title
             binding.image = item.completeImageUrl

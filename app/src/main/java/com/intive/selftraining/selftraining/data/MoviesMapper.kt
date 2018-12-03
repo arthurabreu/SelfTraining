@@ -1,14 +1,14 @@
 package com.intive.selftraining.selftraining.data
 
-import com.intive.selftraining.selftraining.listmovies.model.Movies
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 
 class MoviesMapper {
     fun mapFromEntity(moviesResponseEntity: MoviesResponseEntity, imagesEntity: ImagesEntity) =
-        mutableListOf<Movies>().apply {
+        mutableListOf<Movie>().apply {
             moviesResponseEntity.results.forEach {
-                Movies().run {
+                Movie().run {
                     id = it.id
                     title = it.title
                     releaseDate = it.release_date
