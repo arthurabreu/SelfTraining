@@ -11,9 +11,7 @@ import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import io.reactivex.disposables.CompositeDisposable
 
-
-
-class MovieDetailsViewModel(private val repo: MovieRepository, private val schedulerMovieDetails: CustomScheduler)
+class MovieDetailsViewModel(private val repo: MovieRepository, private val customScheduler: CustomScheduler)
     : ViewModel(), LifecycleObserver {
 
     val movieId = MutableLiveData<Int>()
@@ -36,8 +34,8 @@ class MovieDetailsViewModel(private val repo: MovieRepository, private val sched
     }
 
     private fun getMovieDetails(id: Int) {
-        val getMoviesObservable = repo.getMovieDetails(id).subscribeOn(schedulerMovieDetails.io())
-            .observeOn(schedulerMovieDetails.ui()).mapNetworkErrors()
+        val getMoviesObservable = repo.getMovieDetails(id).subscribeOn(customScheduler.io())
+            .observeOn(customScheduler.ui()).mapNetworkErrors()
 
         compositeDisposable.add(getMoviesObservable.subscribe({
             movie.value = it
