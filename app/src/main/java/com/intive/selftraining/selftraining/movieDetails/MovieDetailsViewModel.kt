@@ -9,9 +9,18 @@ import io.reactivex.disposables.CompositeDisposable
 
 class MovieDetailsViewModel(private val repo: MovieRepository) : ViewModel(), LifecycleObserver {
 
-    var movie: MutableLiveData<MovieDetails> = MutableLiveData()
+    val movieId = MutableLiveData<Int>()
+    val movie = MutableLiveData<MovieDetails>()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+
+    fun onCreate() {
+        movieId.observeForever {
+            it?.let { movieId ->
+                getMovieDetails(movieId)
+            }
+        }
+    }
 
     override fun onCleared() {
         compositeDisposable.dispose()
