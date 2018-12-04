@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
-import com.intive.selftraining.selftraining.listmovies.getArgs
-import com.intive.selftraining.selftraining.listmovies.getMovieID
 import com.intive.selftraining.selftraining.listmovies.getMovieId
 import org.koin.android.viewmodel.ext.android.viewModel
 

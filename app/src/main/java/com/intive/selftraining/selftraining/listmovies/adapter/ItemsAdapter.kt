@@ -11,8 +11,8 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.R.id.movieDetailsFragment
 import com.intive.selftraining.selftraining.databinding.ItemViewBinding
 import com.intive.selftraining.selftraining.listmovies.ItemListener
+import com.intive.selftraining.selftraining.listmovies.MOVIE_ID
 import com.intive.selftraining.selftraining.listmovies.model.Movie
-import com.intive.selftraining.selftraining.utils.MOVIE_ID
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
