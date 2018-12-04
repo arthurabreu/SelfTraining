@@ -9,97 +9,40 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import org.amshove.kluent.`should not be null`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 
 class MovieRepositoryTest {
 
-    private val movieDetails = getMovieDetailsEntity()
-
-    private val configuration = getConfigurationEntity()
-
-//    private val url = imgUrl()
-
     var networkClient: NetworkInterface = mock {
         on { getMovieDetails(1) } doReturn getMovieDetailsEntity()
         on { getConfiguration() } doReturn getConfigurationEntity()
     }
 
-    var testSchedulers: SchedulerMovieDetails = mock {
+    var schedulers: SchedulerMovieDetails = mock {
         on { io() } doReturn Schedulers.trampoline()
         on { ui() } doReturn Schedulers.trampoline()
     }
-    val tested = MovieRepository(networkClient, testSchedulers)
+    val movieRepository = MovieRepository(networkClient, schedulers)
 
     @Rule
     @JvmField
     val rule: TestRule = InstantTaskExecutorRule()
 
-
-    @Test
-    fun `should return MovieDetailsEntity when ask for getMovieDetails(id)`() {
-//        var testObserver = NetworkClient().networkResponse.getMovieDetails(335983)
-//        showMovieDetailsObservable.test()
-//            .assertNoErrors()
-//            .assertValue { l -> l.title == "Venom" }
-//        testObserver = NetworkClient().networkResponse.getMovieDetails(424694)
-//        testObserver.test()
-//            .assertNoErrors()
-//            .assertValue { l -> l.title == "Bohemian Rhapsody" }
-    }
-
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {
-
-//        tested.getMovieDetails(1).test().assertEmpty()
-        tested.getMovieDetails(335983).test().assertValue {l -> l.title == "Venom" }
-//        var testObserver = NetworkClient().networkResponse.getMovieDetails(335983)
-//        showMovieDetailsObservable.test()
-//            .assertNoErrors()
-//            .assertValue { l -> l.title == "Venom" }
-//        testObserver = NetworkClient().networkResponse.getMovieDetails(424694)
-//        testObserver.test()
-//            .assertNoErrors()
-//            .assertValue { l -> l.title == "Bohemian Rhapsody" }
+        movieRepository.getMovieDetails(1).test().assertValue {l -> l.title == "Venom" }
+            .assertNoErrors()
+            .assertComplete()
+            .assertValueCount(1)
     }
-
-//    @Test
-//    fun `should return MovieDetailsEntity when ask for getMovieDetails(id)`() {
-//        var testSubscribe = TestSubscriber<MovieDetailsEntitiy>()
-//        var testObserver = NetworkClient().networkResponse.getMovieDetails(335983)
-//        testObserver.test()
-//            .assertNoErrors()
-//            .assertValue { l -> l.title == "Venom" }
-//        testObserver = NetworkClient().networkResponse.getMovieDetails(424694)
-//        testObserver.test()
-//            .assertNoErrors()
-//            .assertValue { l -> l.title == "Bohemian Rhapsody" }
-//
-//    }
 
     @Test
-    fun `should return ConfigurationEntity when ask for getConfiguration()`() {
-
-//        val configurationObservable = Observable.just(configuration)
-//
-//        `when`(networkClient.getConfiguration()).thenReturn(configurationObservable)
-//
-//        networkClient.getConfiguration().test().assertValue(configuration)
+    fun `should not be null when ask for getMovieDetails(id)`() {
+        movieRepository.getMovieDetails(1).test().`should not be null`()
     }
-
-//    @Test
-//    fun `should return image url after zip getConfiguration() and getMovieDetails(id)`() {
-//
-//        val urlCommon =
-//            configuration.images.base_url + configuration.images.logo_sizes[0] + movieDetails.poster_path
-//
-//        urlCommon `should equal` url
-//    }
-//
-//    private fun imgUrl(): String {
-//        return getConfigurationEntity().images.base_url + getConfigurationEntity().images.logo_sizes[0] + getMovieDetailsEntity().poster_path
-//    }
 
     private fun getMovieDetailsEntity(): Observable<MovieDetailsEntitiy> {
 

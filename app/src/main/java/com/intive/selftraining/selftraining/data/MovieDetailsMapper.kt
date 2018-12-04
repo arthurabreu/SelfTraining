@@ -3,9 +3,9 @@ package com.intive.selftraining.selftraining.data
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
+import com.intive.selftraining.selftraining.utils.ORIGINAL_LOGO_SIZE
 
 class MovieDetailsMapper {
-    val ORIGINAL_LOGO_SIZE = 6
     fun mapFromEntity(movieDetailsEntitiy: MovieDetailsEntitiy, imagesEntity: ImagesEntity) =
         MovieDetails().apply {
             backdropPath = movieDetailsEntitiy.backdrop_path
