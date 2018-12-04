@@ -14,7 +14,6 @@ class MoviesMapper {
                     releaseDate = it.release_date
                     posterPath = it.poster_path
                     adult = it.adult
-                    backdropPath = it.backdrop_path
                     genreIds = it.genre_ids
                     originalLanguage = it.original_language
                     originalTitle = it.original_title

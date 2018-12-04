@@ -6,7 +6,6 @@ class Movie {
     var releaseDate: String = ""
     var posterPath: String = ""
     var adult: Boolean = false
-    var backdropPath: String = ""
     var genreIds: List<Int> = emptyList()
     var originalLanguage: String = ""
     var originalTitle: String = ""
