@@ -34,7 +34,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
 
         compositeDisposable.add(repo.getMovies(showMoviesObservable, configurationObservable).subscribe({
             resultsList.value = it
-            Log.d("LIST MOVIES MAPPER", it.toString())
-        }, { error -> Log.e("LIST MOVIES ERROR", error.message) }))
+            Log.d("LOG LIST MOVIES MAPPER", it.toString())
+        }, { error -> Log.e("LOG LIST MOVIES ERROR", error.message) }))
     }
 }

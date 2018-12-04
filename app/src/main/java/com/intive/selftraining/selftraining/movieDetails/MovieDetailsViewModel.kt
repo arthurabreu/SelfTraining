@@ -6,19 +6,15 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
 import android.util.Log
+import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.intive.selftraining.selftraining.network.CustomScheduler
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 
-class SchedulerMovieDetails {
 
-    fun io() = Schedulers.io()
 
-    fun ui() = AndroidSchedulers.mainThread()
-}
-
-class MovieDetailsViewModel(private val repo: MovieRepository) : ViewModel(), LifecycleObserver {
+class MovieDetailsViewModel(private val repo: MovieRepository, private val schedulerMovieDetails: CustomScheduler)
+    : ViewModel(), LifecycleObserver {
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
@@ -40,9 +36,12 @@ class MovieDetailsViewModel(private val repo: MovieRepository) : ViewModel(), Li
     }
 
     private fun getMovieDetails(id: Int) {
-        compositeDisposable.add(repo.getMovieDetails(id).subscribe({
+        val getMoviesObservable = repo.getMovieDetails(id).subscribeOn(schedulerMovieDetails.io())
+            .observeOn(schedulerMovieDetails.ui()).mapNetworkErrors()
+
+        compositeDisposable.add(getMoviesObservable.subscribe({
             movie.value = it
-            Log.d("MOVIE DETAILS", it.toString())
-        }, { error -> Log.e("MOVIE DETAILS ERROR", error.message) }))
+            Log.d("LOG MOVIE DETAILS", it.toString())
+        }, { error -> Log.e("LOG MOVIE DETAILS ERROR", error.message) }))
     }
 }
