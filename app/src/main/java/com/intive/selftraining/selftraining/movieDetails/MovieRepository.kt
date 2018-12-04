@@ -11,14 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.schedulers.Schedulers
 
-class Schedulersssssss {
-
-    fun io() = Schedulers.io()
-
-    fun ui() = AndroidSchedulers.mainThread()
-}
-
-class MovieRepository(private val networkClient: NetworkInterface, private val schedulersssssss: Schedulersssssss) {
+class MovieRepository(private val networkClient: NetworkInterface, private val schedulerMovieDetails: SchedulerMovieDetails) {
 
     fun getMovieDetails(id: Int): Observable<MovieDetails> {
         return Observables.zip(showMovieDetails(id), getConfiguration()) { movie, configuration ->
@@ -28,11 +21,11 @@ class MovieRepository(private val networkClient: NetworkInterface, private val s
 
     private fun showMovieDetails(id: Int): Observable<MovieDetailsEntitiy> {
         return networkClient.getMovieDetails(id)
-//            .subscribeOn(schedulersssssss.io())
-//            .observeOn(schedulersssssss.ui()).mapNetworkErrors()
+            .subscribeOn(schedulerMovieDetails.io())
+            .observeOn(schedulerMovieDetails.ui()).mapNetworkErrors()
     }
 
     private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
-        .subscribeOn(schedulersssssss.io())
-        .observeOn(schedulersssssss.ui()).mapNetworkErrors()
+        .subscribeOn(schedulerMovieDetails.io())
+        .observeOn(schedulerMovieDetails.ui()).mapNetworkErrors()
 }

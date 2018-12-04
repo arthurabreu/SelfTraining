@@ -1,10 +1,7 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import android.arch.lifecycle.MutableLiveData
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.model.Model
-import com.intive.selftraining.selftraining.network.NetworkClient
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
@@ -12,15 +9,9 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subscribers.TestSubscriber
-import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.`when`
-import org.mockito.ArgumentMatchers.anyString
-import org.junit.Before
 
 class MovieRepositoryTest {
 
