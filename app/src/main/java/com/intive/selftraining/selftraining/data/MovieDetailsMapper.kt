@@ -5,6 +5,7 @@ import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEnti
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
 
 class MovieDetailsMapper {
+    val ORIGINAL_LOGO_SIZE = 6
     fun mapFromEntity(movieDetailsEntitiy: MovieDetailsEntitiy, imagesEntity: ImagesEntity) =
         MovieDetails().apply {
             backdropPath = movieDetailsEntitiy.backdrop_path
@@ -15,6 +16,6 @@ class MovieDetailsMapper {
             releaseDate = movieDetailsEntitiy.release_date
             title = movieDetailsEntitiy.title
             voteAverage = movieDetailsEntitiy.vote_average
-            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[6] + movieDetailsEntitiy.poster_path
+            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE] + movieDetailsEntitiy.poster_path
         }
 }
