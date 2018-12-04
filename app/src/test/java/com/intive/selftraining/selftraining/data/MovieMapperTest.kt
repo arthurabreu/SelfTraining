@@ -36,7 +36,6 @@ class MovieMapperTest {
         movies.releaseDate = "2018-10-03"
         movies.posterPath = "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
         movies.adult = false
-        movies.backdropPath = "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg"
         movies.genreIds = listOf(878)
         movies.originalLanguage = "en"
         movies.originalTitle = "Venom"

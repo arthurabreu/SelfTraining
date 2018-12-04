@@ -7,9 +7,7 @@ import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDet
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.Observables
-import io.reactivex.schedulers.Schedulers
 
 class MovieRepository(private val networkClient: NetworkInterface, private val schedulerMovieDetails: SchedulerMovieDetails) {
 

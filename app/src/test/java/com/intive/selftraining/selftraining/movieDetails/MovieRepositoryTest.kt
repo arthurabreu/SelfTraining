@@ -26,27 +26,16 @@ class MovieRepositoryTest {
         on { getConfiguration() } doReturn getConfigurationEntity()
     }
 
-    var testSchedulers: Schedulersssssss = mock {
+    var testSchedulers: SchedulerMovieDetails = mock {
         on { io() } doReturn Schedulers.trampoline()
         on { ui() } doReturn Schedulers.trampoline()
     }
     val tested = MovieRepository(networkClient, testSchedulers)
 
-//    val showMovieDetailsObservable = mock<Observable<MovieDetailsEntitiy>> {
-//        on { networkClient.getMovieDetails(335983) } doReturn it
-//    }
-
     @Rule
     @JvmField
     val rule: TestRule = InstantTaskExecutorRule()
 
-//    @Before
-//    fun setup() {
-//        `when`(networkClient.getMovieDetails(335983))
-//            .thenReturn(restAdapterBuilder)
-//        `when`(restAdapterBuilder.setClient(any(OkClient::class.java)))
-//            .thenReturn(restAdapterBuilder)
-//    }
 
     @Test
     fun `should return MovieDetailsEntity when ask for getMovieDetails(id)`() {
@@ -63,7 +52,8 @@ class MovieRepositoryTest {
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {
 
-        tested.getMovieDetails(1).test().assertEmpty()
+//        tested.getMovieDetails(1).test().assertEmpty()
+        tested.getMovieDetails(335983).test().assertValue {l -> l.title == "Venom" }
 //        var testObserver = NetworkClient().networkResponse.getMovieDetails(335983)
 //        showMovieDetailsObservable.test()
 //            .assertNoErrors()

@@ -74,7 +74,7 @@ class Model {
         return ConfigurationEntity(
             emptyList(), ImagesEntity(
                 emptyList(), "http://image.tmdb.org/t/p/",
-                listOf("original"), emptyList(), emptyList(), "", emptyList()
+                listOf("original","original","original","original","original","original","original"), emptyList(), emptyList(), "", emptyList()
             )
         )
     }
