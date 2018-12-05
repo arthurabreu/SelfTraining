@@ -9,14 +9,13 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.zipWith
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.schedulers.TestScheduler
+import junit.framework.Assert.assertTrue
+import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should not be null`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import io.reactivex.schedulers.TestScheduler
-import junit.framework.Assert.assertTrue
-import org.amshove.kluent.`should be equal to`
 import java.util.concurrent.TimeUnit
 
 class MovieRepositoryTest {
@@ -41,7 +40,7 @@ class MovieRepositoryTest {
     }
 
     @Test
-    fun `should return empty when one of two observable not emitted`() {
+    fun `should return empty when one of two observable were not emitted`() {
         val scheduler = TestScheduler()
         var title = ""
         var url = ""
