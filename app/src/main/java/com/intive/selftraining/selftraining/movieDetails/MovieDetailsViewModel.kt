@@ -10,9 +10,10 @@ import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.plusAssign
 
-class MovieDetailsViewModel(private val repo: MovieRepository, private val customScheduler: CustomScheduler)
-    : ViewModel(), LifecycleObserver {
+class MovieDetailsViewModel(private val repo: MovieRepository, private val customScheduler: CustomScheduler) :
+    ViewModel(), LifecycleObserver {
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
@@ -34,12 +35,12 @@ class MovieDetailsViewModel(private val repo: MovieRepository, private val custo
     }
 
     private fun getMovieDetails(id: Int) {
-        val getMoviesObservable = repo.getMovieDetails(id).subscribeOn(customScheduler.io())
+        compositeDisposable += repo.getMovieDetails(id)
+            .subscribeOn(customScheduler.io())
             .observeOn(customScheduler.ui()).mapNetworkErrors()
-
-        compositeDisposable.add(getMoviesObservable.subscribe({
-            movie.value = it
-            Log.d("LOG MOVIE DETAILS", it.toString())
-        }, { error -> Log.e("LOG MOVIE DETAILS ERROR", error.message) }))
+            .subscribe({
+                movie.value = it
+                Log.d("LOG MOVIE DETAILS", it.toString())
+            }, { error -> Log.e("LOG MOVIE DETAILS ERROR", error.message) })
     }
 }
