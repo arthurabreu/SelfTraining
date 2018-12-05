@@ -5,68 +5,43 @@ import com.intive.selftraining.selftraining.model.Model
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
-import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import org.mockito.Mockito
 
 class ListMovieRepositoryTest {
 
-    private val movie = getMovieEntity()
+    var networkClient: NetworkInterface = mock {
+        on { getListMovies() } doReturn getMoviesObservable()
+        on { getConfiguration() } doReturn getConfigurationObservable()
+    }
 
-    private val configuration = getConfigurationEntity()
-
-    private val url = imgUrl()
-
-    private val networkClient = mock<NetworkInterface>()
+    val listMovieRepository = ListMoviesRepository(networkClient)
 
     @Rule
     @JvmField
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun `should return MovieDetailsEntity when ask for getMovie()`() {
+    fun `should return title when ask for getMovieDetails(id)`() {
+        val showMoviesObservable = getMoviesObservable()
+        val configurationObservable = getConfigurationObservable()
 
-        val movieObservable = Observable.just(movie)
-
-        Mockito.`when`(networkClient.getListMovies()).thenReturn(movieObservable)
-
-        networkClient.getListMovies().test().assertValue(movie)
+        listMovieRepository.getMovies(showMoviesObservable, configurationObservable).test().assertValue {l -> l[1].title == "Venom" }
+            .assertNoErrors()
+            .assertComplete()
     }
 
-    @Test
-    fun `should return ConfigurationEntity when ask for getConfiguration()`() {
+    private fun getMoviesObservable(): Observable<MoviesResponseEntity> {
 
-        val configurationObservable = Observable.just(configuration)
-
-        Mockito.`when`(networkClient.getConfiguration()).thenReturn(configurationObservable)
-
-        networkClient.getConfiguration().test().assertValue(configuration)
+        return Observable.just(Model().readJSONMovieResponseEntityFromAsset())
     }
 
-    @Test
-    fun `should return image url after zip getConfiguration() and getMovieDetails()`() {
+    private fun getConfigurationObservable(): Observable<ConfigurationEntity> {
 
-        val urlCommon =
-            configuration.images.base_url + configuration.images.logo_sizes[0] + movie.results[0].poster_path
-
-        urlCommon `should equal` url
-    }
-
-    private fun imgUrl(): String {
-        return getConfigurationEntity().images.base_url + getConfigurationEntity().images.logo_sizes[0] + getMovieEntity().results[0].poster_path
-    }
-
-    private fun getMovieEntity(): MoviesResponseEntity {
-
-        return Model().readJSONMovieFromAsset()
-    }
-
-    private fun getConfigurationEntity(): ConfigurationEntity {
-
-        return Model().readJSONImagesFromAsset()
+        return Observable.just(Model().readJSONImagesFromAsset())
     }
 }

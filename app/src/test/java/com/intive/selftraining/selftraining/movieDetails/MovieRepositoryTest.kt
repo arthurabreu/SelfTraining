@@ -1,7 +1,6 @@
 package com.intive.selftraining.selftraining.movieDetails
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.data.MovieDetailsMapper
 import com.intive.selftraining.selftraining.model.Model
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
@@ -9,19 +8,15 @@ import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDet
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
-import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.zipWith
 import io.reactivex.schedulers.Schedulers
 import org.amshove.kluent.`should not be null`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import javax.xml.datatype.DatatypeConstants.SECONDS
 import io.reactivex.schedulers.TestScheduler
-import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
 import org.amshove.kluent.`should be equal to`
-import org.amshove.kluent.shouldBeEqualTo
 import java.util.concurrent.TimeUnit
 
 class MovieRepositoryTest {
@@ -30,7 +25,7 @@ class MovieRepositoryTest {
         on { getMovieDetails(1) } doReturn getMovieDetailsEntity()
         on { getConfiguration() } doReturn getConfigurationEntity()
     }
-    
+
     val movieRepository = MovieRepository(networkClient)
 
     @Rule
@@ -39,7 +34,7 @@ class MovieRepositoryTest {
 
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {
-        movieRepository.getMovieDetails(1).test().assertValue { l -> l.title == "Venom" }
+        movieRepository.getMovieDetails(1).test().assertValue {l -> l.title == "Venom" }
             .assertNoErrors()
             .assertComplete()
             .assertValueCount(1)
