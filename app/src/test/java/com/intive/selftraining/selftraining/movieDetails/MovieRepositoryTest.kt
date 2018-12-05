@@ -8,7 +8,6 @@ import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDet
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
 import org.amshove.kluent.`should not be null`
 import org.junit.Rule
 import org.junit.Test
@@ -21,11 +20,7 @@ class MovieRepositoryTest {
         on { getConfiguration() } doReturn getConfigurationEntity()
     }
 
-    var schedulers: SchedulerMovieDetails = mock {
-        on { io() } doReturn Schedulers.trampoline()
-        on { ui() } doReturn Schedulers.trampoline()
-    }
-    val movieRepository = MovieRepository(networkClient, schedulers)
+    val movieRepository = MovieRepository(networkClient)
 
     @Rule
     @JvmField

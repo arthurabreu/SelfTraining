@@ -9,7 +9,7 @@ import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDet
 import java.io.InputStream
 
 class Model {
-    fun readJSONMovieFromAsset(): MoviesResponseEntity {
+    fun readJSONMovieResponseEntityFromAsset(): MoviesResponseEntity {
         var moviesResponseEntity = MoviesResponseEntity(0, emptyList(), 0, 0)
         try {
             val inputStream: InputStream = this.javaClass.classLoader.getResourceAsStream("movies_response.json")
