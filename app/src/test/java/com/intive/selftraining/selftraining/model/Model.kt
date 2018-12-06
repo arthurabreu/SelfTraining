@@ -40,7 +40,7 @@ class Model {
         return configurationEntity
     }
 
-    fun getMovieDetailsEntity(): MovieDetailsEntitiy {
+    fun getMovieDetailsEntity(title: String = ""): MovieDetailsEntitiy {
         return MovieDetailsEntitiy(
             false,
             "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg",
@@ -63,7 +63,7 @@ class Model {
             emptyList(),
             "",
             "",
-            "Venom",
+             title,
             false,
             6.6,
             0

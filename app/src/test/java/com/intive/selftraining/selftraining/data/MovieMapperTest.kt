@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.amshove.kluent.`should equal`
 import org.junit.Rule
@@ -16,22 +15,11 @@ class MovieMapperTest {
     var moviesResponseEntity = mock<MoviesResponseEntity>()
     var imagesEntity = mock<ImagesEntity>()
 
-    //val mapper = mock<MoviesMapper>()
     val movies: MutableList<Movie> = getMoviesList()
     val moviesTitle: MutableList<Movie> = getMoviesOnlytitle()
     val emptyMovies: MutableList<Movie> = getEmptyMovie()
 
-    var mapper: MoviesMapper = mock {
-        on { mapFromEntity(moviesResponseEntity, imagesEntity) } doReturn movies
-    }
-
-    var mapperEmpty: MoviesMapper = mock {
-        on { mapFromEntity(moviesResponseEntity, imagesEntity) } doReturn emptyMovies
-    }
-
-    var mapperTitle: MoviesMapper = mock {
-        on { mapFromEntity(moviesResponseEntity, imagesEntity) } doReturn moviesTitle
-    }
+    var mapper = MoviesMapper()
 
     @Rule
     @JvmField
@@ -39,19 +27,17 @@ class MovieMapperTest {
 
     @Test
     fun `map from entity`() {
-        //`when`(mapper.mapFromEntity(moviesResponseEntity, imagesEntity)).thenReturn(movies)
         mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` movies
     }
 
     @Test
     fun `map from entity with only title available`() {
-        mapperTitle.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` moviesTitle
+        mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` moviesTitle
     }
 
     @Test
     fun `map from entity with movies empty`() {
-        //`when`(mapper.mapFromEntity(moviesResponseEntity, imagesEntity)).thenReturn(emptyMovies)
-        mapperEmpty.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` emptyMovies
+        mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` emptyMovies
     }
 
     private fun getMoviesList(): MutableList<Movie> {
