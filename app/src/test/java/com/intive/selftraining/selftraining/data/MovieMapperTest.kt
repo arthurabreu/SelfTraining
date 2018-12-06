@@ -13,13 +13,13 @@ import org.junit.rules.TestRule
 
 class MovieMapperTest {
 
+    var moviesResponseEntity = mock<MoviesResponseEntity>()
+    var imagesEntity = mock<ImagesEntity>()
+
     //val mapper = mock<MoviesMapper>()
     val movies: MutableList<Movie> = getMoviesList()
     val moviesTitle: MutableList<Movie> = getMoviesOnlytitle()
     val emptyMovies: MutableList<Movie> = getEmptyMovie()
-
-    var moviesResponseEntity = mock<MoviesResponseEntity>()
-    var imagesEntity = mock<ImagesEntity>()
 
     var mapper: MoviesMapper = mock {
         on { mapFromEntity(moviesResponseEntity, imagesEntity) } doReturn movies
@@ -86,5 +86,4 @@ class MovieMapperTest {
         val movies = Movie()
         return mutableListOf(movies)
     }
-
 }
