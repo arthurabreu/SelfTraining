@@ -43,29 +43,29 @@ class Model {
     fun getMovieDetailsEntity(title: String = ""): MovieDetailsEntitiy {
         return MovieDetailsEntitiy(
             false,
-            "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg",
-            BelongsToCollectionEntity("", 0, "", "/lHu1wtNaczFPGFDTrjCSzeLPTKN.jpg"),
+            "",
+            BelongsToCollectionEntity("", 0, "", ""),
             0,
             emptyList(),
             "",
-            1,
+            0,
             "",
             "",
             "",
-            "When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego \"Venom\" to save his life.",
+            "",
             0.0,
-            "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+            "",
             emptyList(),
             emptyList(),
-            "2018-10-03",
+            "",
             0,
             0,
             emptyList(),
             "",
             "",
-             title,
+            title,
             false,
-            6.6,
+            0.0,
             0
         )
     }
@@ -73,16 +73,21 @@ class Model {
     fun getConfigurationEntity(): ConfigurationEntity {
         return ConfigurationEntity(
             emptyList(), ImagesEntity(
-                emptyList(), "http://image.tmdb.org/t/p/",
-                listOf("original","original","original","original","original","original","original"), emptyList(), emptyList(), "", emptyList()
+                emptyList(),
+                "",
+                listOf("","","","","","",""),
+                emptyList(),
+                emptyList(),
+                "",
+                emptyList()
             )
         )
     }
 
     fun getImagesEntity(): ImagesEntity {
         return ImagesEntity(
-                emptyList(), "http://image.tmdb.org/t/p/",
-                listOf("original"), emptyList(), emptyList(), "", emptyList()
-            )
+            emptyList(), "http://image.tmdb.org/t/p/",
+            listOf("original"), emptyList(), emptyList(), "", emptyList()
+        )
     }
 }
