@@ -120,12 +120,6 @@ class Model {
         )
     }
 
-    fun getMoviesTitleOnly(): MutableList<Movie> {
-        val movies = Movie()
-        movies.title = "Venom"
-        return mutableListOf(movies)
-    }
-
     fun getConfigurationEntity(): ConfigurationEntity {
         return ConfigurationEntity(
             emptyList(), ImagesEntity(
