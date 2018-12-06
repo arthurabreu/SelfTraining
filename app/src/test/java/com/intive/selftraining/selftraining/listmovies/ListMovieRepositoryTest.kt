@@ -26,11 +26,18 @@ class ListMovieRepositoryTest {
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun `should return title when ask for getMovieDetails(id)`() {
+    fun `should return values when ask for getMovieDetails(id)`() {
         val showMoviesObservable = getMoviesObservable()
         val configurationObservable = getConfigurationObservable()
 
-        listMovieRepository.getMovies(showMoviesObservable, configurationObservable).test().assertValue {l -> l[1].title == "Venom" }
+        listMovieRepository.getMovies(showMoviesObservable, configurationObservable).test().assertValue {l ->
+            l[1].title == "Venom"
+            l[1].releaseDate == "2018-10-03"
+            l[1].posterPath == "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+            !l[1].adult
+            !l[1].video
+
+        }
             .assertNoErrors()
             .assertComplete()
     }

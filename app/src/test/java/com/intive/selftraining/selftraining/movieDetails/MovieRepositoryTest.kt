@@ -9,12 +9,11 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.zipWith
+import io.reactivex.schedulers.TestScheduler
 import org.amshove.kluent.`should not be null`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import io.reactivex.schedulers.TestScheduler
-import java.util.concurrent.TimeUnit
 
 class MovieRepositoryTest {
 
@@ -32,7 +31,10 @@ class MovieRepositoryTest {
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {
         movieRepository.getMovieDetails(1).test()
-            .assertValue {l -> l.title == getMovieDetailsEntity().title}
+            .assertValue {l ->
+                l.title == getMovieDetailsEntity().title
+                l.releaseDate == getMovieDetailsEntity().release_date
+            }
             .assertNoErrors()
             .assertComplete()
             .assertValueCount(1)
@@ -41,7 +43,6 @@ class MovieRepositoryTest {
     @Test
     fun `should return noValues when one of two observable not emitted`() {
         val scheduler = TestScheduler()
-        scheduler.advanceTimeBy(20, TimeUnit.SECONDS)
         var movieResponse = movieRepository.showMovieDetails(1).subscribeOn(scheduler)
         movieRepository.getConfiguration().zipWith(movieResponse).test().assertNoValues()
     }
