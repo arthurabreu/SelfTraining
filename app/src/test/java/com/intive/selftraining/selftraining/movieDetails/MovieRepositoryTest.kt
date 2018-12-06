@@ -7,6 +7,8 @@ import com.intive.selftraining.selftraining.network.models.listMovies.Configurat
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.times
+import com.nhaarman.mockitokotlin2.verify
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.zipWith
 import io.reactivex.schedulers.TestScheduler
@@ -38,6 +40,14 @@ class MovieRepositoryTest {
             .assertNoErrors()
             .assertComplete()
             .assertValueCount(1)
+    }
+
+    @Test
+    fun `verify, that methods are called`() {
+        networkClient.getConfiguration()
+        networkClient.getMovieDetails(1)
+        verify(networkClient, times(1)).getConfiguration()
+        verify(networkClient).getMovieDetails(1)
     }
 
     @Test
