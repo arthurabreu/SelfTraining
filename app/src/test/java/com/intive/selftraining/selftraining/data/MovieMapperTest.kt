@@ -14,8 +14,6 @@ class MovieMapperTest {
     var imagesEntity = Model().getImagesEntity()
 
     val movies: MutableList<Movie> = mutableListOf(Model().getMovie())
-    val moviesTitle: MutableList<Movie> = Model().getMoviesTitleOnly()
-    val emptyMovies: MutableList<Movie> = getEmptyMovie()
 
     var mapper = MoviesMapper()
 
@@ -26,20 +24,5 @@ class MovieMapperTest {
     @Test
     fun `map from entity`() {
         mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` movies
-    }
-
-    @Test
-    fun `map from entity with only title available`() {
-        mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` moviesTitle
-    }
-
-    @Test
-    fun `map from entity with movies empty`() {
-        mapper.mapFromEntity(moviesResponseEntity, imagesEntity) `should equal` emptyMovies
-    }
-
-    private fun getEmptyMovie(): MutableList<Movie> {
-        val movies = Movie()
-        return mutableListOf(movies)
     }
 }
