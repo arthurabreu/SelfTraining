@@ -1,8 +1,10 @@
 package com.intive.selftraining.selftraining.model
 
 import com.google.gson.Gson
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
+import com.intive.selftraining.selftraining.network.models.listMovies.MoviesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.BelongsToCollectionEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
@@ -70,6 +72,60 @@ class Model {
         )
     }
 
+    fun getMoviesResponseEntity(): MoviesResponseEntity {
+        return MoviesResponseEntity(
+            0,
+            listOf(getMovieEntity()),
+            0,
+            0
+        )
+    }
+
+    fun getMovieEntity(): MoviesEntity {
+        return MoviesEntity(
+            false,
+            "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg",
+            listOf(878),
+            0,
+            "",
+            "",
+            "",
+            1.0,
+            "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+            "",
+            "Venom",
+            false,
+            6.6,
+            10
+        )
+    }
+
+    fun getMovie(): Movie {
+        return Movie(
+            0,
+            "Venom",
+            "",
+            "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+            false,
+            listOf(878),
+            "",
+            "",
+            "",
+            1.0,
+            false,
+            6.6,
+            10,
+            "http://image.tmdb.org/t/p/original/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+
+        )
+    }
+
+    fun getMoviesTitleOnly(): MutableList<Movie> {
+        val movies = Movie()
+        movies.title = "Venom"
+        return mutableListOf(movies)
+    }
+
     fun getConfigurationEntity(): ConfigurationEntity {
         return ConfigurationEntity(
             emptyList(), ImagesEntity(
@@ -82,7 +138,7 @@ class Model {
     fun getImagesEntity(): ImagesEntity {
         return ImagesEntity(
                 emptyList(), "http://image.tmdb.org/t/p/",
-                listOf("original"), emptyList(), emptyList(), "", emptyList()
+                listOf("original","original","original","original","original","original","original"), emptyList(), emptyList(), "", emptyList()
             )
     }
 }

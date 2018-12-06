@@ -19,7 +19,7 @@ import org.junit.rules.TestRule
 class MovieRepositoryTest {
 
     var networkClient: NetworkInterface = mock {
-        on { getMovieDetails(1) } doReturn Observable.just(Model().getMovieDetailsEntity(title = "sometinh"))
+        on { getMovieDetails(1) } doReturn Observable.just(Model().getMovieDetailsEntity(title = "Venom"))
         on { getConfiguration() } doReturn getConfigurationEntity()
     }
 
@@ -32,7 +32,7 @@ class MovieRepositoryTest {
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {
         movieRepository.getMovieDetails(1).test()
-            .assertValue (MovieDetails(title = "sometinh"))
+            .assertValue (MovieDetails(title = "Venom"))
             .assertNoErrors()
             .assertComplete()
             .assertValueCount(1)
