@@ -2,6 +2,7 @@ package com.intive.selftraining.selftraining.movieDetails
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
@@ -17,6 +18,7 @@ class MovieDetailsViewModel(private val repo: MovieRepository, private val custo
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
+    val mOnError = MutableLiveData<String>()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -41,6 +43,13 @@ class MovieDetailsViewModel(private val repo: MovieRepository, private val custo
             .subscribe({
                 movie.value = it
                 Log.d("LOG MOVIE DETAILS", it.toString())
-            }, { error -> Log.e("LOG MOVIE DETAILS ERROR", error.message) })
+            },
+                { error -> Log.e("LOG MOVIE DETAILS ERROR", error.message)
+                    mOnError.postValue(error.message)
+                })
+    }
+
+    fun onError(): LiveData<String> {
+        return mOnError
     }
 }
