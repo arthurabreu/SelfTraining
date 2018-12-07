@@ -1,7 +1,8 @@
 package com.intive.selftraining.selftraining.listmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.model.Model
+import com.intive.selftraining.selftraining.model.getConfigurationEntity
+import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
@@ -43,11 +44,11 @@ class ListMovieRepositoryTest {
 
     private fun getMoviesObservable(): Observable<MoviesResponseEntity> {
 
-        return Observable.just(Model().readJSONMovieResponseEntityFromAsset())
+        return Observable.just(getMoviesResponseEntity())
     }
 
     private fun getConfigurationObservable(): Observable<ConfigurationEntity> {
 
-        return Observable.just(Model().readJSONImagesFromAsset())
+        return Observable.just(getConfigurationEntity())
     }
 }

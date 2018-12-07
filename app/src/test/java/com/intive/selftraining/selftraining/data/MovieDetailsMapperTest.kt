@@ -1,7 +1,8 @@
 package com.intive.selftraining.selftraining.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.model.Model
+import com.intive.selftraining.selftraining.model.getImagesEntity
+import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
@@ -16,8 +17,8 @@ class MovieDetailsMapperTest {
 
     val mapper = mock<MovieDetailsMapper>()
     val movieDetail: MovieDetails = getMovieDetails()
-    val movieDetailsEntity: MovieDetailsEntitiy = Model().getMovieDetailsEntity()
-    val imagesEntity: ImagesEntity = Model().getImagesEntity()
+    val movieDetailsEntity: MovieDetailsEntitiy = getMovieDetailsEntity()
+    val imagesEntity: ImagesEntity = getImagesEntity()
 
     @Rule
     @JvmField

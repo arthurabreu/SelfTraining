@@ -1,7 +1,8 @@
 package com.intive.selftraining.selftraining.movieDetails
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.model.Model
+import com.intive.selftraining.selftraining.model.getConfigurationEntity
+import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.nhaarman.mockitokotlin2.doReturn
@@ -15,12 +16,12 @@ import org.junit.rules.TestRule
 class MovieRepositoryTest {
 
     var networkClient: NetworkInterface = mock {
-        on { getMovieDetails(1) } doReturn Observable.just(Model().getMovieDetailsEntity(title = "Venom"))
-        on { getConfiguration() } doReturn Observable.just(Model().getConfigurationEntity())
+        on { getMovieDetails(1) } doReturn Observable.just(getMovieDetailsEntity(title = "Venom"))
+        on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
 
     var networkClientConfigurationMock: NetworkInterface = mock {
-        on { getMovieDetails(1) } doReturn Observable.just(Model().getMovieDetailsEntity())
+        on { getMovieDetails(1) } doReturn Observable.just(getMovieDetailsEntity())
         on { getConfiguration() } doReturn Observable.just(mock())
     }
 

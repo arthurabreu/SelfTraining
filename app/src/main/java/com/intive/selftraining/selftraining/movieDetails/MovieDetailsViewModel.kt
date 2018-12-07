@@ -2,7 +2,6 @@ package com.intive.selftraining.selftraining.movieDetails
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
@@ -10,15 +9,19 @@ import android.util.Log
 import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
+import com.intive.selftraining.selftraining.utils.ErrorHandler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 
-class MovieDetailsViewModel(private val repo: MovieRepository, private val customScheduler: CustomScheduler) :
+class MovieDetailsViewModel(
+    private val repo: MovieRepository,
+    private val customScheduler: CustomScheduler,
+    private val errorHandler: ErrorHandler
+) :
     ViewModel(), LifecycleObserver {
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
-    val mOnError = MutableLiveData<String>()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -44,12 +47,9 @@ class MovieDetailsViewModel(private val repo: MovieRepository, private val custo
                 movie.value = it
                 Log.d("LOG MOVIE DETAILS", it.toString())
             },
-                { error -> Log.e("LOG MOVIE DETAILS ERROR", error.message)
-                    mOnError.postValue(error.message)
+                { error ->
+                    Log.e("LOG MOVIE DETAILS ERROR", error.message)
+                    error.message?.let { errorHandler.showError(it) }
                 })
-    }
-
-    fun onError(): LiveData<String> {
-        return mOnError
     }
 }
