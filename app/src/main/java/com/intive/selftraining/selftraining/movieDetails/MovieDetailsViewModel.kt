@@ -22,6 +22,7 @@ class MovieDetailsViewModel(
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
+    val progressBarVisibility = MutableLiveData<Boolean>()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -45,6 +46,7 @@ class MovieDetailsViewModel(
             .observeOn(customScheduler.ui()).mapNetworkErrors()
             .subscribe({
                 movie.value = it
+                progressBarVisibility.value = true
                 Log.d("LOG MOVIE DETAILS", it.toString())
             },
                 { error ->

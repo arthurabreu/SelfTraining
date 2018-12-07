@@ -17,6 +17,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository, private val cu
 : ViewModel(), LifecycleObserver {
 
     val resultsList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val progressBarVisibility = MutableLiveData<Boolean>()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -39,6 +40,7 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository, private val cu
 
         compositeDisposable.add(repo.getMovies(showMoviesObservable, configurationObservable).subscribe({
             resultsList.value = it
+            progressBarVisibility.value = true
             Log.d("LOG LIST MOVIES MAPPER", it.toString())
         }, { error -> Log.e("LOG LIST MOVIES ERROR", error.message) }))
     }

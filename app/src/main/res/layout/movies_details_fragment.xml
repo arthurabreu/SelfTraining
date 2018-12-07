@@ -185,6 +185,16 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView5" app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"/>
+                <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/grid_votes"
+                        app:layout_constraintEnd_toEndOf="@+id/grid_votes"
+                        app:progressBarVisibility='@{viewModel.progressBarVisibility}'/>
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v4.widget.NestedScrollView>

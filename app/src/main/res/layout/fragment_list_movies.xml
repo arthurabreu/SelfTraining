@@ -15,7 +15,16 @@
             android:layout_height="match_parent"
             tools:context="com.intive.selftraining.selftraining.listmovies.ListMoviesActivity"
             android:foregroundGravity="center_vertical|fill_vertical|center_horizontal">
-
+        <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/recycler_movies"
+                app:layout_constraintEnd_toEndOf="@+id/recycler_movies"
+                app:progressBarVisibility='@{viewModel.progressBarVisibility}' android:layout_marginStart="8dp"/>
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_movies"
                 tools:listitem="@layout/item_view"
