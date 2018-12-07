@@ -6,6 +6,7 @@ import com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel
 import com.intive.selftraining.selftraining.movieDetails.MovieRepository
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkClient
+import com.intive.selftraining.selftraining.utils.ErrorHandler
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
@@ -14,7 +15,8 @@ val appModule = module {
     factory { NetworkClient().networkResponse }
     single { ListMoviesRepository(get()) }
     single { MovieRepository(get()) }
+    single { ErrorHandler(get()) }
 
     viewModel { ListMoviesViewModel(get(), get()) }
-    viewModel { MovieDetailsViewModel(get(), get()) }
+    viewModel { MovieDetailsViewModel(get(), get(), get()) }
 }

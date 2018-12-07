@@ -1,7 +1,8 @@
 package com.intive.selftraining.selftraining.listmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.model.Model
+import com.intive.selftraining.selftraining.model.getConfigurationEntity
+import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
@@ -31,11 +32,11 @@ class ListMovieRepositoryTest {
         val configurationObservable = getConfigurationObservable()
 
         listMovieRepository.getMovies(showMoviesObservable, configurationObservable).test().assertValue { l ->
-            l[1].title == "Venom"
-            l[1].releaseDate == "2018-10-03"
-            l[1].posterPath == "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
-            !l[1].adult
-            !l[1].video
+            l[0].title == "Venom"
+            l[0].releaseDate == "2018-10-03"
+            l[0].posterPath == "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+            !l[0].adult
+            !l[0].video
         }
             .assertNoErrors()
             .assertComplete()
@@ -43,11 +44,11 @@ class ListMovieRepositoryTest {
 
     private fun getMoviesObservable(): Observable<MoviesResponseEntity> {
 
-        return Observable.just(Model().readJSONMovieResponseEntityFromAsset())
+        return Observable.just(getMoviesResponseEntity())
     }
 
     private fun getConfigurationObservable(): Observable<ConfigurationEntity> {
 
-        return Observable.just(Model().readJSONImagesFromAsset())
+        return Observable.just(getConfigurationEntity())
     }
 }
