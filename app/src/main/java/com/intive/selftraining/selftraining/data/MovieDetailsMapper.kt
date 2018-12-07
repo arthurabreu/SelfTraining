@@ -16,6 +16,7 @@ class MovieDetailsMapper {
             releaseDate = movieDetailsEntitiy.release_date
             title = movieDetailsEntitiy.title
             voteAverage = movieDetailsEntitiy.vote_average
-            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE]  + movieDetailsEntitiy.poster_path
+            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE] +
+                movieDetailsEntitiy.poster_path
         }
 }

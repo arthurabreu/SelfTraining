@@ -16,7 +16,7 @@ class MovieRepository(private val networkClient: NetworkInterface) {
         }
     }
 
-   private fun showMovieDetails(id: Int): Observable<MovieDetailsEntitiy> = networkClient.getMovieDetails(id)
+    private fun showMovieDetails(id: Int): Observable<MovieDetailsEntitiy> = networkClient.getMovieDetails(id)
 
-   private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
+    private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
 }

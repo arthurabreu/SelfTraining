@@ -125,7 +125,7 @@ class Model {
             emptyList(), ImagesEntity(
                 emptyList(),
                 "",
-                listOf("","","","","","",""),
+                listOf("", "", "", "", "", "", ""),
                 emptyList(),
                 emptyList(),
                 "",
@@ -136,8 +136,13 @@ class Model {
 
     fun getImagesEntity(): ImagesEntity {
         return ImagesEntity(
-                emptyList(), "http://image.tmdb.org/t/p/",
-                listOf("original","original","original","original","original","original","original"), emptyList(), emptyList(), "", emptyList()
-            )
+            emptyList(),
+            "http://image.tmdb.org/t/p/",
+            listOf("original", "original", "original", "original", "original", "original", "original"),
+            emptyList(),
+            emptyList(),
+            "",
+            emptyList()
+        )
     }
 }
