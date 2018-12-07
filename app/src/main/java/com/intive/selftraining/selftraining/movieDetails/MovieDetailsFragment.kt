@@ -27,8 +27,6 @@ class MovieDetailsFragment : Fragment() {
         val activityDetails: MoviesDetailsFragmentBinding? =
             DataBindingUtil.inflate(inflater, R.layout.movies_details_fragment, container, false)
 
-        movieDetailsViewModel.onError().observe(this, Observer<String> { messageOnError(it.toString()) })
-
         return activityDetails?.apply {
             viewModel = movieDetailsViewModel.apply {
                 movieId.value = getMovieId()
