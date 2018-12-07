@@ -39,7 +39,6 @@ class ListMovieViewModelTest {
         movies.releaseDate = "2018-11-14"
         movies.posterPath = "/uyJgTzAsp3Za2TaPiZt2yaKYRIR.jpg"
         movies.adult = false
-        movies.backdropPath = "/xgbeBCjmFpRYHDF7tQ7U98EREWp.jpg"
         movies.genreIds = numbersList
         movies.originalLanguage = "en"
         movies.originalTitle = "Fantastic Beasts: The Crimes of Grindelwald"

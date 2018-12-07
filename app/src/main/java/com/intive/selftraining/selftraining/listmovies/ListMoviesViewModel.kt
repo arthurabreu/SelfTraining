@@ -8,11 +8,13 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.listmovies.model.Movie
+import com.intive.selftraining.selftraining.network.CustomScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(), LifecycleObserver {
+class ListMoviesViewModel(private val repo: ListMoviesRepository, private val customScheduler: CustomScheduler)
+: ViewModel(), LifecycleObserver {
 
     val resultsList: MutableLiveData<List<Movie>> = MutableLiveData()
 
@@ -29,12 +31,15 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository) : ViewModel(),
     }
 
     private fun getMoviesResponse() {
-        val showMoviesObservable = repo.showMovies().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
-        val configurationObservable = repo.getConfiguration().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
+        val showMoviesObservable = repo.showMovies().subscribeOn(customScheduler.io())
+            .observeOn(customScheduler.ui()).mapNetworkErrors()
+
+        val configurationObservable = repo.getConfiguration().subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
 
         compositeDisposable.add(repo.getMovies(showMoviesObservable, configurationObservable).subscribe({
             resultsList.value = it
-            Log.d("LIST MOVIES MAPPER", it.toString())
-        }, { error -> Log.e("LIST MOVIES ERROR", error.message) }))
+            Log.d("LOG LIST MOVIES MAPPER", it.toString())
+        }, { error -> Log.e("LOG LIST MOVIES ERROR", error.message) }))
     }
 }

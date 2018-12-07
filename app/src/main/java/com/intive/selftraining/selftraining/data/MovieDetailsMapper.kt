@@ -3,6 +3,7 @@ package com.intive.selftraining.selftraining.data
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
+import com.intive.selftraining.selftraining.utils.ORIGINAL_LOGO_SIZE
 
 class MovieDetailsMapper {
     fun mapFromEntity(movieDetailsEntitiy: MovieDetailsEntitiy, imagesEntity: ImagesEntity) =
@@ -15,6 +16,7 @@ class MovieDetailsMapper {
             releaseDate = movieDetailsEntitiy.release_date
             title = movieDetailsEntitiy.title
             voteAverage = movieDetailsEntitiy.vote_average
-            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[6] + movieDetailsEntitiy.poster_path
+            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE] +
+                movieDetailsEntitiy.poster_path
         }
 }

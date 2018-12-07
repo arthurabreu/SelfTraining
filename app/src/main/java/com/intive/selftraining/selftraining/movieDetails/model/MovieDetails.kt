@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.movieDetails.model
 
-class MovieDetails(
+data class MovieDetails(
     var backdropPath: String = "",
     var genre: String = "",
     var id: Int = 0,

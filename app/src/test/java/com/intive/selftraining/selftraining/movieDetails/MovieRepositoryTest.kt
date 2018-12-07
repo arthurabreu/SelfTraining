@@ -2,71 +2,51 @@ package com.intive.selftraining.selftraining.movieDetails
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.model.Model
+import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.NetworkInterface
-import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
-import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
-import org.amshove.kluent.`should equal`
+import org.amshove.kluent.`should not be null`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import org.mockito.Mockito.`when`
 
 class MovieRepositoryTest {
 
-    private val movieDetails = getMovieDetailsEntity()
+    var networkClient: NetworkInterface = mock {
+        on { getMovieDetails(1) } doReturn Observable.just(Model().getMovieDetailsEntity(title = "Venom"))
+        on { getConfiguration() } doReturn Observable.just(Model().getConfigurationEntity())
+    }
 
-    private val configuration = getConfigurationEntity()
+    var networkClientConfigurationMock: NetworkInterface = mock {
+        on { getMovieDetails(1) } doReturn Observable.just(Model().getMovieDetailsEntity())
+        on { getConfiguration() } doReturn Observable.just(mock())
+    }
 
-    private val url = imgUrl()
-
-    private val networkClient = mock<NetworkInterface>()
+    val movieRepository = MovieRepository(networkClient)
+    val movieRepositoryConfMock = MovieRepository(networkClientConfigurationMock)
 
     @Rule
     @JvmField
     val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
-    fun `should return MovieDetailsEntity when ask for getMovieDetails(id)`() {
-
-        val movieDetailsObservable = Observable.just(movieDetails)
-
-        `when`(networkClient.getMovieDetails(335983)).thenReturn(movieDetailsObservable)
-
-        networkClient.getMovieDetails(335983).test().assertValue(movieDetails)
+    fun `should return title when ask for getMovieDetails(id)`() {
+        movieRepository.getMovieDetails(1).test()
+            .assertValue(MovieDetails(title = "Venom"))
+            .assertNoErrors()
+            .assertComplete()
+            .assertValueCount(1)
     }
 
     @Test
-    fun `should return ConfigurationEntity when ask for getConfiguration()`() {
-
-        val configurationObservable = Observable.just(configuration)
-
-        `when`(networkClient.getConfiguration()).thenReturn(configurationObservable)
-
-        networkClient.getConfiguration().test().assertValue(configuration)
+    fun `should return noValues when one of two observable not emitted`() {
+        movieRepositoryConfMock.getMovieDetails(1).test().assertNoValues()
     }
 
     @Test
-    fun `should return image url after zip getConfiguration() and getMovieDetails(id)`() {
-
-        val urlCommon =
-            configuration.images.base_url + configuration.images.logo_sizes[0] + movieDetails.poster_path
-
-        urlCommon `should equal` url
-    }
-
-    private fun imgUrl(): String {
-        return getConfigurationEntity().images.base_url + getConfigurationEntity().images.logo_sizes[0] + getMovieDetailsEntity().poster_path
-    }
-
-    private fun getMovieDetailsEntity(): MovieDetailsEntitiy {
-
-        return Model().getMovieDetailsEntity()
-    }
-
-    private fun getConfigurationEntity(): ConfigurationEntity {
-
-        return Model().getConfigurationEntity()
+    fun `should not be null when ask for getMovieDetails(id)`() {
+        movieRepository.getMovieDetails(1).test().`should not be null`()
     }
 }
