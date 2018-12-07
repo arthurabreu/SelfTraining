@@ -7,6 +7,7 @@ import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Observable
 import org.amshove.kluent.`should not be null`
 import org.junit.Rule
@@ -20,13 +21,7 @@ class MovieRepositoryTest {
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
 
-    var networkClientConfigurationMock: NetworkInterface = mock {
-        on { getMovieDetails(1) } doReturn Observable.just(getMovieDetailsEntity())
-        on { getConfiguration() } doReturn Observable.just(mock())
-    }
-
     val movieRepository = MovieRepository(networkClient)
-    val movieRepositoryConfMock = MovieRepository(networkClientConfigurationMock)
 
     @Rule
     @JvmField
@@ -43,7 +38,8 @@ class MovieRepositoryTest {
 
     @Test
     fun `should return noValues when one of two observable not emitted`() {
-        movieRepositoryConfMock.getMovieDetails(1).test().assertNoValues()
+        whenever(networkClient.getConfiguration()).thenReturn(Observable.just(mock()))
+        movieRepository.getMovieDetails(1).test().assertNoValues()
     }
 
     @Test
