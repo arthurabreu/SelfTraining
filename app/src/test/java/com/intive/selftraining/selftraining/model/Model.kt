@@ -8,7 +8,6 @@ import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResp
 import com.intive.selftraining.selftraining.network.models.movieDetails.BelongsToCollectionEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
 
-
     fun getMovieDetailsEntity(title: String = ""): MovieDetailsEntitiy {
         return MovieDetailsEntitiy(
             false,
