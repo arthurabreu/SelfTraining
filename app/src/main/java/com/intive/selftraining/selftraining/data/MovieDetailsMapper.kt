@@ -16,9 +16,6 @@ class MovieDetailsMapper {
             releaseDate = movieDetailsEntitiy.release_date
             title = movieDetailsEntitiy.title
             voteAverage = movieDetailsEntitiy.vote_average
-//            val imageSize =
-//                if (imagesEntity.logo_sizes.size >= ORIGINAL_LOGO_SIZE + 1)
-//                    imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE] else "original"
-            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[10]  + movieDetailsEntitiy.poster_path
+            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE]  + movieDetailsEntitiy.poster_path
         }
 }
