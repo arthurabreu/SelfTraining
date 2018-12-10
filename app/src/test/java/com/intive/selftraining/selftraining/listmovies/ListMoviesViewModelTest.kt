@@ -1,8 +1,6 @@
-package com.intive.selftraining.selftraining.test
+package com.intive.selftraining.selftraining.listmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
-import com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
@@ -28,7 +26,7 @@ class ListMoviesViewModelTest {
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
     val listMoviesRepository = mock<ListMoviesRepository>() {
-        on {getMovies()} doReturn Observable.just(listOf(Movie()))
+        on { getMovies() } doReturn Observable.just(listOf(Movie()))
     }
 
     var testSchedulers: CustomScheduler = mock {
@@ -36,13 +34,11 @@ class ListMoviesViewModelTest {
         on { ui() } doReturn Schedulers.trampoline()
     }
 
-
-
     val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers) }
 
     @Test
     fun getResultsList() {
         viewModel.onCreate()
-        viewModel.resultsList.value `should equal` getMoviesResponseEntity().results
+        viewModel.resultsList.value `should equal` getMoviesResponseEntity()
     }
 }
