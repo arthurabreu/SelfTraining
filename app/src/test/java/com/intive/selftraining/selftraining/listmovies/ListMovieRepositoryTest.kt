@@ -9,7 +9,6 @@ import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResp
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
-import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
