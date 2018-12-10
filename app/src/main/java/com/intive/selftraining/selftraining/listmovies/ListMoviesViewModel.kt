@@ -36,10 +36,9 @@ class ListMoviesViewModel(
         compositeDisposable += repo.getMovies()
             .subscribeOn(customScheduler.io())
             .observeOn(customScheduler.ui()).mapNetworkErrors()
-            .subscribe({
+            .subscribe {
                 resultsList.value = it
                 progressBarVisibility.value = true
-//                Log.d("LOG LIST MOVIES MAPPER", it.toString())
-            })
+            }
     }
 }
