@@ -9,6 +9,8 @@ import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResp
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
+import org.amshove.kluent.`should be equal to`
+import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -28,13 +30,10 @@ class ListMovieRepositoryTest {
 
     @Test
     fun `should return values when ask for getMovieDetails(id)`() {
-        val showMoviesObservable = getMoviesObservable()
-        val configurationObservable = getConfigurationObservable()
 
-        listMovieRepository.getMovies(showMoviesObservable, configurationObservable).test().assertValue { l ->
-            l[0].title == "Venom"
-            l[0].releaseDate == "2018-10-03"
-            l[0].posterPath == "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+        listMovieRepository.getMovies().test().assertValue { l ->
+            l[0].title `should equal` "Venom"
+            l[0].posterPath `should equal` "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
             !l[0].adult
             !l[0].video
         }
