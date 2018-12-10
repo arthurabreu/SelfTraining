@@ -1,12 +1,8 @@
 package com.intive.selftraining.selftraining.test
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.bumptech.glide.load.engine.Resource
 import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
 import com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel
-import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.CustomScheduler
@@ -16,8 +12,6 @@ import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import org.amshove.kluent.`should equal`
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -32,22 +26,18 @@ class ListMovieViewModelTest {
         on { getListMovies() } doReturn Observable.just(getMoviesResponseEntity())
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
-    val listMoviesRepository = mock<ListMoviesRepository>() {
-        on {getMovies()} doReturn Observable.just(listOf(Movie()))
-    }
+    val listMoviesRepository = ListMoviesRepository(networkClient)
 
     var testSchedulers: CustomScheduler = mock {
         on { io() } doReturn Schedulers.trampoline()
         on { ui() } doReturn Schedulers.trampoline()
     }
 
-
-
     val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers) }
 
     @Test
     fun getResultsList() {
         viewModel.onCreate()
-//        viewModel.resultsList.value `should equal` getMoviesResponseEntity().results
+        viewModel.resultsList.value `should equal` getMoviesResponseEntity().results
     }
 }

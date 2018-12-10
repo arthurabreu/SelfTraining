@@ -1,6 +1,5 @@
 package com.intive.selftraining.selftraining.listmovies
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.NetworkInterface
@@ -10,9 +9,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import org.amshove.kluent.`should equal`
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
 
 class ListMovieRepositoryTest {
 
@@ -22,10 +19,6 @@ class ListMovieRepositoryTest {
     }
 
     val listMovieRepository = ListMoviesRepository(networkClient)
-
-    @Rule
-    @JvmField
-    val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
     fun `should return values when ask for getMovieDetails(id)`() {

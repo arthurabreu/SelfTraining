@@ -1,8 +1,8 @@
 package com.intive.selftraining.selftraining.listmovies.adapter
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.intive.selftraining.selftraining.listmovies.ItemListener
 import com.intive.selftraining.selftraining.listmovies.MOVIE_ID
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 
-class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class ItemsAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private var resultsList: List<Movie> = emptyList()
 
@@ -37,7 +37,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    abstract class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    abstract class ViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view)
 
     class ItemViewHolder(
         private val parent: ViewGroup,
