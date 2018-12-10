@@ -32,12 +32,12 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository, private val cu
 
     private fun getMoviesResponse() {
         compositeDisposable += repo.getMovies()
-            .subscribeOn(customScheduler.io())
-            .observeOn(customScheduler.ui()).mapNetworkErrors()
+//            .subscribeOn(customScheduler.io())
+//            .observeOn(customScheduler.ui()).mapNetworkErrors()
             .subscribe({
                 resultsList.value = it
                 progressBarVisibility.value = true
                 Log.d("LOG LIST MOVIES MAPPER", it.toString())
-            }, { error -> Log.e("LOG LIST MOVIES ERROR", error.message) })
+            })
     }
 }
