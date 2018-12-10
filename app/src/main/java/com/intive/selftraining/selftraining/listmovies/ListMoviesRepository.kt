@@ -10,11 +10,8 @@ import io.reactivex.rxkotlin.Observables
 
 class ListMoviesRepository(private val networkClient: NetworkInterface) {
 
-    fun getMovies(
-        showMoviesObservable: Observable<MoviesResponseEntity>,
-        configurationObservable: Observable<ConfigurationEntity>
-    ): Observable<List<Movie>> {
-        return Observables.zip(showMoviesObservable, configurationObservable) { movies, configuration ->
+    fun getMovies(): Observable<List<Movie>> {
+        return Observables.zip(showMovies(), getConfiguration()) { movies, configuration ->
             MoviesMapper().mapFromEntity(movies, configuration.images)
         }
     }
