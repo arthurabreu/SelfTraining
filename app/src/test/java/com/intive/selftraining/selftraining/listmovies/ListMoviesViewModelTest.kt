@@ -38,6 +38,6 @@ class ListMoviesViewModelTest {
     @Test
     fun getResultsList() {
         viewModel.onCreate()
-        //viewModel.resultsList.value `should equal` getMoviesResponseEntity()
+        // viewModel.resultsList.value `should equal` getMoviesResponseEntity()
     }
 }
