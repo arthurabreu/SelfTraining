@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining
+package com.intive.selftraining.selftraining.model
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Rule
