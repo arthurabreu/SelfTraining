@@ -6,7 +6,6 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
-import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -39,7 +38,7 @@ class ListMoviesViewModel(
         progressBarVisibility.value = View.VISIBLE
         compositeDisposable += repo.getMovies()
             .subscribeOn(customScheduler.io())
-            .observeOn(customScheduler.ui()).mapNetworkErrors()
+            .observeOn(customScheduler.ui())
             .subscribe {
                 resultsList.value = it
                 progressBarVisibility.value = View.GONE
