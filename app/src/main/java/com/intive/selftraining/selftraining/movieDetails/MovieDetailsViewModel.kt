@@ -47,10 +47,10 @@ class MovieDetailsViewModel(
             .subscribe({
                 movie.value = it
                 progressBarVisibility.value = true
-                Log.d("LOG MOVIE DETAILS", it.toString())
+//                Log.d("LOG MOVIE DETAILS", it.toString())
             },
                 { error ->
-                    Log.e("LOG MOVIE DETAILS ERROR", error.message)
+//                    Log.e("LOG MOVIE DETAILS ERROR", error.message)
                     error.message?.let { errorHandler.showError(it) }
                 })
     }

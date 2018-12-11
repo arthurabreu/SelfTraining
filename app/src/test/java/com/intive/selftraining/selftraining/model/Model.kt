@@ -82,7 +82,7 @@ fun getMovie(): Movie {
         false,
         6.6,
         10,
-        "http://image.tmdb.org/t/p/original/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+        "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
 
     )
 }

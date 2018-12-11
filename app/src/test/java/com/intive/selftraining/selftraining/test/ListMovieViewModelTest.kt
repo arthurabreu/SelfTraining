@@ -4,6 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
 import com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
+import com.intive.selftraining.selftraining.model.getMovie
+import com.intive.selftraining.selftraining.model.getMovieEntity
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkInterface
@@ -11,6 +13,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -37,6 +40,6 @@ class ListMovieViewModelTest {
     @Test
     fun getResultsList() {
         viewModel.onCreate()
-//        viewModel.resultsList.value `should equal` getMoviesResponseEntity().results
+        viewModel.resultsList.value `should equal` listOf(getMovie())
     }
 }
