@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import com.intive.selftraining.selftraining.ViewModelTest
+import com.intive.selftraining.selftraining.model.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
