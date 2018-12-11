@@ -1,11 +1,11 @@
 package com.intive.selftraining.selftraining.movieDetails
 
+import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
-import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
@@ -22,7 +22,9 @@ class MovieDetailsViewModel(
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
-    val progressBarVisibility = MutableLiveData<Boolean>()
+    val progressBarVisibility = MutableLiveData<Int>().apply {
+        value = View.GONE
+    }
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -41,12 +43,13 @@ class MovieDetailsViewModel(
     }
 
     private fun getMovieDetails(id: Int) {
+        progressBarVisibility.value = View.VISIBLE
         compositeDisposable += repo.getMovieDetails(id)
             .subscribeOn(customScheduler.io())
-            .observeOn(customScheduler.ui()).mapNetworkErrors()
+            .observeOn(customScheduler.ui())
             .subscribe({
                 movie.value = it
-                progressBarVisibility.value = true
+                progressBarVisibility.value = View.GONE
                 Logger.d("LOG MOVIE DETAILS", it.toString())
             },
                 { error ->
