@@ -1,9 +1,7 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
-import com.intive.selftraining.selftraining.model.getMovieDetails
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
