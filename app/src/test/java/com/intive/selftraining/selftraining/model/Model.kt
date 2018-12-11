@@ -82,6 +82,26 @@ fun getMovie(): Movie {
         false,
         6.6,
         10,
+        "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
+
+    )
+}
+
+fun getMovieForMapper(): Movie {
+    return Movie(
+        0,
+        "Venom",
+        "",
+        "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+        false,
+        listOf(878),
+        "",
+        "",
+        "",
+        1.0,
+        false,
+        6.6,
+        10,
         "http://image.tmdb.org/t/p/original/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
 
     )

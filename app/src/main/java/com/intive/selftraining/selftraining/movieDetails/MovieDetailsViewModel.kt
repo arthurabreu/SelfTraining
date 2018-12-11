@@ -5,7 +5,6 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
-import android.util.Log
 import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
@@ -47,10 +46,10 @@ class MovieDetailsViewModel(
             .subscribe({
                 movie.value = it
                 progressBarVisibility.value = true
-                Log.d("LOG MOVIE DETAILS", it.toString())
+//                Log.d("LOG MOVIE DETAILS", it.toString())
             },
                 { error ->
-                    Log.e("LOG MOVIE DETAILS ERROR", error.message)
+//                    Log.e("LOG MOVIE DETAILS ERROR", error.message)
                     error.message?.let { errorHandler.showError(it) }
                 })
     }
