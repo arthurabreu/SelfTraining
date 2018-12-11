@@ -1,6 +1,5 @@
 package com.intive.selftraining.selftraining.listmovies
 
-import android.view.View
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
@@ -45,8 +44,8 @@ class ListMovieViewModelTest {
     }
 
     @Test
-    fun `test progress bar returns the correct value for visibility GONE`(){
-        progressBarVisibility.value = View.GONE
-        progressBarVisibility.value `should equal` 8
+    fun `test progress bar returns GONE before fecthing data`(){
+
+
     }
 }
