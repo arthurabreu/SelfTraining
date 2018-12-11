@@ -1,9 +1,11 @@
 package com.intive.selftraining.selftraining.movieDetails
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetails
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
+import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.utils.ErrorHandler
@@ -15,6 +17,7 @@ import org.amshove.kluent.`should equal`
 import org.junit.Test
 
 class MovieDetailsViewModelTest : ViewModelTest() {
+
     var networkClient: NetworkInterface = mock {
         on { getMovieDetails(1) } doReturn Observable.just(getMovieDetailsEntity())
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
@@ -37,9 +40,9 @@ class MovieDetailsViewModelTest : ViewModelTest() {
     }
 
     @Test
-    fun getResultsList() {
-//        viewModel.movieId.value = 1
+    fun `should return MovieDetails when value of movie changes`() {
+        viewModel.movieId.value = 1
         viewModel.onCreate()
-        viewModel.movie.value `should equal` getMovieDetails()
+        viewModel.movie.value `should equal` MovieDetails()
     }
 }

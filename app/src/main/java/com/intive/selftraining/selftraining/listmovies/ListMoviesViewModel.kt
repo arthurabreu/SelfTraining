@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.listmovies
 
+import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +19,9 @@ class ListMoviesViewModel(
     ViewModel(), LifecycleObserver {
 
     val resultsList: MutableLiveData<List<Movie>> = MutableLiveData()
-    val progressBarVisibility = MutableLiveData<Boolean>()
+    val progressBarVisibility = MutableLiveData<Int>().apply {
+        value = View.GONE
+    }
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -33,12 +36,13 @@ class ListMoviesViewModel(
     }
 
     private fun getMoviesResponse() {
+        progressBarVisibility.value = View.VISIBLE
         compositeDisposable += repo.getMovies()
             .subscribeOn(customScheduler.io())
             .observeOn(customScheduler.ui()).mapNetworkErrors()
             .subscribe {
                 resultsList.value = it
-                progressBarVisibility.value = true
+                progressBarVisibility.value = View.GONE
             }
     }
 }

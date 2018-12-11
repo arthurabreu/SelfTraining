@@ -38,7 +38,7 @@ class ListMovieViewModelTest {
     val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers) }
 
     @Test
-    fun getResultsList() {
+    fun `should return list of Movies when value of resultsList changes`() {
         viewModel.onCreate()
         viewModel.resultsList.value `should equal` listOf(getMovie())
     }
