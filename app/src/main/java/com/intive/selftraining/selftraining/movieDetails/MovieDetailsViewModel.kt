@@ -9,6 +9,7 @@ import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
+import com.intive.selftraining.selftraining.utils.Logger
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 
@@ -46,11 +47,13 @@ class MovieDetailsViewModel(
             .subscribe({
                 movie.value = it
                 progressBarVisibility.value = true
-//                Log.d("LOG MOVIE DETAILS", it.toString())
+                Logger.d("LOG MOVIE DETAILS", it.toString())
             },
                 { error ->
-//                    Log.e("LOG MOVIE DETAILS ERROR", error.message)
-                    error.message?.let { errorHandler.showError(it) }
+                    error.message?.let {
+                        Logger.e("LOG MOVIE DETAILS ERROR", it)
+                        errorHandler.showError(it)
+                    }
                 })
     }
 }
