@@ -1,6 +1,8 @@
 package com.intive.selftraining.selftraining.listmovies
 
+import android.view.View
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovie
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
@@ -34,9 +36,17 @@ class ListMovieViewModelTest {
 
     val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers) }
 
+    val progressBarVisibility by lazy { MutableLiveData<Int>()}
+
     @Test
     fun `should return list of Movies when value of resultsList changes`() {
         viewModel.onCreate()
         viewModel.resultsList.value `should equal` listOf(getMovie())
+    }
+
+    @Test
+    fun `test progress bar returns the correct value for visibility GONE`(){
+        progressBarVisibility.value = View.GONE
+        progressBarVisibility.value `should equal` 8
     }
 }
