@@ -1,8 +1,8 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MovieDetailsFragment : Fragment() {
+class MovieDetailsFragment : androidx.fragment.app.Fragment() {
 
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
 

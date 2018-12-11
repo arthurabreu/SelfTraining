@@ -1,8 +1,7 @@
-package com.intive.selftraining.selftraining.test
+package com.intive.selftraining.selftraining.listmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
-import com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel
+import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.CustomScheduler
@@ -15,7 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 
-class ListMovieViewModelTest {
+class ListMoviesViewModelTest {
 
     @Rule
     @JvmField
@@ -25,7 +24,9 @@ class ListMovieViewModelTest {
         on { getListMovies() } doReturn Observable.just(getMoviesResponseEntity())
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
-    val listMoviesRepository = ListMoviesRepository(networkClient)
+    val listMoviesRepository = mock<ListMoviesRepository>() {
+        on { getMovies() } doReturn Observable.just(listOf(Movie()))
+    }
 
     var testSchedulers: CustomScheduler = mock {
         on { io() } doReturn Schedulers.trampoline()
@@ -37,6 +38,6 @@ class ListMovieViewModelTest {
     @Test
     fun getResultsList() {
         viewModel.onCreate()
-//        viewModel.resultsList.value `should equal` getMoviesResponseEntity().results
+        // viewModel.resultsList.value `should equal` getMoviesResponseEntity()
     }
 }

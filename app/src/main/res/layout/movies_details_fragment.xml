@@ -11,11 +11,11 @@
 
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/main_appbar"
                 android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:minHeight="?attr/actionBarSize">
 
-            <android.support.design.widget.CollapsingToolbarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:id="@+id/main_collapsing"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -31,7 +31,7 @@
                     app:layout_scrollFlags="scroll|exitUntilCollapsed"
                     android:minHeight="?attr/actionBarSize">
 
-                <android.support.v7.widget.Toolbar
+                <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
@@ -55,20 +55,20 @@
                         android:layout_gravity="bottom"
                         android:background="@drawable/photo_background_protection"/>
 
-                <android.support.v7.widget.Toolbar
+                <androidx.appcompat.widget.Toolbar
                         android:id="@+id/main_toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
                         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-            </android.support.design.widget.CollapsingToolbarLayout>
-        </android.support.design.widget.AppBarLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     app:useDefaultMargins="true"
@@ -194,12 +194,12 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/grid_votes"
                         app:layout_constraintEnd_toEndOf="@+id/grid_votes"
-                        app:progressBarVisibility='@{viewModel.progressBarVisibility}'/>
-            </android.support.constraint.ConstraintLayout>
+                        app:progressBarVisibility="@{viewModel.progressBarVisibility}"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -209,5 +209,5 @@
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_anchor="@id/main_appbar"
                 app:layout_anchorGravity="bottom|right|end" android:focusable="true"/>
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

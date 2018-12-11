@@ -1,20 +1,21 @@
 package com.intive.selftraining.selftraining.listmovies
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.OnLifecycleEvent
-import android.arch.lifecycle.ViewModel
-import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ViewModel
 import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.CustomScheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxkotlin.plusAssign
 
-class ListMoviesViewModel(private val repo: ListMoviesRepository, private val customScheduler: CustomScheduler)
-: ViewModel(), LifecycleObserver {
+class ListMoviesViewModel(
+    private val repo: ListMoviesRepository,
+    private val customScheduler: CustomScheduler
+) :
+    ViewModel(), LifecycleObserver {
 
     val resultsList: MutableLiveData<List<Movie>> = MutableLiveData()
     val progressBarVisibility = MutableLiveData<Boolean>()
@@ -32,16 +33,12 @@ class ListMoviesViewModel(private val repo: ListMoviesRepository, private val cu
     }
 
     private fun getMoviesResponse() {
-        val showMoviesObservable = repo.showMovies().subscribeOn(customScheduler.io())
+        compositeDisposable += repo.getMovies()
+            .subscribeOn(customScheduler.io())
             .observeOn(customScheduler.ui()).mapNetworkErrors()
-
-        val configurationObservable = repo.getConfiguration().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).mapNetworkErrors()
-
-        compositeDisposable.add(repo.getMovies(showMoviesObservable, configurationObservable).subscribe({
-            resultsList.value = it
-            progressBarVisibility.value = true
-            Log.d("LOG LIST MOVIES MAPPER", it.toString())
-        }, { error -> Log.e("LOG LIST MOVIES ERROR", error.message) }))
+            .subscribe {
+                resultsList.value = it
+                progressBarVisibility.value = true
+            }
     }
 }

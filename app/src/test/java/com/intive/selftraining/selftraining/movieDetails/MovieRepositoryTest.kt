@@ -1,6 +1,5 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
@@ -10,9 +9,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Observable
 import org.amshove.kluent.`should not be null`
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
 
 class MovieRepositoryTest {
 
@@ -22,10 +19,6 @@ class MovieRepositoryTest {
     }
 
     val movieRepository = MovieRepository(networkClient)
-
-    @Rule
-    @JvmField
-    val rule: TestRule = InstantTaskExecutorRule()
 
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {

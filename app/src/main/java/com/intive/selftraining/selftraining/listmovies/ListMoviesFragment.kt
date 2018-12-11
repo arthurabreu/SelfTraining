@@ -1,10 +1,10 @@
 package com.intive.selftraining.selftraining.listmovies
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ListMoviesFragment : Fragment() {
+class ListMoviesFragment : androidx.fragment.app.Fragment() {
 
     private val SPAN_COUNT = 3
 
@@ -42,12 +42,17 @@ class ListMoviesFragment : Fragment() {
     private fun initRecycler(
         activityMainBinding: FragmentListMoviesBinding
     ) {
-        val layoutManager = GridLayoutManager(context, SPAN_COUNT)
+        val layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, SPAN_COUNT)
 
         val recyclerMovies = activityMainBinding.recyclerMovies
         recyclerMovies.layoutManager = layoutManager
         recyclerMovies.hasFixedSize()
         recyclerMovies.adapter = ItemsAdapter()
-        recyclerMovies.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
+        recyclerMovies.addItemDecoration(
+            androidx.recyclerview.widget.DividerItemDecoration(
+                context,
+                layoutManager.orientation
+            )
+        )
     }
 }
