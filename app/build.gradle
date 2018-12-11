@@ -62,6 +62,8 @@ dependencies {
     //Kotlin Version
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_reflect"
+
     //Androis Support Libraries
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
