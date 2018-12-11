@@ -12,7 +12,7 @@ class MovieMapperTest {
     var moviesResponseEntity = getMoviesResponseEntity()
     var imagesEntity = getImagesEntity()
 
-    val movies: MutableList<Movie> = mutableListOf(getMovieForMapper()git a)
+    val movies: MutableList<Movie> = mutableListOf(getMovieForMapper())
 
     var mapper = MoviesMapper()
 
