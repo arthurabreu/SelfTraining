@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.library.baseAdapters.BR.viewModel
+import com.intive.selftraining.selftraining.BR.viewModel
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn

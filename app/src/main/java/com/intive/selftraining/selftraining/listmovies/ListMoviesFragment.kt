@@ -1,13 +1,10 @@
 package com.intive.selftraining.selftraining.listmovies
 
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
