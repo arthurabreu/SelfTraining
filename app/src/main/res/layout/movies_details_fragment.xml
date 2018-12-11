@@ -194,7 +194,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/grid_votes"
                         app:layout_constraintEnd_toEndOf="@+id/grid_votes"
-                        app:progressBarVisibility="@{viewModel.progressBarVisibility}"/>
+                        android:visibility="@{viewModel.progressBarVisibility}"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
