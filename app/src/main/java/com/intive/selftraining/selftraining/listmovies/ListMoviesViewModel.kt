@@ -36,13 +36,22 @@ class ListMoviesViewModel(
     }
 
     private fun getMoviesResponse() {
-        progressBarVisibility.value = View.VISIBLE
+        showProgressBar()
         compositeDisposable += repo.getMovies()
             .subscribeOn(customScheduler.io())
             .observeOn(customScheduler.ui()).mapNetworkErrors()
             .subscribe {
                 resultsList.value = it
-                progressBarVisibility.value = View.GONE
+                hideProgressBar()
             }
     }
+
+    private fun showProgressBar(){
+        progressBarVisibility.value = View.VISIBLE
+    }
+
+    private fun hideProgressBar(){
+        progressBarVisibility.value = View.GONE
+    }
+
 }

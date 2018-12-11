@@ -44,7 +44,10 @@ class ListMovieViewModelTest {
     }
 
     @Test
-    fun `test progress bar returns GONE before fecthing data`(){
+    fun `test progress bar returns GONE before fetching data`(){
+       // when(viewModel.onCreate()) then progressBarVisibility.value == View.VISIBLE
+        viewModel.onCreate()
+        progressBarVisibility.value `should equal` 8
 
 
     }
