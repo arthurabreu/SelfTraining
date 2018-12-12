@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
+import com.intive.selftraining.selftraining.utils.Logger
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 
@@ -49,9 +50,13 @@ class MovieDetailsViewModel(
             .subscribe({
                 movie.value = it
                 progressBarVisibility.value = View.GONE
+                Logger.d("LOG MOVIE DETAILS", it.toString())
             },
                 { error ->
-                    error.message?.let { errorHandler.showError(it) }
+                    error.message?.let {
+                        Logger.e("LOG MOVIE DETAILS ERROR", it)
+                        errorHandler.showError(it)
+                    }
                 })
     }
 }
