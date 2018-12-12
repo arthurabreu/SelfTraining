@@ -1,11 +1,20 @@
 package com.intive.selftraining.selftraining.network.models.listMovies
 
+import com.google.gson.annotations.SerializedName
+
 data class ImagesEntity(
-    val backdrop_sizes: List<String>,
-    val base_url: String,
-    val logo_sizes: List<String>,
-    val poster_sizes: List<String>,
-    val profile_sizes: List<String>,
-    val secure_base_url: String,
-    val still_sizes: List<String>
+    @SerializedName("backdrop_sizes")
+    val backdropSizes: List<String>,
+    @SerializedName("base_url")
+    val baseUrl: String,
+    @SerializedName("logo_sizes")
+    val logoSizes: List<String>,
+    @SerializedName("poster_sizes")
+    val posterSizes: List<String>,
+    @SerializedName("profile_sizes")
+    val profileSizes: List<String>,
+    @SerializedName("secure_base_url")
+    val secureBaseUrl: String,
+    @SerializedName("still_sizes")
+    val stillSizes: List<String>
 )

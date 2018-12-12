@@ -8,15 +8,15 @@ import com.intive.selftraining.selftraining.utils.ORIGINAL_LOGO_SIZE
 class MovieDetailsMapper {
     fun mapFromEntity(movieDetailsEntity: MovieDetailsEntity, imagesEntity: ImagesEntity) =
         MovieDetails().apply {
-            backdropPath = movieDetailsEntity.backdrop_path
+            backdropPath = movieDetailsEntity.backdropPath
             movieDetailsEntity.genres.forEach { this.genre = this.genre + " " + it.name }
             id = movieDetailsEntity.id
             overview = movieDetailsEntity.overview
-            posterPath = movieDetailsEntity.poster_path
-            releaseDate = movieDetailsEntity.release_date
+            posterPath = movieDetailsEntity.posterPath
+            releaseDate = movieDetailsEntity.releaseDate
             title = movieDetailsEntity.title
-            voteAverage = movieDetailsEntity.vote_average
-            completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE] +
-                movieDetailsEntity.poster_path
+            voteAverage = movieDetailsEntity.voteAverage
+            completeImageUrl = imagesEntity.baseUrl + imagesEntity.logoSizes[ORIGINAL_LOGO_SIZE] +
+                movieDetailsEntity.posterPath
         }
 }

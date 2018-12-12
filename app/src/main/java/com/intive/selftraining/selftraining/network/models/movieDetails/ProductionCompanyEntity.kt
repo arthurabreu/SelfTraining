@@ -1,8 +1,14 @@
 package com.intive.selftraining.selftraining.network.models.movieDetails
 
+import com.google.gson.annotations.SerializedName
+
 data class ProductionCompanyEntity(
+    @SerializedName("id")
     val id: Int,
-    val logo_path: String,
+    @SerializedName("logo_path")
+    val logoPath: String,
+    @SerializedName("name")
     val name: String,
-    val origin_country: String
+    @SerializedName("origin_country")
+    val originCountry: String
 )

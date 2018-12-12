@@ -1,6 +1,10 @@
 package com.intive.selftraining.selftraining.network.models.listMovies
 
+import com.google.gson.annotations.SerializedName
+
 data class ConfigurationEntity(
-    val change_keys: List<String>,
+    @SerializedName("change_keys")
+    val changeKeys: List<String>,
+    @SerializedName("images")
     val images: ImagesEntity
 )

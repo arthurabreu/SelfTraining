@@ -4,6 +4,7 @@ import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.plusAssign
 
 /**
  * ViewModel for Rx Jobs
@@ -16,7 +17,7 @@ abstract class RxViewModel : ViewModel() {
     private val disposables = CompositeDisposable()
 
     fun launch(job: () -> Disposable) {
-        disposables.add(job())
+        disposables += job()
     }
 
     @CallSuper
