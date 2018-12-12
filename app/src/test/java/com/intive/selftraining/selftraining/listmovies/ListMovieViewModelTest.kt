@@ -34,7 +34,7 @@ class ListMovieViewModelTest {
         on { ui() } doReturn Schedulers.trampoline()
     }
 
-    val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers,errorHandler) }
+    val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers, errorHandler) }
 
     @Test
     fun `should return list of Movies when value of resultsList changes`() {
