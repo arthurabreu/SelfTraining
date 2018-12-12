@@ -17,6 +17,6 @@ val appModule = module {
     single { MovieRepository(get()) }
     single { ErrorHandler(get()) }
 
-    viewModel { ListMoviesViewModel(get(), get()) }
+    viewModel { ListMoviesViewModel(get(), get(), get()) }
     viewModel { MovieDetailsViewModel(get(), get(), get()) }
 }

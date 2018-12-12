@@ -6,6 +6,7 @@ import com.intive.selftraining.selftraining.model.getMovie
 import com.intive.selftraining.selftraining.model.getMoviesResponseEntity
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkInterface
+import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
@@ -26,13 +27,14 @@ class ListMovieViewModelTest {
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
     val listMoviesRepository = ListMoviesRepository(networkClient)
+    var errorHandler: ErrorHandler = mock()
 
     var testSchedulers: CustomScheduler = mock {
         on { io() } doReturn Schedulers.trampoline()
         on { ui() } doReturn Schedulers.trampoline()
     }
 
-    val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers) }
+    val viewModel by lazy { ListMoviesViewModel(listMoviesRepository, testSchedulers,errorHandler) }
 
     @Test
     fun `should return list of Movies when value of resultsList changes`() {

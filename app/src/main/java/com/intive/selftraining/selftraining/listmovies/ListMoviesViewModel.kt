@@ -8,13 +8,15 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.CustomScheduler
+import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.intive.selftraining.selftraining.utils.Logger
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 
 class ListMoviesViewModel(
     private val repo: ListMoviesRepository,
-    private val customScheduler: CustomScheduler
+    private val customScheduler: CustomScheduler,
+    private val errorHandler: ErrorHandler
 ) :
     ViewModel(), LifecycleObserver {
 
@@ -44,6 +46,11 @@ class ListMoviesViewModel(
                 Logger.d("LOG LIST MOVIES MAPPER", it.toString())
                 resultsList.value = it
                 progressBarVisibility.value = View.GONE
-            }, { error -> error.message?.let { Logger.e("LOG LIST MOVIES ERROR", it) } })
+            }, { error ->
+                error.message?.let {
+                    Logger.e("LOG LIST MOVIES ERROR", it)
+                    errorHandler.showError(it)
+                }
+            })
     }
 }
