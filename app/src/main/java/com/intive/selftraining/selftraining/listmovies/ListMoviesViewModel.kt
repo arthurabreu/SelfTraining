@@ -46,12 +46,11 @@ class ListMoviesViewModel(
             }
     }
 
-    private fun showProgressBar(){
+    private fun showProgressBar() {
         progressBarVisibility.value = View.VISIBLE
     }
 
-    private fun hideProgressBar(){
+    private fun hideProgressBar() {
         progressBarVisibility.value = View.GONE
     }
-
 }
