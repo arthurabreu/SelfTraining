@@ -1,20 +1,18 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.library.baseAdapters.BR.viewModel
-import com.intive.selftraining.selftraining.BR.viewModel
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MovieDetailsFragment : androidx.fragment.app.Fragment() {
+class MovieDetailsFragment : Fragment() {
 
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
 

@@ -1,11 +1,11 @@
 package com.intive.selftraining.selftraining.network.models.movieDetails
 
-data class MovieDetailsEntitiy(
+data class MovieDetailsEntity(
     val adult: Boolean,
     val backdrop_path: String,
     val belongs_to_collection: BelongsToCollectionEntity,
     val budget: Int,
-    val genres: List<GenreEntitiy>,
+    val genres: List<GenreEntity>,
     val homepage: String,
     val id: Int,
     val imdb_id: String,
@@ -14,7 +14,7 @@ data class MovieDetailsEntitiy(
     val overview: String,
     val popularity: Double,
     val poster_path: String,
-    val production_company: List<ProductionCompanyEntitiy>,
+    val production_company: List<ProductionCompanyEntity>,
     val production_country: List<ProductionCountryEntity>,
     val release_date: String,
     val revenue: Int,
