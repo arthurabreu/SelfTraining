@@ -48,7 +48,9 @@ class ListMovieViewModelTest {
 
     @Test
     fun `test progress bar returns VISIBLE during fetching`() {
-        viewModel.onCreate()
+//        val tested = spy<ListMoviesViewModel>()
+//        tested.onCreate()
+//        verify(tested).progressBarVisibility.value `should equal` 0
     }
 
     @Test
