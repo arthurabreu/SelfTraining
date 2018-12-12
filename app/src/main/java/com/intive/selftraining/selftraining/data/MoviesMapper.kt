@@ -12,18 +12,18 @@ class MoviesMapper {
                 Movie().run {
                     id = it.id
                     title = it.title
-                    releaseDate = it.release_date
-                    posterPath = it.poster_path
+                    releaseDate = it.releaseDate
+                    posterPath = it.posterPath
                     adult = it.adult
-                    genreIds = it.genre_ids
-                    originalLanguage = it.original_language
-                    originalTitle = it.original_title
+                    genreIds = it.genreIds
+                    originalLanguage = it.originalLanguage
+                    originalTitle = it.originalTitle
                     overview = it.overview
                     popularity = it.popularity
                     video = it.video
-                    voteAverage = it.vote_average
-                    voteCount = it.vote_count
-                    completeImageUrl = imagesEntity.base_url + imagesEntity.logo_sizes[ORIGINAL_LOGO_SIZE] + posterPath
+                    voteAverage = it.voteAverage
+                    voteCount = it.voteCount
+                    completeImageUrl = imagesEntity.baseUrl + imagesEntity.logoSizes[ORIGINAL_LOGO_SIZE] + posterPath
 
                     add(this)
                 }

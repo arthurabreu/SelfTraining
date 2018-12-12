@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
+import com.intive.selftraining.selftraining.utils.SPAN_COUNT
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ListMoviesFragment : androidx.fragment.app.Fragment() {
-
-    private val SPAN_COUNT = 3
+class ListMoviesFragment : Fragment() {
 
     private val listMoviesViewModel: ListMoviesViewModel by viewModel()
 
