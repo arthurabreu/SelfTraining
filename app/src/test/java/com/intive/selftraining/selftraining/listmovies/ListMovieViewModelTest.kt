@@ -47,22 +47,11 @@ class ListMovieViewModelTest {
     }
 
     @Test
-    fun `test progress bar returns GONE before fetching data`() {
+    fun `test that the progress bar returns the correct value before, during and after fetching`() {
         viewModel.progressBarVisibility.value `should equal` View.GONE
-    }
-
-    @Test
-    fun `test progress bar returns VISIBLE during fetching`() {
         movieResponse.subscribe {
             viewModel.progressBarVisibility.value `should equal` View.VISIBLE
         }
-    }
-
-    @Test
-    fun `test progress bar returns GONE after fetching data on onCreate`() {
-        movieResponse = listMoviesRepository.getMovies().delay(10, TimeUnit.SECONDS, scheduler)
-        movieResponse.subscribe {
-            viewModel.progressBarVisibility.value `should equal` View.GONE
-        }
+        viewModel.progressBarVisibility.value `should equal` View.GONE
     }
 }
