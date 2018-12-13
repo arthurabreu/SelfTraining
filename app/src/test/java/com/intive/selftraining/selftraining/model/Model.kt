@@ -7,10 +7,10 @@ import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEnti
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.BelongsToCollectionEntity
-import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
+import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntity
 
-fun getMovieDetailsEntity(title: String = ""): MovieDetailsEntitiy {
-    return MovieDetailsEntitiy(
+fun getMovieDetailsEntity(title: String = ""): MovieDetailsEntity {
+    return MovieDetailsEntity(
         false,
         "",
         BelongsToCollectionEntity("", 0, "", ""),

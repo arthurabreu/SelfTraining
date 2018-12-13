@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.network
 
-import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntitiy
+import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import io.reactivex.Observable
@@ -16,5 +16,5 @@ interface NetworkInterface {
     fun getConfiguration(): Observable<ConfigurationEntity>
 
     @GET("movie/{id}")
-    fun getMovieDetails(@Path("id") groupId: Int): Observable<MovieDetailsEntitiy>
+    fun getMovieDetails(@Path("id") groupId: Int): Observable<MovieDetailsEntity>
 }

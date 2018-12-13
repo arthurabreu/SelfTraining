@@ -5,45 +5,47 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModel
-import com.intive.selftraining.selftraining.data.mapNetworkErrors
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.CustomScheduler
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.plusAssign
+import com.intive.selftraining.selftraining.utils.ErrorHandler
+import com.intive.selftraining.selftraining.utils.Logger
+import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
 
 class ListMoviesViewModel(
     private val repo: ListMoviesRepository,
-    private val customScheduler: CustomScheduler
+    private val customScheduler: CustomScheduler,
+    private val errorHandler: ErrorHandler
 ) :
-    ViewModel(), LifecycleObserver {
+    RxViewModel(), LifecycleObserver {
 
     val resultsList: MutableLiveData<List<Movie>> = MutableLiveData()
     val progressBarVisibility = MutableLiveData<Int>().apply {
         value = View.GONE
     }
 
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
-
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
         getMoviesResponse()
     }
 
-    override fun onCleared() {
-        compositeDisposable.dispose()
-        super.onCleared()
-    }
-
     private fun getMoviesResponse() {
         showProgressBar()
-        compositeDisposable += repo.getMovies()
-            .subscribeOn(customScheduler.io())
-            .observeOn(customScheduler.ui()).mapNetworkErrors()
-            .subscribe {
-                resultsList.value = it
-                hideProgressBar()
-            }
+
+        launch {
+            repo.getMovies()
+                .subscribeOn(customScheduler.io())
+                .observeOn(customScheduler.ui())
+                .subscribe({
+                    Logger.d("LOG LIST MOVIES MAPPER", it.toString())
+                    resultsList.value = it
+                    hideProgressBar()
+                }, { error ->
+                    error.message?.let {
+                        Logger.e("LOG LIST MOVIES ERROR", it)
+                        errorHandler.showError(it)
+                    }
+                })
+        }
     }
 
     private fun showProgressBar() {

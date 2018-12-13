@@ -16,7 +16,7 @@ class ListMoviesRepository(private val networkClient: NetworkInterface) {
         }
     }
 
-    fun showMovies(): Observable<MoviesResponseEntity> = networkClient.getListMovies()
+    private fun showMovies(): Observable<MoviesResponseEntity> = networkClient.getListMovies()
 
-    fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
+    private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
 }
