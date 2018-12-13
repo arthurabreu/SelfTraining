@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.listmovies
 
+import android.view.View
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovie
@@ -10,10 +11,12 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.schedulers.TestScheduler
 import org.amshove.kluent.`should equal`
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
+import java.util.concurrent.TimeUnit
 
 class ListMovieViewModelTest {
 
@@ -26,6 +29,9 @@ class ListMovieViewModelTest {
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
     val listMoviesRepository = ListMoviesRepository(networkClient)
+
+    val scheduler = TestScheduler()
+    var movieResponse = listMoviesRepository.getMovies().delay(2, TimeUnit.SECONDS, scheduler)
 
     var testSchedulers: CustomScheduler = mock {
         on { io() } doReturn Schedulers.trampoline()
@@ -43,19 +49,20 @@ class ListMovieViewModelTest {
     @Test
     fun `test progress bar returns GONE before fetching data`() {
         viewModel.progressBarVisibility.value `should equal` 8
-        viewModel.onCreate()
     }
 
     @Test
     fun `test progress bar returns VISIBLE during fetching`() {
-//        val tested = spy<ListMoviesViewModel>()
-//        tested.onCreate()
-//        verify(tested).progressBarVisibility.value `should equal` 0
+        movieResponse.subscribe {
+            viewModel.progressBarVisibility.value `should equal` View.VISIBLE
+        }
     }
 
     @Test
     fun `test progress bar returns GONE after fetching data on onCreate`() {
-        viewModel.onCreate()
-        viewModel.progressBarVisibility.value `should equal` 8
+        movieResponse = listMoviesRepository.getMovies().delay(10, TimeUnit.SECONDS, scheduler)
+        movieResponse.subscribe {
+            viewModel.progressBarVisibility.value `should equal` View.GONE
+        }
     }
 }
