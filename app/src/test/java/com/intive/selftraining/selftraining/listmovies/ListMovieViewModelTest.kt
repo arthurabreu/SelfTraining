@@ -1,7 +1,6 @@
 package com.intive.selftraining.selftraining.listmovies
 
 import android.view.View
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.intive.selftraining.selftraining.model.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovie
@@ -16,7 +15,6 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.schedulers.TestScheduler
 import org.amshove.kluent.`should equal`
 import org.junit.Test
-import org.junit.rules.TestRule
 import java.util.concurrent.TimeUnit
 
 class ListMovieViewModelTest : ViewModelTest() {
