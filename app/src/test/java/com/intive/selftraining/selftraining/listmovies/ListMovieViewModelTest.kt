@@ -48,7 +48,7 @@ class ListMovieViewModelTest {
 
     @Test
     fun `test progress bar returns GONE before fetching data`() {
-        viewModel.progressBarVisibility.value `should equal` 8
+        viewModel.progressBarVisibility.value `should equal` View.GONE
     }
 
     @Test
