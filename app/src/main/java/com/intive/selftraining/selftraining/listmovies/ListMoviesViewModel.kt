@@ -29,7 +29,7 @@ class ListMoviesViewModel(
     }
 
     private fun getMoviesResponse() {
-        progressBarVisibility.value = View.VISIBLE
+        showProgressBar()
 
         launch {
             repo.getMovies()
@@ -38,7 +38,7 @@ class ListMoviesViewModel(
                 .subscribe({
                     Logger.d("LOG LIST MOVIES MAPPER", it.toString())
                     resultsList.value = it
-                    progressBarVisibility.value = View.GONE
+                    hideProgressBar()
                 }, { error ->
                     error.message?.let {
                         Logger.e("LOG LIST MOVIES ERROR", it)
@@ -46,5 +46,13 @@ class ListMoviesViewModel(
                     }
                 })
         }
+    }
+
+    private fun showProgressBar() {
+        progressBarVisibility.value = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        progressBarVisibility.value = View.GONE
     }
 }
