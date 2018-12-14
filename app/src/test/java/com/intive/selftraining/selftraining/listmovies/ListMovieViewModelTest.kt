@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.listmovies
 
+import android.view.View
 import com.intive.selftraining.selftraining.model.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovie
@@ -11,8 +12,10 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.schedulers.TestScheduler
 import org.amshove.kluent.`should equal`
 import org.junit.Test
+import java.util.concurrent.TimeUnit
 
 class ListMovieViewModelTest : ViewModelTest() {
 
@@ -22,6 +25,9 @@ class ListMovieViewModelTest : ViewModelTest() {
     }
     val listMoviesRepository = ListMoviesRepository(networkClient)
     var errorHandler: ErrorHandler = mock()
+
+    val scheduler = TestScheduler()
+    var movieResponse = listMoviesRepository.getMovies().delay(2, TimeUnit.SECONDS, scheduler)
 
     var testSchedulers: CustomScheduler = mock {
         on { io() } doReturn Schedulers.trampoline()
@@ -34,5 +40,14 @@ class ListMovieViewModelTest : ViewModelTest() {
     fun `should return list of Movies when value of resultsList changes`() {
         viewModel.onCreate()
         viewModel.resultsList.value `should equal` listOf(getMovie())
+    }
+
+    @Test
+    fun `test that the progress bar returns the correct value before, during and after fetching`() {
+        viewModel.progressBarVisibility.value `should equal` View.GONE
+        movieResponse.subscribe {
+            viewModel.progressBarVisibility.value `should equal` View.VISIBLE
+        }
+        viewModel.progressBarVisibility.value `should equal` View.GONE
     }
 }
