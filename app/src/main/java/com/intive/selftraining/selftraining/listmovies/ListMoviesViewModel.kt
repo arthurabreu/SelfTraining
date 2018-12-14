@@ -8,8 +8,8 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.intive.selftraining.selftraining.listmovies.model.Movie
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
-import com.intive.selftraining.selftraining.utils.Logger
 import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
+import timber.log.Timber
 
 class ListMoviesViewModel(
     private val repo: ListMoviesRepository,
@@ -36,12 +36,12 @@ class ListMoviesViewModel(
                 .subscribeOn(customScheduler.io())
                 .observeOn(customScheduler.ui())
                 .subscribe({
-                    Logger.d("LOG LIST MOVIES MAPPER", it.toString())
+                    Timber.d(it.toString())
                     resultsList.value = it
                     progressBarVisibility.value = View.GONE
                 }, { error ->
                     error.message?.let {
-                        Logger.e("LOG LIST MOVIES ERROR", it)
+                        Timber.e(it)
                         errorHandler.showError(it)
                     }
                 })

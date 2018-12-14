@@ -33,4 +33,7 @@ ext {
 
     // Navigation
     navigation = '1.0.0-alpha07'
+
+    //Timber
+    timber = '4.7.0'
 }
