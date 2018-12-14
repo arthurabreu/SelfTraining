@@ -8,8 +8,8 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
-import com.intive.selftraining.selftraining.utils.Logger
 import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
+import timber.log.Timber
 
 class MovieDetailsViewModel(
     private val repo: MovieRepository,
@@ -42,11 +42,11 @@ class MovieDetailsViewModel(
                 .subscribe({
                     movie.value = it
                     progressBarVisibility.value = View.GONE
-                    Logger.d("LOG MOVIE DETAILS", it.toString())
+                    Timber.d(it.toString())
                 },
                     { error ->
                         error.message?.let {
-                            Logger.e("LOG MOVIE DETAILS ERROR", it)
+                            Timber.e(it)
                             errorHandler.showError(it)
                         }
                     })
