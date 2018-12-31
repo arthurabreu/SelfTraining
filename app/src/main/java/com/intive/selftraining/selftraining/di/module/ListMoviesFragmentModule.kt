@@ -14,7 +14,11 @@ import dagger.Provides
 class ListMoviesFragmentModule(val fragment: ListMoviesFragment) {
 
     @Provides
-    fun providesListMoviesViewModelFactory(repo: ListMoviesRepository, customScheduler: CustomScheduler, errorHandler: ErrorHandler): ListMoviesProviderFactory {
+    fun providesListMoviesViewModelFactory(
+        repo: ListMoviesRepository,
+        customScheduler: CustomScheduler,
+        errorHandler: ErrorHandler
+    ): ListMoviesProviderFactory {
         return ListMoviesProviderFactory(
             repo,
             customScheduler,
@@ -28,6 +32,4 @@ class ListMoviesFragmentModule(val fragment: ListMoviesFragment) {
     ): ListMoviesViewModel {
         return ViewModelProviders.of(fragment, factory).get(ListMoviesViewModel::class.java)
     }
-
-
 }

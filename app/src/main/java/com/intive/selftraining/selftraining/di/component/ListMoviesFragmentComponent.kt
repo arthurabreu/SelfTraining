@@ -12,5 +12,4 @@ import dagger.Component
 interface ListMoviesFragmentComponent {
 
     fun inject(fragment: ListMoviesFragment)
-
 }

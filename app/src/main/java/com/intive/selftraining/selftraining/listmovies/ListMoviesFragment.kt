@@ -33,10 +33,14 @@ class ListMoviesFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        DataBindingUtil.inflate<FragmentListMoviesBinding>(inflater, R.layout.fragment_list_movies, container, false).also {
+        DataBindingUtil.inflate<FragmentListMoviesBinding>(
+            inflater,
+            R.layout.fragment_list_movies,
+            container,
+            false
+        ).also {
             binding = it
         }.root
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
