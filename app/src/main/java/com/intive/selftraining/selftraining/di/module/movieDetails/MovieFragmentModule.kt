@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.di.module
+package com.intive.selftraining.selftraining.di.module.movieDetails
 
 import androidx.lifecycle.ViewModelProviders
 import com.intive.selftraining.selftraining.di.providerFactory.MovieProviderFactory

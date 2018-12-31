@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.component.DaggerListMoviesFragmentComponent
-import com.intive.selftraining.selftraining.di.module.ListMoviesFragmentModule
+import com.intive.selftraining.selftraining.di.module.listMovies.ListMoviesFragmentModule
 import com.intive.selftraining.selftraining.di.module.UtilsModule
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
@@ -26,7 +26,11 @@ class ListMoviesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DaggerListMoviesFragmentComponent.builder()
-            .listMoviesFragmentModule(ListMoviesFragmentModule(this@ListMoviesFragment))
+            .listMoviesFragmentModule(
+                ListMoviesFragmentModule(
+                    this@ListMoviesFragment
+                )
+            )
             .utilsModule(context?.let { UtilsModule(it) })
             .build()
             .inject(this@ListMoviesFragment)

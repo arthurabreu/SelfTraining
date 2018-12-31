@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.intive.selftraining.selftraining.di.module.MovieFragmentModule
+import com.intive.selftraining.selftraining.di.module.movieDetails.MovieFragmentModule
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.component.DaggerMovieFragmentComponent
