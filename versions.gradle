@@ -36,4 +36,7 @@ ext {
 
     //Timber
     timber = '4.7.0'
+
+    //Dagger 2
+    dagger = '2.19'
 }

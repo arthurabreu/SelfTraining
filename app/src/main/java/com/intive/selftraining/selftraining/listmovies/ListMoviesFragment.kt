@@ -6,34 +6,46 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.aleksandrtumanov.daggerattempts3.di.component. DaggerListMoviesFragmentComponent
+import com.intive.selftraining.selftraining.di.module.ListMoviesFragmentModule
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
+import com.intive.selftraining.selftraining.di.module.UtilsModule
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.utils.SPAN_COUNT
-import org.koin.android.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class ListMoviesFragment : Fragment() {
 
-    private val listMoviesViewModel: ListMoviesViewModel by viewModel()
+    @Inject
+    lateinit var movieViewModel: ListMoviesViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        this.observeLifecycleIn(listMoviesViewModel)
-        val activityMainBinding: FragmentListMoviesBinding? =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_list_movies, container, false)
+    private lateinit var binding: FragmentListMoviesBinding
 
-        val view = activityMainBinding?.root
-        activityMainBinding?.run {
-            this.viewModel = listMoviesViewModel
-            initRecycler(activityMainBinding)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        DaggerListMoviesFragmentComponent.builder()
+            .listMoviesFragmentModule(ListMoviesFragmentModule(this@ListMoviesFragment))
+            .utilsModule(context?.let { UtilsModule(it) })
+            .build()
+            .inject(this@ListMoviesFragment)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        DataBindingUtil.inflate<FragmentListMoviesBinding>(inflater, R.layout.fragment_list_movies, container, false).also {
+            binding = it
+        }.root
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        this.observeLifecycleIn(movieViewModel)
+        binding.run {
+            this.viewModel = movieViewModel
+            initRecycler(binding)
             setLifecycleOwner(this@ListMoviesFragment)
         }
-
-        return view
     }
 
     private fun initRecycler(
