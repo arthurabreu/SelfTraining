@@ -5,5 +5,5 @@
     <item android:id="@+id/search"
           android:title="@string/app_name"
           android:icon="@drawable/ic_search"
-          app:showAsAction="collapseActionView|ifRoom"/>
+          app:showAsAction="ifRoom|collapseActionView"/>
 </menu>

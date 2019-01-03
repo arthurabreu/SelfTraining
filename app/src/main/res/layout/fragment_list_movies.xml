@@ -16,8 +16,6 @@
             tools:context="com.intive.selftraining.selftraining.listmovies.ListMoviesActivity"
             android:foregroundGravity="center_vertical|fill_vertical|center_horizontal">
 
-
-
         <ProgressBar
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"

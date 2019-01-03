@@ -2,14 +2,10 @@ package com.intive.selftraining.selftraining.listmovies
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.intive.selftraining.selftraining.MainActivity
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
@@ -55,17 +51,5 @@ class ListMoviesFragment : Fragment() {
                 layoutManager.orientation
             )
         )
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        menu.clear()
-        inflater.inflate(R.menu.menu_main, menu)
-
-        val item = menu.findItem(R.id.search)
-        val searchView = SearchView((context as MainActivity).supportActionBar!!.themedContext)
-        searchView.setOnSearchClickListener {
-
-        }
     }
 }
