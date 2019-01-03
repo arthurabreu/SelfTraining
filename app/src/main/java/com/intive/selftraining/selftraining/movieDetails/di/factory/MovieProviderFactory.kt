@@ -12,7 +12,7 @@ class MovieProviderFactory(
     private val customScheduler: CustomScheduler,
     private val errorHandler: ErrorHandler
 ) : ViewModelProvider.Factory {
-
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return MovieDetailsViewModel(repo, customScheduler, errorHandler) as T
     }
