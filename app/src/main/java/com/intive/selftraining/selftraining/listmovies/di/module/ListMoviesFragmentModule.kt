@@ -1,7 +1,7 @@
 package com.intive.selftraining.selftraining.listmovies.di.module
 
 import androidx.lifecycle.ViewModelProviders
-import com.intive.selftraining.selftraining.di.providerFactory.ListMoviesProviderFactory
+import com.intive.selftraining.selftraining.listmovies.di.factory.ListMoviesProviderFactory
 import com.intive.selftraining.selftraining.di.scopes.FragmentScope
 import com.intive.selftraining.selftraining.listmovies.ListMoviesFragment
 import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository

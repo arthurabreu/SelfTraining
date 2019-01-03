@@ -9,7 +9,7 @@ import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
 @Module(subcomponents = arrayOf(ListMoviesFragmentComponent::class))
-internal abstract class MovieFragmentBinder {
+internal abstract class ListMoviesFragmentBinder {
 
     @Binds
     @IntoMap

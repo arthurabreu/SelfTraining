@@ -10,6 +10,7 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
+import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class MovieDetailsFragment : Fragment() {
@@ -20,12 +21,8 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var binding: MoviesDetailsFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
-//        DaggerMovieFragmentComponent.builder()
-//            .movieFragmentModule(MovieFragmentModule(this@MovieDetailsFragment))
-//            .utilsModule(context?.let { UtilsModule(it) })
-//            .build()
-//            .inject(this@MovieDetailsFragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
