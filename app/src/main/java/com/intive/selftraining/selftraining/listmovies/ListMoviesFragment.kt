@@ -8,12 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBinding
-import com.intive.selftraining.selftraining.di.component.DaggerListMoviesFragmentComponent
-import com.intive.selftraining.selftraining.di.module.listMovies.ListMoviesFragmentModule
-import com.intive.selftraining.selftraining.di.module.UtilsModule
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.utils.SPAN_COUNT
+import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class ListMoviesFragment : Fragment() {
@@ -24,16 +22,8 @@ class ListMoviesFragment : Fragment() {
     private lateinit var binding: FragmentListMoviesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
-        DaggerListMoviesFragmentComponent.builder()
-            .listMoviesFragmentModule(
-                ListMoviesFragmentModule(
-                    this@ListMoviesFragment
-                )
-            )
-            .utilsModule(context?.let { UtilsModule(it) })
-            .build()
-            .inject(this@ListMoviesFragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

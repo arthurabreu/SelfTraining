@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.intive.selftraining.selftraining.di.module.movieDetails.MovieFragmentModule
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
-import com.intive.selftraining.selftraining.di.component.DaggerMovieFragmentComponent
-import com.intive.selftraining.selftraining.di.module.UtilsModule
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
 import javax.inject.Inject
@@ -24,11 +21,11 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerMovieFragmentComponent.builder()
-            .movieFragmentModule(MovieFragmentModule(this@MovieDetailsFragment))
-            .utilsModule(context?.let { UtilsModule(it) })
-            .build()
-            .inject(this@MovieDetailsFragment)
+//        DaggerMovieFragmentComponent.builder()
+//            .movieFragmentModule(MovieFragmentModule(this@MovieDetailsFragment))
+//            .utilsModule(context?.let { UtilsModule(it) })
+//            .build()
+//            .inject(this@MovieDetailsFragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

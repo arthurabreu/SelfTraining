@@ -1,23 +1,23 @@
 package com.intive.selftraining.selftraining.di.module
 
 import android.content.Context
-import com.example.aleksandrtumanov.daggerattempts3.di.scopes.ActivityScope
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-class UtilsModule(private val context: Context) {
-    @ActivityScope
+class UtilsModule {
+    @Singleton
     @Provides
     fun provideCustomScheduler(): CustomScheduler {
         return CustomScheduler()
     }
 
-    @ActivityScope
+    @Singleton
     @Provides
-    fun provideRepo(): ErrorHandler {
+    fun provideRepo(context: Context): ErrorHandler {
         return ErrorHandler(context)
     }
 }

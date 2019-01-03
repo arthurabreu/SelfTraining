@@ -1,7 +1,8 @@
-package com.intive.selftraining.selftraining.di.module.listMovies
+package com.intive.selftraining.selftraining.listmovies.di.module
 
 import androidx.lifecycle.ViewModelProviders
 import com.intive.selftraining.selftraining.di.providerFactory.ListMoviesProviderFactory
+import com.intive.selftraining.selftraining.di.scopes.FragmentScope
 import com.intive.selftraining.selftraining.listmovies.ListMoviesFragment
 import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
 import com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel
@@ -11,8 +12,9 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class ListMoviesFragmentModule(val fragment: ListMoviesFragment) {
+class ListMoviesFragmentModule {
 
+    @FragmentScope
     @Provides
     fun providesListMoviesViewModelFactory(
         repo: ListMoviesRepository,
@@ -26,8 +28,10 @@ class ListMoviesFragmentModule(val fragment: ListMoviesFragment) {
         )
     }
 
+    @FragmentScope
     @Provides
     fun providesListMoviesViewModel(
+        fragment: ListMoviesFragment,
         factory: ListMoviesProviderFactory
     ): ListMoviesViewModel {
         return ViewModelProviders.of(fragment, factory).get(ListMoviesViewModel::class.java)

@@ -1,14 +1,14 @@
 package com.intive.selftraining.selftraining.di.module
 
-import com.example.aleksandrtumanov.daggerattempts3.di.scopes.ActivityScope
 import com.intive.selftraining.selftraining.network.NetworkClient
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-    @ActivityScope
+    @Singleton
     @Provides
     fun provideApiService(): NetworkInterface {
         return NetworkClient().networkResponse
