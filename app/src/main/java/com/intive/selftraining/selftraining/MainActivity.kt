@@ -1,7 +1,6 @@
 package com.intive.selftraining.selftraining
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -28,23 +27,20 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         menuInflater.inflate(R.menu.menu_main, menu)
 
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
+        searchView.queryHint = getString(R.string.search)
+        searchView.setIconifiedByDefault(false)
         searchView.setOnQueryTextListener(this)
-
-//        val mSearch = menu?.findItem(R.id.search)
-//        val searchView = mSearch?.actionView as SearchView
-//        searchView.setIconifiedByDefault(false)
-//        searchView.setOnQueryTextListener(this)
 
         return true
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        Log.d("AAAAAAAA", query)
+
         return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        Log.d("AAAAAAAA", newText)
+
         return false
     }
 }
