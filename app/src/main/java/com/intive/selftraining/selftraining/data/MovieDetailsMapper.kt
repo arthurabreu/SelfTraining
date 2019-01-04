@@ -10,7 +10,7 @@ class MovieDetailsMapper {
         MovieDetails().apply {
             backdropPath = movieDetailsEntity.backdropPath
             movieDetailsEntity.genres.forEach { this.genre = this.genre + " " + it.name }
-            id = movieDetailsEntity.id
+            id =  movieDetailsEntity.id
             overview = movieDetailsEntity.overview
             posterPath = movieDetailsEntity.posterPath
             releaseDate = movieDetailsEntity.releaseDate
