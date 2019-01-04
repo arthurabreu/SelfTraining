@@ -11,29 +11,39 @@ import com.intive.selftraining.selftraining.databinding.FragmentListMoviesBindin
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.utils.SPAN_COUNT
-import org.koin.android.viewmodel.ext.android.viewModel
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class ListMoviesFragment : Fragment() {
 
-    private val listMoviesViewModel: ListMoviesViewModel by viewModel()
+    @Inject
+    lateinit var movieViewModel: ListMoviesViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        this.observeLifecycleIn(listMoviesViewModel)
-        val activityMainBinding: FragmentListMoviesBinding? =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_list_movies, container, false)
+    private lateinit var binding: FragmentListMoviesBinding
 
-        val view = activityMainBinding?.root
-        activityMainBinding?.run {
-            this.viewModel = listMoviesViewModel
-            initRecycler(activityMainBinding)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidSupportInjection.inject(this)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        DataBindingUtil.inflate<FragmentListMoviesBinding>(
+            inflater,
+            R.layout.fragment_list_movies,
+            container,
+            false
+        ).also {
+            binding = it
+        }.root
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        this.observeLifecycleIn(movieViewModel)
+        binding.run {
+            this.viewModel = movieViewModel
+            initRecycler(binding)
             setLifecycleOwner(this@ListMoviesFragment)
         }
-
-        return view
     }
 
     private fun initRecycler(

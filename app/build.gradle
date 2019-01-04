@@ -61,8 +61,8 @@ dependencies {
 
     //Kotlin Version
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_reflect"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     //Androis Support Libraries
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
@@ -91,10 +91,6 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide"
     kapt "com.github.bumptech.glide:compiler:$glide"
 
-    //Koin for Android
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-android-viewmodel:$koin_version"
-
     //Ktlint
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
 
@@ -105,6 +101,9 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment:$navigation"
 
     //Unit Testing
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
     testImplementation "junit:junit:$junit"
     testImplementation "androidx.arch.core:core-testing:$core_testing"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin"
@@ -113,4 +112,12 @@ dependencies {
 
     //Timber
     implementation "com.jakewharton.timber:timber:$timber"
+
+    //Dagger 2
+    implementation "com.google.dagger:dagger:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
+
+    implementation "com.google.dagger:dagger-android:$dagger"
+    implementation "com.google.dagger:dagger-android-support:$dagger"
+    kapt "com.google.dagger:dagger-android-processor:$dagger"
 }

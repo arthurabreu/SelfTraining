@@ -10,26 +10,39 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
-import org.koin.android.viewmodel.ext.android.viewModel
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class MovieDetailsFragment : Fragment() {
 
-    private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
+    @Inject
+    lateinit var movieViewModel: MovieDetailsViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        this.observeLifecycleIn(movieDetailsViewModel)
-        val activityDetails: MoviesDetailsFragmentBinding? =
-            DataBindingUtil.inflate(inflater, R.layout.movies_details_fragment, container, false)
+    private lateinit var binding: MoviesDetailsFragmentBinding
 
-        return activityDetails?.apply {
-            viewModel = movieDetailsViewModel.apply {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidSupportInjection.inject(this)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        DataBindingUtil.inflate<MoviesDetailsFragmentBinding>(
+            inflater,
+            R.layout.movies_details_fragment,
+            container,
+            false
+        ).also {
+            binding = it
+        }.root
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        this.observeLifecycleIn(movieViewModel)
+        binding.run {
+            viewModel = movieViewModel.apply {
                 movieId.value = getMovieId()
             }
             setLifecycleOwner(this@MovieDetailsFragment)
-        }?.root
+        }
     }
 }
