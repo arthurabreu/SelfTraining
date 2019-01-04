@@ -2,7 +2,6 @@ package com.intive.selftraining.selftraining
 
 import android.os.Bundle
 import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.NavController
@@ -25,17 +24,17 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         val mSearch = menu?.findItem(R.id.search)
         val searchView = mSearch?.actionView as SearchView
+        searchView.setIconifiedByDefault(false)
         searchView.setOnQueryTextListener(this)
+
         return true
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        val toast = Toast.makeText(applicationContext, query, Toast.LENGTH_SHORT)
-        toast.show()
-        return true
+        return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        return true
+        return false
     }
 }
