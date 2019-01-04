@@ -61,8 +61,8 @@ dependencies {
 
     //Kotlin Version
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_reflect"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     //Androis Support Libraries
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
@@ -101,6 +101,9 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment:$navigation"
 
     //Unit Testing
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
     testImplementation "junit:junit:$junit"
     testImplementation "androidx.arch.core:core-testing:$core_testing"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin"
