@@ -13,10 +13,15 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = arrayOf(
-        AndroidInjectionModule::class, MovieApplicationModule::class,
-        MovieActivityBinder::class, ListMoviesFragmentBinder::class, MovieDetailsFragmentBinder::class, NetworkModule::class, UtilsModule::class
-    )
+    modules = [
+        AndroidInjectionModule::class,
+        MovieApplicationModule::class,
+        MovieActivityBinder::class,
+        ListMoviesFragmentBinder::class,
+        MovieDetailsFragmentBinder::class,
+        NetworkModule::class,
+        UtilsModule::class
+    ]
 )
 interface MovieApplicationComponent {
 
