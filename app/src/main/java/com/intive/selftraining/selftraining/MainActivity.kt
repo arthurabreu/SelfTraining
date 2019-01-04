@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
 
-//        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
-//        searchView.setOnQueryTextListener(this)
+        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
+        searchView.setOnQueryTextListener(this)
 
 //        val mSearch = menu?.findItem(R.id.search)
 //        val searchView = mSearch?.actionView as SearchView
