@@ -2,9 +2,11 @@ package com.intive.selftraining.selftraining
 
 import android.app.Activity
 import android.app.Application
+import androidx.room.Room
 import com.intive.selftraining.selftraining.di.component.DaggerMovieApplicationComponent
 import com.intive.selftraining.selftraining.di.component.MovieApplicationComponent
 import com.intive.selftraining.selftraining.di.module.MovieApplicationModule
+import com.intive.selftraining.selftraining.movieDetails.model.MovieDatabase
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -24,6 +26,10 @@ class MainApplication : Application(), HasActivityInjector {
             Timber.plant(Timber.DebugTree())
         }
         setup()
+        MainApplication.database = Room.databaseBuilder(
+            this, MovieDatabase::class.java,
+            "list-master-db"
+        ).build()
     }
 
     fun setup() {
@@ -34,5 +40,9 @@ class MainApplication : Application(), HasActivityInjector {
 
     override fun activityInjector(): AndroidInjector<Activity> {
         return dispatchingActivityInjector
+    }
+
+    companion object {
+        var database: MovieDatabase? = null
     }
 }
