@@ -7,10 +7,12 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import org.koin.android.ext.android.get
 
-class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity() {
 
     private var navController: NavController? = null
+    var searchResultsActivity : SearchResultsActivity = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,18 +31,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.queryHint = getString(R.string.search)
         searchView.setIconifiedByDefault(false)
-        searchView.setOnQueryTextListener(this)
+        searchView.setOnQueryTextListener(searchResultsActivity)
 
         return true
-    }
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-
-        return false
-    }
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-
-        return false
     }
 }

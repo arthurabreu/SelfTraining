@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.di
 
+import com.intive.selftraining.selftraining.SearchResultsActivity
 import com.intive.selftraining.selftraining.listmovies.ListMoviesRepository
 import com.intive.selftraining.selftraining.listmovies.ListMoviesViewModel
 import com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel
@@ -16,6 +17,7 @@ val appModule = module {
     single { ListMoviesRepository(get()) }
     single { MovieRepository(get()) }
     single { ErrorHandler(get()) }
+    single { SearchResultsActivity()}
 
     viewModel { ListMoviesViewModel(get(), get(), get()) }
     viewModel { MovieDetailsViewModel(get(), get(), get()) }
