@@ -3,7 +3,7 @@ package com.intive.selftraining.selftraining.movieDetails
 import com.intive.selftraining.selftraining.model.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.utils.ErrorHandler

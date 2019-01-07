@@ -9,6 +9,10 @@
                 name="viewModel"
                 type="com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel" />
 
+        <variable
+                name="adapter"
+                type="com.intive.selftraining.selftraining.listmovies.ItemListener"/>
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -67,7 +71,7 @@
         <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" android:id="@+id/nestedScrollView">
             <androidx.constraintlayout.widget.ConstraintLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
@@ -208,6 +212,18 @@
                 android:src="@drawable/movie"
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_anchor="@id/main_appbar"
-                app:layout_anchorGravity="bottom|right|end" android:focusable="true"/>
+                app:layout_anchorGravity="bottom|right|end" android:focusable="true"
+                android:onClick="@{() -> viewModel.saveFavourites(viewModel.movie)}"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:clickable="true"
+                android:src="@drawable/movie"
+                app:backgroundTint="@color/colorPrimaryDark"
+                app:layout_anchor="@+id/nestedScrollView"
+                app:layout_anchorGravity="right|center" android:focusable="true"
+                android:onClick="@{() -> viewModel.readFavourites()}"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

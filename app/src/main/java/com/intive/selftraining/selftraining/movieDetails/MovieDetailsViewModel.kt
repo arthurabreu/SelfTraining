@@ -5,7 +5,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
@@ -48,6 +48,26 @@ class MovieDetailsViewModel(
                         error.message?.let {
                             Timber.e(it)
                             errorHandler.showError(it)
+                        }
+                    })
+        }
+    }
+
+    fun saveFavourites(movieDetails: MovieDetails) {
+
+        Timber.d(movieDetails.title)
+        repo.addMovieToDB(movieDetails)
+    }
+
+    fun readFavourites() {
+        launch {
+            repo.readMovieFromDB().subscribeOn(customScheduler.io())
+                .observeOn(customScheduler.ui()).subscribe({
+                    Timber.d(it.toString())
+                },
+                    { error ->
+                        error.message?.let {
+                            Timber.e(it)
                         }
                     })
         }

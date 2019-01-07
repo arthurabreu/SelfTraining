@@ -1,7 +1,7 @@
 package com.intive.selftraining.selftraining.model
 
 import com.intive.selftraining.selftraining.listmovies.model.Movie
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesEntity

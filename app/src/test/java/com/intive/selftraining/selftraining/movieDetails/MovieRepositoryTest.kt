@@ -2,7 +2,7 @@ package com.intive.selftraining.selftraining.movieDetails
 
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock

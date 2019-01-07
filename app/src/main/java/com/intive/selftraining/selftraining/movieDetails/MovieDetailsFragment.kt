@@ -14,7 +14,6 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class MovieDetailsFragment : Fragment() {
-
     @Inject
     lateinit var movieViewModel: MovieDetailsViewModel
 
