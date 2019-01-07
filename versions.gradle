@@ -37,4 +37,7 @@ ext {
 
     //Dagger 2
     dagger = '2.20'
+
+    //Room
+    roomVersion = '2.1.0-alpha03'
 }
