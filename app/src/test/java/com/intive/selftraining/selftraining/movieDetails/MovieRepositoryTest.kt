@@ -18,7 +18,7 @@ class MovieRepositoryTest {
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
 
-    val movieRepository = MovieRepository(networkClient)
+    val movieRepository = MovieRepository(networkClient, mock())
 
     @Test
     fun `should return title when ask for getMovieDetails(id)`() {
