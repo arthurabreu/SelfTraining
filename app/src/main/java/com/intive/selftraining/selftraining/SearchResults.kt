@@ -7,12 +7,12 @@ class SearchResults: SearchView.OnQueryTextListener  {
 
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        Log.d("******* LOG: ", query)
+        Log.d("*** onQueryTextSubmit: ", query)
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        Log.d("*******Search: ", newText)
+        Log.d("*** onQueryTextChange: ", newText)
         return true
     }
 }
