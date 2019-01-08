@@ -3,7 +3,7 @@ package com.intive.selftraining.selftraining
 import android.util.Log
 import androidx.appcompat.widget.SearchView
 
-class SearchResultsActivity: SearchView.OnQueryTextListener  {
+class SearchResults: SearchView.OnQueryTextListener  {
 
 
     override fun onQueryTextSubmit(query: String?): Boolean {

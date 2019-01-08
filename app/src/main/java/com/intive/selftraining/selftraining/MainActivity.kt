@@ -12,7 +12,7 @@ import org.koin.android.ext.android.get
 class MainActivity : AppCompatActivity() {
 
     private var navController: NavController? = null
-    var searchResultsActivity : SearchResultsActivity = get()
+    var searchResults : SearchResults = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.queryHint = getString(R.string.search)
         searchView.setIconifiedByDefault(false)
-        searchView.setOnQueryTextListener(searchResultsActivity)
+        searchView.setOnQueryTextListener(searchResults)
 
         return true
     }
