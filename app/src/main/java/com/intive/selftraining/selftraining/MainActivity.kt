@@ -7,12 +7,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.intive.selftraining.selftraining.listmovies.ListMoviesFragment
 import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity() {
 
     private var navController: NavController? = null
-    var searchResults : SearchResults = get()
+    var searchResults : ListMoviesFragment = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

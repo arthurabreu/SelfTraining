@@ -2,7 +2,6 @@ package com.intive.selftraining.selftraining.listmovies.adapter
 
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

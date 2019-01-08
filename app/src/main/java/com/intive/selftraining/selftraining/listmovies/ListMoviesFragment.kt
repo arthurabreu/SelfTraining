@@ -1,9 +1,11 @@
 package com.intive.selftraining.selftraining.listmovies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
@@ -13,9 +15,10 @@ import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.utils.SPAN_COUNT
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ListMoviesFragment : Fragment() {
+class ListMoviesFragment : Fragment(),  SearchView.OnQueryTextListener {
 
     private val listMoviesViewModel: ListMoviesViewModel by viewModel()
+    private var query = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,5 +54,19 @@ class ListMoviesFragment : Fragment() {
                 layoutManager.orientation
             )
         )
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+
+        if(!query.isNullOrEmpty())
+            this.query = query //TODO Send this query to ViewModel
+
+        Log.d("*** onQueryTextSubmit: ", query)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.d("*** onQueryTextChange: ", newText)
+        return true
     }
 }
