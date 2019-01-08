@@ -28,7 +28,7 @@ class MovieDetailsViewModel(
     fun onCreate() {
         movieId.observeForever {
             it?.let { movieId ->
-                getMovieDetails(movieId)
+                readSavedMovieBy(movieId)
             }
         }
     }
@@ -42,7 +42,7 @@ class MovieDetailsViewModel(
                 .subscribe({
                     movie.value = it
                     progressBarVisibility.value = View.GONE
-                    Timber.d(it.toString())
+                    Timber.d("From internet:%s", it.toString())
                 },
                     { error ->
                         error.message?.let {
@@ -54,20 +54,21 @@ class MovieDetailsViewModel(
     }
 
     fun saveFavourites(movieDetails: MovieDetails) {
-
-        Timber.d(movieDetails.title)
+        Timber.d("SAVE in db:%s", movieDetails.title)
         repo.addMovieToDB(movieDetails)
     }
 
-    fun readFavouriteMovie() {
+    private fun readSavedMovieBy(movieId: Int) {
         launch {
             repo.readMovie(movieId).subscribeOn(customScheduler.io())
                 .observeOn(customScheduler.ui()).subscribe({
-                    Timber.d(it.title)
+                    movie.value = it
+                    Timber.d("From db:%s", it.title)
                 },
                     { error ->
                         error.message?.let {
                             Timber.e(it)
+                            getMovieDetails(movieId)
                         }
                     })
         }

@@ -7,7 +7,7 @@
 
         <variable
                 name="viewModel"
-                type="com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel" />
+                type="com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel"/>
 
         <variable
                 name="adapter"
@@ -214,16 +214,5 @@
                 app:layout_anchor="@id/main_appbar"
                 app:layout_anchorGravity="bottom|right|end" android:focusable="true"
                 android:onClick="@{() -> viewModel.saveFavourites(viewModel.movie)}"/>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:clickable="true"
-                android:src="@drawable/movie"
-                app:backgroundTint="@color/colorPrimaryDark"
-                app:layout_anchor="@+id/nestedScrollView"
-                app:layout_anchorGravity="right|center" android:focusable="true"
-                android:onClick="@{() -> viewModel.readFavouriteMovie()}"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,7 +1,6 @@
 package com.intive.selftraining.selftraining.movieDetails
 
 import android.os.AsyncTask
-import androidx.lifecycle.MutableLiveData
 import com.intive.selftraining.selftraining.data.MovieDetailsMapper
 import com.intive.selftraining.selftraining.movieDetails.model.MovieDatabase
 import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
@@ -33,11 +32,7 @@ class MovieRepository(private val networkClient: NetworkInterface, private val m
         return movieDatabase.movieDetailsDao().getMovieDetails()
     }
 
-    fun readMovie(movieId: MutableLiveData<Int>): Single<MovieDetails>  {
-        return movieDatabase.movieDetailsDao().getMovieById(movieId.value.toString())
+    fun readMovie(movieId: Int): Single<MovieDetails> {
+        return movieDatabase.movieDetailsDao().getMovieById(movieId.toString())
     }
-
-//    fun readMovie(): Single<MovieDetails> {
-//        return movieDatabase.movieDetailsDao().getMovieById()
-//    }
 }
