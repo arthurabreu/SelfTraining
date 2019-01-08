@@ -59,11 +59,11 @@ class MovieDetailsViewModel(
         repo.addMovieToDB(movieDetails)
     }
 
-    fun readFavourites() {
+    fun readFavouriteMovie() {
         launch {
-            repo.readMovieFromDB().subscribeOn(customScheduler.io())
+            repo.readMovie(movieId).subscribeOn(customScheduler.io())
                 .observeOn(customScheduler.ui()).subscribe({
-                    Timber.d(it.toString())
+                    Timber.d(it.title)
                 },
                     { error ->
                         error.message?.let {

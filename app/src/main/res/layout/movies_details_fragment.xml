@@ -224,6 +224,6 @@
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_anchor="@+id/nestedScrollView"
                 app:layout_anchorGravity="right|center" android:focusable="true"
-                android:onClick="@{() -> viewModel.readFavourites()}"/>
+                android:onClick="@{() -> viewModel.readFavouriteMovie()}"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
