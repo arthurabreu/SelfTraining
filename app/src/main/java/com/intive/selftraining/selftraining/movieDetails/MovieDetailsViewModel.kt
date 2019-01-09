@@ -53,7 +53,7 @@ class MovieDetailsViewModel(
         }
     }
 
-    fun saveFavourites(movieDetails: MovieDetails) {
+    fun saveMovies(movieDetails: MovieDetails) {
         Timber.d("SAVE in db:%s", movieDetails.title)
         repo.addMovieToDB(movieDetails)
     }

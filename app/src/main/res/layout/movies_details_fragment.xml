@@ -213,6 +213,6 @@
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_anchor="@id/main_appbar"
                 app:layout_anchorGravity="bottom|right|end" android:focusable="true"
-                android:onClick="@{() -> viewModel.saveFavourites(viewModel.movie)}"/>
+                android:onClick="@{() -> viewModel.saveMovies(viewModel.movie)}"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

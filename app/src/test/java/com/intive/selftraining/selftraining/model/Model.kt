@@ -136,3 +136,4 @@ fun getImagesEntity(): ImagesEntity {
 fun getMovieDetails(): MovieDetails {
     return MovieDetails().apply { completeImageUrl = "http://image.tmdb.org/t/p/original" }
 }
+
