@@ -125,10 +125,4 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
-
-    androidTestImplementation "androidx.test:runner:1.1.1"
-    androidTestImplementation "androidx.test:rules:1.1.0"
-    testImplementation("androidx.test:core:1.1.0")
-
-
 }
