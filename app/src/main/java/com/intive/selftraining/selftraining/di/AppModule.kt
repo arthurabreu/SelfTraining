@@ -24,5 +24,5 @@ val appModule = module {
 
     viewModel { ListMoviesViewModel(get(), get(), get()) }
     viewModel { MovieDetailsViewModel(get(), get(), get()) }
-    viewModel { SearchViewModel() }
+    viewModel { SearchViewModel(get(), get(), get()) }
 }
