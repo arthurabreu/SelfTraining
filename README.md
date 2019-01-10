@@ -9,6 +9,8 @@
 - Rx Java
 - RxKotlin
 - Retrofit
+- Kotlin
+- Kotlin couroutines
 - Koin/Dagger 2 (Dif branches)
 - Glide
 - Ktlint
