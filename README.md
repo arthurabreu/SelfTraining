@@ -1,3 +1,10 @@
+#SelfTraining is a projet that implements 
+the TMDB The Movies Database API into a
+full working Android App, using the most
+up to date technologies on the mobile
+platform.
+
+
 #Technologies
 
 - MVVM
@@ -10,7 +17,7 @@
 - RxKotlin
 - Retrofit
 - Kotlin
-- Kotlin couroutines
+- Kotlin coroutines
 - Koin/Dagger 2 (Dif branches)
 - Glide
 - Ktlint
