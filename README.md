@@ -1,11 +1,12 @@
-#SelfTraining is a projet that implements 
+# Description
+SelfTraining is a projet that implements 
 the TMDB The Movies Database API into a
 full working Android App, using the most
 up to date technologies on the mobile
 platform.
 
 
-#Technologies
+# Technologies
 
 - MVVM
 - Databinding
