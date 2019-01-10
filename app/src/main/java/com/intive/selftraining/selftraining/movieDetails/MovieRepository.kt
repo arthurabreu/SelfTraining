@@ -1,6 +1,5 @@
 package com.intive.selftraining.selftraining.movieDetails
 
-import android.os.AsyncTask
 import com.intive.selftraining.selftraining.data.MovieDetailsMapper
 import com.intive.selftraining.selftraining.movieDetails.model.dao.MovieDetailsDao
 import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
@@ -10,6 +9,8 @@ import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDet
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.rxkotlin.Observables
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MovieRepository(private val networkClient: NetworkInterface, private val movieDatabase: MovieDetailsDao) {
     fun getMovieDetails(id: Int): Observable<MovieDetails> {
@@ -22,14 +23,13 @@ class MovieRepository(private val networkClient: NetworkInterface, private val m
 
     private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
 
-    fun addMovieToDB(movieDetails: MovieDetails) {
-        AsyncTask.execute {
+    suspend fun addMovieToDB(movieDetails: MovieDetails) {
+        withContext(Dispatchers.IO) {
             movieDatabase.insert(movieDetails)
         }
     }
 
     fun readMovie(movieId: Int): Single<MovieDetails> {
-
         return movieDatabase.getMovieById(movieId.toString())
     }
 }
