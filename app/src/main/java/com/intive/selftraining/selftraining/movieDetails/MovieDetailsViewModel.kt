@@ -5,10 +5,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class MovieDetailsViewModel(
@@ -28,7 +32,7 @@ class MovieDetailsViewModel(
     fun onCreate() {
         movieId.observeForever {
             it?.let { movieId ->
-                getMovieDetails(movieId)
+                readSavedMovieBy(movieId)
             }
         }
     }
@@ -42,7 +46,7 @@ class MovieDetailsViewModel(
                 .subscribe({
                     movie.value = it
                     progressBarVisibility.value = View.GONE
-                    Timber.d(it.toString())
+                    Timber.d("From internet:%s", it.toString())
                 },
                     { error ->
                         error.message?.let {
@@ -51,5 +55,37 @@ class MovieDetailsViewModel(
                         }
                     })
         }
+    }
+
+    fun saveMovies(movieDetails: MovieDetails) {
+        uiScope.launch {
+            Timber.d("SAVE in db:%s", movieDetails.title)
+            repo.addMovieToDB(movieDetails)
+        }
+    }
+
+    private fun readSavedMovieBy(movieId: Int) {
+        launch {
+            repo.readMovie(movieId).subscribeOn(customScheduler.io())
+                .observeOn(customScheduler.ui()).subscribe({
+                    movie.value = it
+                    Timber.d("From db:%s", it.title)
+                },
+                    { error ->
+                        error.message?.let {
+                            Timber.e(it)
+                            getMovieDetails(movieId)
+                        }
+                    })
+        }
+    }
+
+    private val viewModelJob = Job()
+
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

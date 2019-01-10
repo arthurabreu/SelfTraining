@@ -3,13 +3,15 @@ package com.intive.selftraining.selftraining.movieDetails
 import com.intive.selftraining.selftraining.model.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.dao.MovieDetailsDao
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import org.amshove.kluent.`should equal`
 import org.junit.Test
@@ -20,7 +22,12 @@ class MovieDetailsViewModelTest : ViewModelTest() {
         on { getMovieDetails(1) } doReturn Observable.just(getMovieDetailsEntity())
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
-    val movieRepository = MovieRepository(networkClient)
+
+    var movieDatabase: MovieDetailsDao = mock {
+        on { getMovieById("1") } doReturn Single.just(MovieDetails())
+    }
+
+    val movieRepository = MovieRepository(networkClient, movieDatabase)
 
     var testSchedulers: CustomScheduler = mock {
         on { io() } doReturn Schedulers.trampoline()

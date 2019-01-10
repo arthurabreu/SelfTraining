@@ -1,6 +1,6 @@
 package com.intive.selftraining.selftraining.data
 
-import com.intive.selftraining.selftraining.movieDetails.model.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.models.listMovies.ImagesEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntity
 import com.intive.selftraining.selftraining.utils.ORIGINAL_LOGO_SIZE

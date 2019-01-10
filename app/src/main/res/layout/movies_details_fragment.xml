@@ -7,7 +7,7 @@
 
         <variable
                 name="viewModel"
-                type="com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel" />
+                type="com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel"/>
 
     </data>
 
@@ -67,7 +67,7 @@
         <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" android:id="@+id/nestedScrollView">
             <androidx.constraintlayout.widget.ConstraintLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
@@ -208,6 +208,7 @@
                 android:src="@drawable/movie"
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_anchor="@id/main_appbar"
-                app:layout_anchorGravity="bottom|right|end" android:focusable="true"/>
+                app:layout_anchorGravity="bottom|right|end" android:focusable="true"
+                android:onClick="@{() -> viewModel.saveMovies(viewModel.movie)}"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
