@@ -1,7 +1,7 @@
 package com.intive.selftraining.selftraining.movieDetails.model.enities
 
 class MovieVideo (
-    val id: String,
-    val key: String,
-    val name: String
+    var id: String = "",
+    var key: String = "",
+    var name: String = ""
 )
