@@ -9,10 +9,6 @@ import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDeta
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class MovieDetailsViewModel(
@@ -58,10 +54,8 @@ class MovieDetailsViewModel(
     }
 
     fun saveMovies(movieDetails: MovieDetails) {
-        uiScope.launch {
-            Timber.d("SAVE in db:%s", movieDetails.title)
-            repo.addMovieToDB(movieDetails)
-        }
+        Timber.d("SAVE in db:%s", movieDetails.title)
+        repo.addMovieToDB(movieDetails)
     }
 
     private fun readSavedMovieBy(movieId: Int) {
@@ -78,14 +72,5 @@ class MovieDetailsViewModel(
                         }
                     })
         }
-    }
-
-    private val viewModelJob = Job()
-
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
     }
 }
