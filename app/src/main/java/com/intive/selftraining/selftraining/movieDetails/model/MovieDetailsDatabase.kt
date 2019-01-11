@@ -7,7 +7,6 @@ import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDeta
 import com.intive.selftraining.selftraining.utils.DB_NAME
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -18,9 +17,7 @@ class MovieDetailsDatabase(val context: Context) {
         DB_NAME
     ).build().movieDetailsDao()
 
-    private val viewModelJob = Job()
-
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    private val uiScope = CoroutineScope(Dispatchers.Main)
 
     fun getMovieById(movieId: String) = movieDetailsDao.getMovieById(movieId)
 
