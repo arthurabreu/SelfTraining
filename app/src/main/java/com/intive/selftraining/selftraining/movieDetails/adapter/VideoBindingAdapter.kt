@@ -17,7 +17,7 @@ fun ImageView.loadImage(movieVideo: MovieVideo?) {
         Glide.with(context)
             .load(getYoutubeThumbnailPath(movieVideo.key))
             .apply(
-                RequestOptions().centerCrop()
+                RequestOptions().centerInside()
             )
             .into(this)
         setOnClickListener {

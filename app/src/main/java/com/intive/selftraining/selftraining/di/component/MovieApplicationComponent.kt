@@ -6,8 +6,9 @@ import com.intive.selftraining.selftraining.di.module.MovieApplicationModule
 import com.intive.selftraining.selftraining.di.module.NetworkModule
 import com.intive.selftraining.selftraining.di.module.DBModule
 import com.intive.selftraining.selftraining.di.module.UtilsModule
-import com.intive.selftraining.selftraining.listmovies.di.binder.MovieDetailsFragmentBinder
+import com.intive.selftraining.selftraining.movieDetails.di.binder.MovieDetailsFragmentBinder
 import com.intive.selftraining.selftraining.listmovies.di.binder.ListMoviesFragmentBinder
+import com.intive.selftraining.selftraining.movieDetails.viewPager.di.binder.MovieViewPagerFragmentBinder
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
@@ -20,6 +21,7 @@ import javax.inject.Singleton
         MovieActivityBinder::class,
         ListMoviesFragmentBinder::class,
         MovieDetailsFragmentBinder::class,
+        MovieViewPagerFragmentBinder::class,
         NetworkModule::class,
         DBModule::class,
         UtilsModule::class

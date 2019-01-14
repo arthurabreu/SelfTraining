@@ -10,7 +10,11 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
+import com.intive.selftraining.selftraining.movieDetails.adapter.MoviesPagerAdapter
+import com.intive.selftraining.selftraining.movieDetails.viewPager.ImageFragment
+import com.intive.selftraining.selftraining.movieDetails.viewPager.VideoFragment
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.movies_details_fragment.pager
 import javax.inject.Inject
 
 class MovieDetailsFragment : Fragment() {
@@ -18,6 +22,9 @@ class MovieDetailsFragment : Fragment() {
     lateinit var movieViewModel: MovieDetailsViewModel
 
     private lateinit var binding: MoviesDetailsFragmentBinding
+
+    @Inject
+    lateinit var pagerAdapterView: MoviesPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
@@ -43,5 +50,16 @@ class MovieDetailsFragment : Fragment() {
             }
             setLifecycleOwner(this@MovieDetailsFragment)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addPagerFragments()
+        pager.adapter = pagerAdapterView
+    }
+
+    private fun addPagerFragments() {
+        pagerAdapterView.addFragments(ImageFragment())
+        pagerAdapterView.addFragments(VideoFragment())
     }
 }

@@ -5,6 +5,7 @@ import com.intive.selftraining.selftraining.di.scopes.FragmentScope
 import com.intive.selftraining.selftraining.movieDetails.MovieDetailsFragment
 import com.intive.selftraining.selftraining.movieDetails.MovieDetailsViewModel
 import com.intive.selftraining.selftraining.movieDetails.MovieRepository
+import com.intive.selftraining.selftraining.movieDetails.adapter.MoviesPagerAdapter
 import com.intive.selftraining.selftraining.movieDetails.di.factory.MovieProviderFactory
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
@@ -35,5 +36,11 @@ class MovieFragmentModule() {
         factory: MovieProviderFactory
     ): MovieDetailsViewModel {
         return ViewModelProviders.of(fragment, factory).get(MovieDetailsViewModel::class.java)
+    }
+
+    @FragmentScope
+    @Provides
+    fun provideVerticalViewPagerAdapter(fragment: MovieDetailsFragment): MoviesPagerAdapter {
+        return MoviesPagerAdapter(fragment.fragmentManager!!)
     }
 }

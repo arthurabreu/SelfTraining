@@ -13,5 +13,5 @@ fun getYoutubeVideoPath(videoPath: String): String {
 }
 
 fun getYoutubeThumbnailPath(thumbnailPath: String): String {
-    return "$YOUTUBE_THUMBNAIL_URL$thumbnailPath/default.jpg"
+    return "$YOUTUBE_THUMBNAIL_URL$thumbnailPath/sddefault.jpg"
 }
