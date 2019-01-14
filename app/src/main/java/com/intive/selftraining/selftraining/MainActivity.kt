@@ -7,13 +7,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.intive.selftraining.selftraining.search.SearchFragment
-import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity() {
 
     private var navController: NavController? = null
-    var searchFragment : SearchFragment = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +29,11 @@ class MainActivity : AppCompatActivity() {
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.queryHint = getString(R.string.search)
         searchView.setIconifiedByDefault(false)
-        searchView.setOnQueryTextListener(searchFragment)
         searchView.setOnSearchClickListener {
             Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.searchFragment)
         }
 
         return true
     }
+    //TODO viewmodel for toolbar
 }

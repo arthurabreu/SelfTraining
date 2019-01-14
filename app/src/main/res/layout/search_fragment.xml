@@ -14,11 +14,11 @@
             android:layout_height="match_parent"
             android:foregroundGravity="center_vertical|fill_vertical|center_horizontal">
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/searchRecycler"
-                tools:listitem="@layout/item_view"
+                android:id="@+id/searchList"
+                tools:listitem="@layout/item_search"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:resultsList="@{searchFragmentViewModel.searchList}"
+                app:searchList="@{searchFragmentViewModel.searchList}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

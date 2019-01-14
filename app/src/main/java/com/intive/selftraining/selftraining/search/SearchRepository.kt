@@ -1,7 +1,6 @@
 package com.intive.selftraining.selftraining.search
 
-import com.intive.selftraining.selftraining.data.MoviesMapper
-import com.intive.selftraining.selftraining.listmovies.model.Movie
+import com.intive.selftraining.selftraining.data.SearchMovieMapper
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
@@ -10,9 +9,9 @@ import io.reactivex.rxkotlin.Observables
 
 class SearchRepository(private val networkClient: NetworkInterface) {
 
-    fun search(query: String): Observable<List<Movie>> {
+    fun search(query: String): Observable<List<SearchMovie>> {
         return Observables.zip(searchMovie(query), getConfiguration()) { movies, configuration ->
-            MoviesMapper().mapFromEntity(movies, configuration.images)
+            SearchMovieMapper().mapFromEntity(movies, configuration.images)
         }
     }
 
