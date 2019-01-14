@@ -1,8 +1,10 @@
 package com.intive.selftraining.selftraining.movieDetails
 
 import com.intive.selftraining.selftraining.data.MovieDetailsMapper
+import com.intive.selftraining.selftraining.data.MovieVideoMapper
 import com.intive.selftraining.selftraining.movieDetails.model.dao.MovieDetailsDao
 import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieVideo
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.intive.selftraining.selftraining.network.models.listMovies.ConfigurationEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntity
@@ -22,6 +24,12 @@ class MovieRepository(private val networkClient: NetworkInterface, private val m
     private fun showMovieDetails(id: Int): Observable<MovieDetailsEntity> = networkClient.getMovieDetails(id)
 
     private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
+
+    fun getMovieVideos(id: Int): Observable<List<MovieVideo>> {
+        return networkClient.getMovieVideos(id).map { movie ->
+            MovieVideoMapper().mapFromEntity(movie)
+        }
+    }
 
     suspend fun addMovieToDB(movieDetails: MovieDetails) {
         withContext(Dispatchers.IO) {

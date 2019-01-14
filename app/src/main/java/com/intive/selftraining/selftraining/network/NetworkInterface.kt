@@ -20,5 +20,5 @@ interface NetworkInterface {
     fun getMovieDetails(@Path("id") groupId: Int): Observable<MovieDetailsEntity>
 
     @GET("movie/{id}/videos")
-    fun getMovieVideos(@Path("id") movieId: Long): Observable<VideosResponseEntity>
+    fun getMovieVideos(@Path("id") movieId: Int): Observable<VideosResponseEntity>
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieVideo
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.utils.ErrorHandler
 import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
@@ -24,6 +25,8 @@ class MovieDetailsViewModel(
 
     val movieId = MutableLiveData<Int>()
     val movie = MutableLiveData<MovieDetails>()
+
+    val movieVideo = MutableLiveData<MovieVideo>()
     val progressBarVisibility = MutableLiveData<Int>().apply {
         value = View.GONE
     }
@@ -33,6 +36,7 @@ class MovieDetailsViewModel(
         movieId.observeForever {
             it?.let { movieId ->
                 readSavedMovieBy(movieId)
+                getMovieVideos(movieId)
             }
         }
     }
@@ -47,6 +51,24 @@ class MovieDetailsViewModel(
                     movie.value = it
                     progressBarVisibility.value = View.GONE
                     Timber.d("From internet:%s", it.toString())
+                },
+                    { error ->
+                        error.message?.let {
+                            Timber.e(it)
+                            errorHandler.showError(it)
+                        }
+                    })
+        }
+    }
+
+    private fun getMovieVideos(id: Int) {
+        launch {
+            repo.getMovieVideos(id)
+                .subscribeOn(customScheduler.io())
+                .observeOn(customScheduler.ui())
+                .subscribe({
+                    movieVideo.value = it[0]
+                    Timber.d("Movie Video:%s", it.toString())
                 },
                     { error ->
                         error.message?.let {
