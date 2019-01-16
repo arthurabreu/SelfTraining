@@ -7,11 +7,15 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 class MoviesPagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
 
-  private var fragmentList: MutableList<Fragment> = ArrayList()
+    private var fragmentList: MutableList<Fragment> = ArrayList()
 
-  override fun getItem(position: Int) = fragmentList[position]
+    override fun getItem(position: Int) = fragmentList[position]
 
-  override fun getCount() = fragmentList.size
+    override fun getCount() = fragmentList.size
 
-  fun addFragments(fragment: Fragment) = fragmentList.add(fragment)
+    fun addFragments(fragment: Fragment) {
+        if (!fragmentList.contains(fragment)) {
+            fragmentList.add(fragment)
+        }
+    }
 }

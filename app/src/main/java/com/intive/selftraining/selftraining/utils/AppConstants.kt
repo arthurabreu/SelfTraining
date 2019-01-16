@@ -7,6 +7,8 @@ const val API_KEY = "api_key"
 const val DB_NAME = "db_movie"
 const val YOUTUBE_THUMBNAIL_URL = "http://img.youtube.com/vi/"
 const val YOUTUBE_VIDEO_URL = "http://www.youtube.com/watch?v="
+const val MOVIE_DETAILS = "movie_details"
+const val MOVIE_VIDEO = "movie_video"
 
 fun getYoutubeVideoPath(videoPath: String): String {
     return YOUTUBE_VIDEO_URL + videoPath

@@ -4,47 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
-import com.intive.selftraining.selftraining.databinding.VideoFragmentBinding
-import com.intive.selftraining.selftraining.di.observeLifecycleIn
-import dagger.android.support.AndroidSupportInjection
-import javax.inject.Inject
+import com.intive.selftraining.selftraining.movieDetails.adapter.loadVideo
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
+import com.intive.selftraining.selftraining.utils.MOVIE_VIDEO
 
 class VideoFragment : Fragment() {
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        return layoutInflater.inflate(R.layout.video_fragment, container, false)
-//    }
 
-    @Inject
-    lateinit var viewPagerViewModel: ViewPagerViewModel
-
-    private lateinit var binding: VideoFragmentBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidSupportInjection.inject(this)
-        super.onCreate(savedInstanceState)
+    companion object {
+        fun newInstance(movieDetails: MovieDetails): Fragment {
+            val videoFragment = VideoFragment()
+            val args = Bundle()
+            args.putSerializable(MOVIE_VIDEO, movieDetails.videoKey)
+            videoFragment.arguments = args
+            return videoFragment
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        DataBindingUtil.inflate<VideoFragmentBinding>(
-            inflater,
-            R.layout.video_fragment,
-            container,
-            false
-        ).also {
-            binding = it
-        }.root
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        this.observeLifecycleIn(viewPagerViewModel)
-        binding.run {
-            viewModel = viewPagerViewModel.apply {
-                movieId.value = 297802
-            }
-            setLifecycleOwner(this@VideoFragment)
-        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.video_fragment, container, false)
+        val video = view.findViewById<ImageView>(R.id.item_video_cover)
+        val videoArgs = arguments?.getSerializable(MOVIE_VIDEO) as String
+        video.loadVideo(videoArgs)
+        return view
     }
 }

@@ -11,10 +11,7 @@ import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBin
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
 import com.intive.selftraining.selftraining.movieDetails.adapter.MoviesPagerAdapter
-import com.intive.selftraining.selftraining.movieDetails.viewPager.ImageFragment
-import com.intive.selftraining.selftraining.movieDetails.viewPager.VideoFragment
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.movies_details_fragment.pager
 import javax.inject.Inject
 
 class MovieDetailsFragment : Fragment() {
@@ -24,7 +21,7 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var binding: MoviesDetailsFragmentBinding
 
     @Inject
-    lateinit var pagerAdapterView: MoviesPagerAdapter
+    lateinit var pagerAdapterMovie: MoviesPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
@@ -47,19 +44,21 @@ class MovieDetailsFragment : Fragment() {
         binding.run {
             viewModel = movieViewModel.apply {
                 movieId.value = getMovieId()
+                binding.pagerAdapter = pagerAdapterMovie
+//                pagerAdapter.value = pagerAdapterMovie
             }
             setLifecycleOwner(this@MovieDetailsFragment)
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        addPagerFragments()
-        pager.adapter = pagerAdapterView
-    }
-
-    private fun addPagerFragments() {
-        pagerAdapterView.addFragments(ImageFragment())
-        pagerAdapterView.addFragments(VideoFragment())
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        addPagerFragments()
+//        pager.adapter = pagerAdapterView
+//    }
+//
+//    private fun addPagerFragments() {
+//        pagerAdapterView.addFragments(ImageFragment.newInstance())
+//        pagerAdapterView.addFragments(VideoFragment())
+//    }
 }

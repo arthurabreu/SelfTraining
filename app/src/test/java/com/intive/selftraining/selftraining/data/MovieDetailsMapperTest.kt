@@ -18,6 +18,6 @@ class MovieDetailsMapperTest {
 
     @Test
     fun `map from entity`() {
-        mapper.mapFromEntity(movieDetailsEntity, imagesEntity) `should equal` movieDetails
+        mapper.mapFromEntity(movieDetailsEntity, imagesEntity, video) `should equal` movieDetails
     }
 }

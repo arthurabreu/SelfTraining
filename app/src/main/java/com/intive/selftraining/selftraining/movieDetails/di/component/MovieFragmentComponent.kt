@@ -14,7 +14,7 @@ import dagger.android.AndroidInjector
         MovieDetailsRepoModule::class
     )
 )
-interface MovieFragmentComponent :  AndroidInjector<MovieDetailsFragment>  {
+interface MovieFragmentComponent : AndroidInjector<MovieDetailsFragment> {
 
     @Subcomponent.Builder
     abstract class Builder : AndroidInjector.Builder<MovieDetailsFragment>()

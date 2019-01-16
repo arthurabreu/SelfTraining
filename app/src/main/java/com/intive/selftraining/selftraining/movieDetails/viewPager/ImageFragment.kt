@@ -4,47 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
-import com.intive.selftraining.selftraining.databinding.ImageFragmentBinding
-import com.intive.selftraining.selftraining.di.observeLifecycleIn
-import com.intive.selftraining.selftraining.listmovies.getMovieId
-import dagger.android.support.AndroidSupportInjection
-import javax.inject.Inject
+import com.intive.selftraining.selftraining.listmovies.adapter.loadImage
+import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
+import com.intive.selftraining.selftraining.utils.MOVIE_DETAILS
 
 class ImageFragment : Fragment() {
-//        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        return layoutInflater.inflate(R.layout.image_fragment, container, false)
-//    }
-    @Inject
-    lateinit var viewPagerViewModel: ViewPagerViewModel
 
-    private lateinit var binding: ImageFragmentBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidSupportInjection.inject(this)
-        super.onCreate(savedInstanceState)
+    companion object {
+        fun newInstance(movieDetails: MovieDetails): Fragment {
+            val imageFragment = ImageFragment()
+            val args: Bundle = Bundle()
+            args.putSerializable(MOVIE_DETAILS, movieDetails)
+            imageFragment.arguments = args
+            return imageFragment
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        DataBindingUtil.inflate<ImageFragmentBinding>(
-            inflater,
-            R.layout.image_fragment,
-            container,
-            false
-        ).also {
-            binding = it
-        }.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = inflater.inflate(R.layout.image_fragment, container, false)
+        var movieDetailsArgs = arguments?.getSerializable(MOVIE_DETAILS) as MovieDetails
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        this.observeLifecycleIn(viewPagerViewModel)
-        binding.run {
-            viewModel = viewPagerViewModel.apply {
-                movieId.value = 297802
-            }
-            setLifecycleOwner(this@ImageFragment)
-        }
+        var mainBackdrop = view.findViewById<ImageView>(R.id.main_backdrop)
+        mainBackdrop.loadImage(movieDetailsArgs.completeImageUrl)
+        return view
     }
 }

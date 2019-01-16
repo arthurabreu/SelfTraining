@@ -3,6 +3,7 @@ package com.intive.selftraining.selftraining.movieDetails.model.enities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "movie_details")
 data class MovieDetails(
@@ -14,5 +15,6 @@ data class MovieDetails(
     var releaseDate: String = "",
     var title: String = "",
     var voteAverage: Double = 0.0,
-    var completeImageUrl: String = ""
-)
+    var completeImageUrl: String = "",
+    var videoKey: String = ""
+) : Serializable
