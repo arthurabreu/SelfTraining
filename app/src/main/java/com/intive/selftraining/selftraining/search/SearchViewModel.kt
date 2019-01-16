@@ -1,5 +1,6 @@
 package com.intive.selftraining.selftraining.search
 
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +14,7 @@ class SearchViewModel(
     private val repo: SearchRepository,
     private val customScheduler: CustomScheduler,
     private val errorHandler: ErrorHandler
-) : RxViewModel(), LifecycleObserver {
+) : RxViewModel(), LifecycleObserver, SearchView.OnQueryTextListener {
 
     val searchList: MutableLiveData<List<SearchMovie>> = MutableLiveData()
 
@@ -21,7 +22,7 @@ class SearchViewModel(
     fun onCreate() {
     }
 
-     fun getMoviesResponse(query: String) {
+     private fun getMoviesResponse(query: String) {
 
         launch {
             repo.search(query)
@@ -37,6 +38,20 @@ class SearchViewModel(
                     }
                 })
         }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+
+        if(!query.isNullOrEmpty()){
+           getMoviesResponse(query)
+        }
+
+        Timber.d(query)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 }
 
