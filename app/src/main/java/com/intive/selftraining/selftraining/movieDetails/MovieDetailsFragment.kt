@@ -10,6 +10,7 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.MoviesDetailsFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.getMovieId
+import com.intive.selftraining.selftraining.movieDetails.adapter.MoviesPagerAdapter
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -18,6 +19,9 @@ class MovieDetailsFragment : Fragment() {
     lateinit var movieViewModel: MovieDetailsViewModel
 
     private lateinit var binding: MoviesDetailsFragmentBinding
+
+    @Inject
+    lateinit var pagerAdapterMovie: MoviesPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
@@ -40,6 +44,7 @@ class MovieDetailsFragment : Fragment() {
         binding.run {
             viewModel = movieViewModel.apply {
                 movieId.value = getMovieId()
+                binding.pagerAdapter = pagerAdapterMovie
             }
             setLifecycleOwner(this@MovieDetailsFragment)
         }

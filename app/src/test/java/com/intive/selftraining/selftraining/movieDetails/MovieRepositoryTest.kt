@@ -2,6 +2,7 @@ package com.intive.selftraining.selftraining.movieDetails
 
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
+import com.intive.selftraining.selftraining.model.getVideosResponseEntity
 import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.NetworkInterface
 import com.nhaarman.mockitokotlin2.doReturn
@@ -16,6 +17,7 @@ class MovieRepositoryTest {
     var networkClient: NetworkInterface = mock {
         on { getMovieDetails(1) } doReturn Observable.just(getMovieDetailsEntity(title = "Venom"))
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
+        on { getMovieVideos(1) } doReturn Observable.just(getVideosResponseEntity())
     }
 
     val movieRepository = MovieRepository(networkClient, mock())

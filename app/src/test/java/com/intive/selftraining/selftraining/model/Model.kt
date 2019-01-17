@@ -8,6 +8,8 @@ import com.intive.selftraining.selftraining.network.models.listMovies.MoviesEnti
 import com.intive.selftraining.selftraining.network.models.listMovies.MoviesResponseEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.BelongsToCollectionEntity
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntity
+import com.intive.selftraining.selftraining.network.models.video.VideoResultEntity
+import com.intive.selftraining.selftraining.network.models.video.VideosResponseEntity
 
 fun getMovieDetailsEntity(title: String = ""): MovieDetailsEntity {
     return MovieDetailsEntity(
@@ -134,5 +136,13 @@ fun getImagesEntity(): ImagesEntity {
 }
 
 fun getMovieDetails(): MovieDetails {
-    return MovieDetails().apply { completeImageUrl = "http://image.tmdb.org/t/p/original" }
+    return MovieDetails().apply { completeImageUrl = "http://image.tmdb.org/t/p/original"; }
+}
+
+fun getVideosResponseEntity(): VideosResponseEntity {
+    return VideosResponseEntity(0, listOf(getVideoResultEntity()))
+}
+
+fun getVideoResultEntity(): VideoResultEntity {
+    return VideoResultEntity("", "", "", "", "", "", 0, "")
 }

@@ -1,4 +1,4 @@
-package com.intive.selftraining.selftraining.listmovies.di.binder
+package com.intive.selftraining.selftraining.movieDetails.di.binder
 
 import com.intive.selftraining.selftraining.movieDetails.MovieDetailsFragment
 import com.intive.selftraining.selftraining.movieDetails.di.component.MovieFragmentComponent
