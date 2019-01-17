@@ -12,6 +12,7 @@ import com.intive.selftraining.selftraining.utils.mvvm.RxViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class MovieDetailsViewModel(
@@ -31,9 +32,7 @@ class MovieDetailsViewModel(
     fun onCreate() {
         movieId.observeForever {
             it?.let { movieId ->
-                getMovieDetails(movieId)
-//                readSavedMovieBy(movieId)
-//                getMovieVideos(movieId)
+                readSavedMovieBy(movieId)
             }
         }
     }
@@ -58,46 +57,28 @@ class MovieDetailsViewModel(
         }
     }
 
-//    private fun getMovieVideos(id: Int) {
-//        launch {
-//            repo.getMovieVideos(id)
-//                .subscribeOn(customScheduler.io())
-//                .observeOn(customScheduler.ui())
-//                .subscribe({
-//                    movieVideo.value = it[0]
-//                    Timber.d("Movie Video:%s", it.toString())
-//                },
-//                    { error ->
-//                        error.message?.let {
-//                            Timber.e(it)
-//                            errorHandler.showError(it)
-//                        }
-//                    })
-//        }
-//    }
+    fun saveMovies(movieDetails: MovieDetails) {
+        uiScope.launch {
+            Timber.d("SAVE in db:%s", movieDetails.title)
+            repo.addMovieToDB(movieDetails)
+        }
+    }
 
-//    fun saveMovies(movieDetails: MovieDetails) {
-//        uiScope.launch {
-//            Timber.d("SAVE in db:%s", movieDetails.title)
-//            repo.addMovieToDB(movieDetails)
-//        }
-//    }
-//
-//    private fun readSavedMovieBy(movieId: Int) {
-//        launch {
-//            repo.readMovie(movieId).subscribeOn(customScheduler.io())
-//                .observeOn(customScheduler.ui()).subscribe({
-//                    movie.value = it
-//                    Timber.d("From db:%s", it.title)
-//                },
-//                    { error ->
-//                        error.message?.let {
-//                            Timber.e(it)
-//                            getMovieDetails(movieId)
-//                        }
-//                    })
-//        }
-//    }
+    private fun readSavedMovieBy(movieId: Int) {
+        launch {
+            repo.readMovie(movieId).subscribeOn(customScheduler.io())
+                .observeOn(customScheduler.ui()).subscribe({
+                    movie.value = it
+                    Timber.d("From db:%s", it.title)
+                },
+                    { error ->
+                        error.message?.let {
+                            Timber.e(it)
+                            getMovieDetails(movieId)
+                        }
+                    })
+        }
+    }
 
     private val viewModelJob = Job()
 

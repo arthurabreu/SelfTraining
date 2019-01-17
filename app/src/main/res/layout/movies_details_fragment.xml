@@ -221,31 +221,8 @@
                 android:src="@drawable/movie"
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_anchor="@id/main_appbar"
-                app:layout_anchorGravity="bottom|right|end" android:focusable="true"/>
-                <!--android:onClick="@{() -> viewModel.saveMovies(viewModel.movie)}"/>-->
+                app:layout_anchorGravity="bottom|right|end" android:focusable="true"
+                android:onClick="@{() -> viewModel.saveMovies(viewModel.movie)}"/>
 
-
-        <!--<RelativeLayout-->
-                <!--android:layout_width="150dp"-->
-                <!--android:layout_height="100dp"-->
-                <!--app:layout_anchorGravity="right|center"-->
-                <!--app:layout_anchor="@+id/nestedScrollView">-->
-
-            <!--<ImageView-->
-                    <!--android:id="@+id/item_video_cover"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:scaleType="centerCrop"-->
-                    <!--app:video="@{viewModel.movieVideo}"/>-->
-
-            <!--<ImageView-->
-                    <!--android:layout_width="30dp"-->
-                    <!--android:layout_height="20dp"-->
-                    <!--android:scaleType="fitXY"-->
-                    <!--android:src="@drawable/icon_youtube"-->
-                    <!--android:layout_centerInParent="true"/>-->
-
-
-        <!--</RelativeLayout>-->
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

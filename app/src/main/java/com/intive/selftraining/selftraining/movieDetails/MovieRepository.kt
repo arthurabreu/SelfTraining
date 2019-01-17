@@ -8,7 +8,10 @@ import com.intive.selftraining.selftraining.network.models.listMovies.Configurat
 import com.intive.selftraining.selftraining.network.models.movieDetails.MovieDetailsEntity
 import com.intive.selftraining.selftraining.network.models.video.VideosResponseEntity
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.rxkotlin.Observables
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MovieRepository(private val networkClient: NetworkInterface, private val movieDatabase: MovieDetailsDao) {
     fun getMovieDetails(id: Int): Observable<MovieDetails> {
@@ -22,4 +25,14 @@ class MovieRepository(private val networkClient: NetworkInterface, private val m
     private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
 
     private fun getVideo(id: Int): Observable<VideosResponseEntity> = networkClient.getMovieVideos(id)
+
+    suspend fun addMovieToDB(movieDetails: MovieDetails) {
+        withContext(Dispatchers.IO) {
+            movieDatabase.insert(movieDetails)
+        }
+    }
+
+    fun readMovie(movieId: Int): Single<MovieDetails> {
+        return movieDatabase.getMovieById(movieId.toString())
+    }
 }
