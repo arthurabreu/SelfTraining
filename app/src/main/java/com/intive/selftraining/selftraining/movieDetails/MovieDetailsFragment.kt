@@ -45,20 +45,8 @@ class MovieDetailsFragment : Fragment() {
             viewModel = movieViewModel.apply {
                 movieId.value = getMovieId()
                 binding.pagerAdapter = pagerAdapterMovie
-//                pagerAdapter.value = pagerAdapterMovie
             }
             setLifecycleOwner(this@MovieDetailsFragment)
         }
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        addPagerFragments()
-//        pager.adapter = pagerAdapterView
-//    }
-//
-//    private fun addPagerFragments() {
-//        pagerAdapterView.addFragments(ImageFragment.newInstance())
-//        pagerAdapterView.addFragments(VideoFragment())
-//    }
 }

@@ -19,6 +19,6 @@ fun ViewPager.loadAdapter(moviesPagerAdapter: MoviesPagerAdapter?, movieDetails:
             it?.addFragments(videoFragment)
         }
 
-        this.adapter = moviesPagerAdapter
+        adapter = moviesPagerAdapter
     }
 }

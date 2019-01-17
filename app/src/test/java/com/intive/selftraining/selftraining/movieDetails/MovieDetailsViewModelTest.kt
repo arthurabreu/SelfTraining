@@ -3,7 +3,7 @@ package com.intive.selftraining.selftraining.movieDetails
 import com.intive.selftraining.selftraining.model.ViewModelTest
 import com.intive.selftraining.selftraining.model.getConfigurationEntity
 import com.intive.selftraining.selftraining.model.getMovieDetailsEntity
-import com.intive.selftraining.selftraining.movieDetails.model.dao.MovieDetailsDao
+import com.intive.selftraining.selftraining.movieDetails.model.MovieDetailsDatabase
 import com.intive.selftraining.selftraining.movieDetails.model.enities.MovieDetails
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkInterface
@@ -23,7 +23,7 @@ class MovieDetailsViewModelTest : ViewModelTest() {
         on { getConfiguration() } doReturn Observable.just(getConfigurationEntity())
     }
 
-    var movieDatabase: MovieDetailsDao = mock {
+    var movieDatabase: MovieDetailsDatabase = mock {
         on { getMovieById("1") } doReturn Single.just(MovieDetails())
     }
 
