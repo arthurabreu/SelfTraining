@@ -2,45 +2,47 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-                name="title"
-                type="String"/>
+                name="showSearch"
+                type="Boolean"/>
+        <import type="android.view.View"/>
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:tools="http://schemas.android.com/tools"
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:toolbarTitle="@{title}"/>
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
 
-    <FrameLayout
-                 android:layout_width="0dp"
-                 android:layout_height="0dp"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintBottom_toBottomOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
-
-        <fragment
-                android:id="@+id/nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/main_graph"/>
+                android:layout_height="wrap_content"
+                app:titleTextColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            <SearchView android:layout_width="wrap_content"
+                        android:visibility="@{showSearch ? View.VISIBLE : View.GONE}"
+                        android:layout_height="match_parent"/>
+        </androidx.appcompat.widget.Toolbar>
 
-    </FrameLayout>
+        <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
 
+            <fragment
+                    android:id="@+id/nav_host_fragment"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:defaultNavHost="true"
+                    app:navGraph="@navigation/main_graph"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
