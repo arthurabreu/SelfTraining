@@ -2,8 +2,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-                name="showSearch"
-                type="Boolean"/>
+                name="searchViewModel"
+                type="com.intive.selftraining.selftraining.search.SearchViewModel"/>
         <import type="android.view.View"/>
     </data>
 
@@ -23,7 +23,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
             <SearchView android:layout_width="wrap_content"
-                        android:visibility="@{showSearch ? View.VISIBLE : View.GONE}"
+                        android:visibility="@{searchViewModel.showSearch ? View.VISIBLE : View.GONE}"
                         android:layout_height="match_parent"/>
         </androidx.appcompat.widget.Toolbar>
 
