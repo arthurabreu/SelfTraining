@@ -14,7 +14,7 @@ class SearchViewModel(
     private val repo: SearchRepository,
     private val customScheduler: CustomScheduler,
     private val errorHandler: ErrorHandler
-) : RxViewModel(), LifecycleObserver, SearchView.OnQueryTextListener {
+) : RxViewModel(), LifecycleObserver, SearchView.OnQueryTextListener{
 
     val searchList: MutableLiveData<List<SearchMovie>> = MutableLiveData()
     val showSearch: MutableLiveData<Boolean> = MutableLiveData()

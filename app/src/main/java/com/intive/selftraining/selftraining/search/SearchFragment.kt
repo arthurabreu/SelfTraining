@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
 
         val view = activityMainBinding?.root
         activityMainBinding?.run {
-            this.searchFragmentViewModel = searchViewModel
+            this.viewModel = searchViewModel
             initRecycler(activityMainBinding)
             setLifecycleOwner(this@SearchFragment)
         }

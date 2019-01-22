@@ -22,9 +22,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
-            <SearchView android:layout_width="wrap_content"
-                        android:visibility="@{searchViewModel.showSearch ? View.VISIBLE : View.GONE}"
-                        android:layout_height="match_parent"/>
+            <androidx.appcompat.widget.SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:visibility="@{searchViewModel.showSearch ? View.VISIBLE : View.GONE}"/>
         </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout

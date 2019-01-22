@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         binding?.run {
             this.searchViewModel = viewModel
+            binding.searchView.setOnQueryTextListener(viewModel)
             setLifecycleOwner(this@MainActivity)
         }
 
