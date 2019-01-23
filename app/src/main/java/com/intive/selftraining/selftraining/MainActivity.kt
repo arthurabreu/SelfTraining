@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.search.SearchViewModel
+import kotlinx.android.synthetic.main.activity_main.searchView
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         this.observeLifecycleIn(viewModel)
         var binding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+
+        searchView?.setOnSearchClickListener {
+            navController?.navigate(R.id.searchFragment)
+        }
 
         binding?.run {
             this.searchViewModel = viewModel
@@ -27,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             setLifecycleOwner(this@MainActivity)
         }
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navController?.navigate(R.id.fragment_list_movies)
     }
 }
