@@ -17,11 +17,11 @@ class SearchViewModel(
 ) : RxViewModel(), LifecycleObserver, SearchView.OnQueryTextListener{
 
     val searchList: MutableLiveData<List<SearchMovie>> = MutableLiveData()
-    val showSearch: MutableLiveData<Boolean> = MutableLiveData()
+    //val showSearch: MutableLiveData<Boolean> = MutableLiveData()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
-        showSearch.value = true
+
     }
 
      private fun getMoviesResponse(query: String) {

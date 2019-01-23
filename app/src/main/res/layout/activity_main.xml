@@ -1,11 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
-    <data>
-        <variable
-                name="searchViewModel"
-                type="com.intive.selftraining.selftraining.search.SearchViewModel"/>
-        <import type="android.view.View"/>
-    </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:tools="http://schemas.android.com/tools"
@@ -26,7 +21,7 @@
                         android:id="@+id/searchView"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:visibility="@{searchViewModel.showSearch ? View.VISIBLE : View.GONE}"/>
+                        />
         </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
