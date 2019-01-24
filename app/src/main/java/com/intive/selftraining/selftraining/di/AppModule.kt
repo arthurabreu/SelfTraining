@@ -8,6 +8,7 @@ import com.intive.selftraining.selftraining.movieDetails.MovieRepository
 import com.intive.selftraining.selftraining.network.CustomScheduler
 import com.intive.selftraining.selftraining.network.NetworkClient
 import com.intive.selftraining.selftraining.search.SearchFragment
+import com.intive.selftraining.selftraining.search.SearchProvider
 import com.intive.selftraining.selftraining.search.SearchRepository
 import com.intive.selftraining.selftraining.search.SearchViewModel
 import com.intive.selftraining.selftraining.utils.ErrorHandler
@@ -27,7 +28,9 @@ val appModule = module {
     single { ListMoviesFragment()}
     single { SearchFragment()}
 
+    single { SearchProvider() }
+
     viewModel { ListMoviesViewModel(get(), get(), get()) }
     viewModel { MovieDetailsViewModel(get(), get(), get()) }
-    viewModel { SearchViewModel(get(), get(), get()) }
+    viewModel { SearchViewModel(get(), get(), get(), get()) }
 }

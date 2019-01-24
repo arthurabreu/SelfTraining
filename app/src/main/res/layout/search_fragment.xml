@@ -6,7 +6,7 @@
 
         <variable
                 name="viewModel"
-                type="com.intive.selftraining.selftraining.search.SearchViewModel" />
+                type="com.intive.selftraining.selftraining.search.SearchViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

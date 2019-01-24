@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.intive.selftraining.selftraining.MainActivity
 import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.SearchFragmentBinding
 import com.intive.selftraining.selftraining.di.observeLifecycleIn
@@ -27,9 +25,6 @@ class SearchFragment : Fragment() {
         this.observeLifecycleIn(searchViewModel)
         val activityMainBinding: SearchFragmentBinding? =
             DataBindingUtil.inflate(inflater, R.layout.search_fragment, container, false)
-
-        val searchView = (activity as MainActivity).findViewById<SearchView>(R.id.searchView)
-        searchView.setOnQueryTextListener(searchViewModel)
 
         val view = activityMainBinding?.root
         activityMainBinding?.run {
@@ -57,4 +52,6 @@ class SearchFragment : Fragment() {
             )
         )
     }
+
+
 }
