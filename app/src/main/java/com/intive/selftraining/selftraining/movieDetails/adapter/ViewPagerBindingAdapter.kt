@@ -9,14 +9,14 @@ import com.intive.selftraining.selftraining.movieDetails.viewPager.VideoFragment
 @BindingAdapter(value = ["adapter", "movie"], requireAll = false)
 fun ViewPager.loadAdapter(moviesPagerAdapter: MoviesPagerAdapter?, movieDetails: MovieDetails?) {
 
-    movieDetails?.let {
-        val imageFragment = ImageFragment.newInstance(it)
-        val videoFragment = VideoFragment.newInstance(it)
+    movieDetails?.let { movie ->
 
-        moviesPagerAdapter.also {
+        val imageFragment = ImageFragment.newInstance(movie)
+        val videoFragment = VideoFragment.newInstance(movie)
 
-            it?.addFragments(imageFragment)
-            it?.addFragments(videoFragment)
+        moviesPagerAdapter?.let { pager ->
+            pager.addFragments(imageFragment)
+            pager.addFragments(videoFragment)
         }
 
         adapter = moviesPagerAdapter
