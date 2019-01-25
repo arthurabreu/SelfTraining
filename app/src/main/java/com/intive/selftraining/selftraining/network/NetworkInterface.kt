@@ -7,6 +7,7 @@ import com.intive.selftraining.selftraining.network.models.video.VideosResponseE
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface NetworkInterface {
 
@@ -21,4 +22,7 @@ interface NetworkInterface {
 
     @GET("movie/{id}/videos")
     fun getMovieVideos(@Path("id") movieId: Int): Observable<VideosResponseEntity>
+
+    @GET("search/movie")
+    fun searchMovies(@Query("query") query: String): Observable<MoviesResponseEntity>
 }

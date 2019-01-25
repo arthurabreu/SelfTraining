@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/main_graph" app:startDestination="@id/fragment_list_movies">
-    <fragment android:id="@+id/fragment_list_movies" android:name="com.intive.selftraining.selftraining.listmovies.ListMoviesFragment"
+    <fragment android:id="@+id/fragment_list_movies"
+              android:name="com.intive.selftraining.selftraining.listmovies.ListMoviesFragment"
               android:label="fragment_list_movies.xml">
 
         <action android:id="@+id/action_fragment_list_movies_to_movieDetailsFragment"
@@ -11,4 +12,9 @@
     <fragment android:id="@+id/movieDetailsFragment"
               android:name="com.intive.selftraining.selftraining.movieDetails.MovieDetailsFragment"
               android:label="MovieDetailsFragment"/>
+    <fragment android:id="@+id/searchFragment" android:name="com.intive.selftraining.selftraining.search.SearchFragment"
+              android:label="SearchFragment">
+        <action android:id="@+id/action_searchFragment_to_fragment_list_movies"
+                app:destination="@id/fragment_list_movies"/>
+    </fragment>
 </navigation>
