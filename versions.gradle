@@ -43,4 +43,7 @@ ext {
 
     //Coroutines
     coroutines = '1.0.1'
+
+    //Firebase
+    auth = '4.0.0'
 }

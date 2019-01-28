@@ -33,4 +33,11 @@
         <item name="layout_gravity">fill_horizontal</item>
     </style>
 
+    <style name="LoginTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/advantures</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

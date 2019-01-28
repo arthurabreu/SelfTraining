@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -75,6 +76,7 @@ dependencies {
 
     //ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:$androidArchitectureVersion"
+    implementation 'com.google.firebase:firebase-auth:16.0.3'
     kapt "androidx.lifecycle:lifecycle-compiler:$androidArchitectureVersion"
 
     //RxJava2
@@ -129,5 +131,8 @@ dependencies {
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    //Firebase
+    implementation "com.firebaseui:firebase-ui-auth:$auth"
 
 }
