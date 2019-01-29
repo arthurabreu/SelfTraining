@@ -15,7 +15,7 @@ class SearchRepository(private val networkClient: NetworkInterface) {
         }
     }
 
-    private fun searchMovie(query: String) : Observable<MoviesResponseEntity> = networkClient.searchMovies(query)
+    private fun searchMovie(query: String): Observable<MoviesResponseEntity> = networkClient.searchMovies(query)
 
     private fun getConfiguration(): Observable<ConfigurationEntity> = networkClient.getConfiguration()
 }

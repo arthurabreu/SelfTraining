@@ -10,7 +10,6 @@ class SearchProvider {
         searchQueries.onNext(query ?: "")
     }
 
-    fun onTextSubmit(query: String?){
-
+    fun onTextSubmit(query: String?) {
     }
 }

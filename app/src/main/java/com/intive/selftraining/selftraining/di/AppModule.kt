@@ -23,10 +23,10 @@ val appModule = module {
 
     single { ListMoviesRepository(get()) }
     single { MovieRepository(get()) }
-    single { SearchRepository(get())}
+    single { SearchRepository(get()) }
 
-    single { ListMoviesFragment()}
-    single { SearchFragment()}
+    single { ListMoviesFragment() }
+    single { SearchFragment() }
 
     single { SearchProvider() }
 
