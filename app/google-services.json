@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "170117538880",
+    "firebase_url": "https://selftraining-389a6.firebaseio.com",
+    "project_id": "selftraining-389a6",
+    "storage_bucket": "selftraining-389a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170117538880:android:d69bfa91bd187e62",
+        "android_client_info": {
+          "package_name": "com.intive.selftraining.selftraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170117538880-nnhu2loqc8q658oubh5n6unu4lr0ojnb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.intive.selftraining.selftraining",
+            "certificate_hash": "fbcd4bb66b980ce3d2afce0b895019c81eadbc28"
+          }
+        },
+        {
+          "client_id": "170117538880-3vk4loaj6lb2aaqd30t3p97h3snef87m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn_wPWOWV4UrVES5DMByEvDXeifpk3vBk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170117538880-3vk4loaj6lb2aaqd30t3p97h3snef87m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

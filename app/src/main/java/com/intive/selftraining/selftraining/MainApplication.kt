@@ -2,6 +2,8 @@ package com.intive.selftraining.selftraining
 
 import android.app.Activity
 import android.app.Application
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.intive.selftraining.selftraining.di.component.DaggerMovieApplicationComponent
 import com.intive.selftraining.selftraining.di.component.MovieApplicationComponent
 import com.intive.selftraining.selftraining.di.module.MovieApplicationModule
@@ -20,6 +22,10 @@ class MainApplication : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+        GoogleSignIn.getClient(this, gso)
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

@@ -9,6 +9,7 @@ const val YOUTUBE_THUMBNAIL_URL = "http://img.youtube.com/vi/"
 const val YOUTUBE_VIDEO_URL = "http://www.youtube.com/watch?v="
 const val MOVIE_DETAILS = "movie_details"
 const val MOVIE_VIDEO = "movie_video"
+const val FIREBASE_SIGN_IN = 1000
 
 fun getYoutubeVideoPath(videoPath: String): String {
     return YOUTUBE_VIDEO_URL + videoPath

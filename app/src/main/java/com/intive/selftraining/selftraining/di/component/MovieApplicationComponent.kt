@@ -1,7 +1,9 @@
 package com.intive.selftraining.selftraining.di.component
 
 import com.intive.selftraining.selftraining.MainApplication
+import com.intive.selftraining.selftraining.activity.di.binder.LoginActivityBinder
 import com.intive.selftraining.selftraining.activity.di.binder.MovieActivityBinder
+import com.intive.selftraining.selftraining.di.module.AuthenticationModule
 import com.intive.selftraining.selftraining.di.module.DBModule
 import com.intive.selftraining.selftraining.di.module.MovieApplicationModule
 import com.intive.selftraining.selftraining.di.module.NetworkModule
@@ -19,6 +21,7 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         MovieApplicationModule::class,
+        LoginActivityBinder::class,
         MovieActivityBinder::class,
         ListMoviesFragmentBinder::class,
         MovieDetailsFragmentBinder::class,
@@ -26,7 +29,8 @@ import javax.inject.Singleton
         NetworkModule::class,
         DBModule::class,
         UtilsModule::class,
-        SearchProviderModule::class
+        SearchProviderModule::class,
+        AuthenticationModule::class
     ]
 )
 interface MovieApplicationComponent {

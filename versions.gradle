@@ -43,4 +43,8 @@ ext {
 
     //Coroutines
     coroutines = '1.0.1'
+
+    //Firebase
+    auth = '4.0.0'
+    firebase_core = '16.0.1'
 }
