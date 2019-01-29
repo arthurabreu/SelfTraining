@@ -23,7 +23,6 @@ class MainApplication : Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("170117538880-nnhu2loqc8q658oubh5n6unu4lr0ojnb.apps.googleusercontent.com")
             .requestEmail()
             .build()
         GoogleSignIn.getClient(this, gso)

@@ -12,12 +12,11 @@
     <string name="Genre">Genre</string>
     <string name="example_genre">Animation, Adventure, Comedy</string>
     <string name="plot">Plot</string>
-    <string name="example_full_plot">"Wreck-It Ralph longs to be as beloved as his game's perfect Good Guy, Fix-It Felix. Problem is, nobody loves a Bad Guy. But they do love heroes... so when a modern, first-person shooter game arrives featuring tough-as-nails Sergeant Calhoun, Ralph sees it as his ticket to heroism and happiness. He sneaks into the game with a simple plan -- win a medal -- but soon wrecks everything, and accidentally unleashes a deadly enemy that threatens every game in the arcade. Ralph's only hope? Vanellope von Schweetz, a young troublemaking \"glitch\" from a candy-coated cart racing game who might just be the one to teach Ralph what it means to be a Good Guy. But will he realize he is good enough to become a hero before it's \"Game Over\" for the entire arcade?"</string>
-    <string name="selectMovie">Please, select the search icon to find a movie</string>
     <string name="savedmovie">Saved Movies</string>
     <string name="act_movie_details_result_key">resultKey</string>
     <string name="act_movie_details_genre_error">Couldn\'t retrieve genre.</string>
     <string name="act_movie_details_null">Movies response null</string>
     <string name="act_list_movies_error">Couldn\'t retrieve movies.</string>
     <string name="act_list_movies_null">Movies response null</string>
+    <string name="logout">logout</string>
 </resources>

@@ -22,6 +22,7 @@ android {
         debug {
             buildConfigField 'String', "ApiKey", tmdbApiKey
             resValue 'string', "api_key", tmdbApiKey
+
         }
         release {
             minifyEnabled false
@@ -76,7 +77,6 @@ dependencies {
 
     //ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:$androidArchitectureVersion"
-    implementation 'com.google.firebase:firebase-auth:16.0.3'
     kapt "androidx.lifecycle:lifecycle-compiler:$androidArchitectureVersion"
 
     //RxJava2
@@ -134,5 +134,6 @@ dependencies {
 
     //Firebase
     implementation "com.firebaseui:firebase-ui-auth:$auth"
+    implementation "com.google.firebase:firebase-core:$firebase_core"
 
 }

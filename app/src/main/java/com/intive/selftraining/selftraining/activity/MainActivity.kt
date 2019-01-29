@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        var binding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         searchView?.setOnSearchClickListener {
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 .signOut(this)
                 .addOnCompleteListener {
                     Toast.makeText(this, "User signed out", Toast.LENGTH_SHORT).show()
-                    onBackPressed()
                 }
         }
 
