@@ -20,4 +20,5 @@
     <string name="act_movie_details_null">Movies response null</string>
     <string name="act_list_movies_error">Couldn\'t retrieve movies.</string>
     <string name="act_list_movies_null">Movies response null</string>
+    <string name="search">Find a movie...</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.intive.selftraining.selftraining.listmovies.adapter
 
-import androidx.databinding.BindingAdapter
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.intive.selftraining.selftraining.R
