@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.intive.selftraining.selftraining.R
-import com.intive.selftraining.selftraining.authentication.Authentication
+import com.intive.selftraining.selftraining.authentication.AuthenticationNavigation
+import com.intive.selftraining.selftraining.authentication.AuthenticationUserInfo
 import com.intive.selftraining.selftraining.utils.FIREBASE_SIGN_IN
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -14,7 +15,10 @@ import javax.inject.Inject
 class LoginActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var authentication: Authentication
+    lateinit var authenticationUserInfo: AuthenticationUserInfo
+
+    @Inject
+    lateinit var authenticationNavigation: AuthenticationNavigation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -28,13 +32,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun fireBaseSignIn() {
-        if (authentication.isCurrentUser()) {
+        if (authenticationUserInfo.isCurrentUser()) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         } else {
-            startActivityForResult(
-                authentication.fireBaseSignIn(),
-                FIREBASE_SIGN_IN
-            )
+            authenticationNavigation.navigateToSignIn()
         }
     }
 
