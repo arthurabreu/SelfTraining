@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private var navController: NavController? = null
 
+    lateinit var toolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -46,7 +48,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         navController?.navigate(R.id.fragment_list_movies)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+        toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
     }
 

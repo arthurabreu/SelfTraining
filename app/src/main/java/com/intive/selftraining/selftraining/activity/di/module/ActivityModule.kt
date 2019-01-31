@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class ActivityModule{
+class ActivityModule {
     @ActivityScope
     @Provides
     fun provideAuthenticationUserInfo(): AuthenticationUserInfo {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.intive.selftraining.selftraining.R
@@ -12,6 +13,7 @@ import com.intive.selftraining.selftraining.di.observeLifecycleIn
 import com.intive.selftraining.selftraining.listmovies.adapter.ItemsAdapter
 import com.intive.selftraining.selftraining.utils.SPAN_COUNT
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.movies_details_fragment.toolbar
 import javax.inject.Inject
 
 class ListMoviesFragment : Fragment() {
@@ -61,5 +63,11 @@ class ListMoviesFragment : Fragment() {
                 layoutManager.orientation
             )
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val toolbar = activity?.findViewById(R.id.toolbar_main) as? Toolbar
+        toolbar?.visibility = View.VISIBLE
     }
 }
