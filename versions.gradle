@@ -1,24 +1,30 @@
 ext {
     // Kotlin
-    kotlin_version = '1.3.0'
+    kotlin_version = '1.3.72'
     koin_version = '1.0.2'
-    kotlin_reflect = '1.1.0'
+    kotlin_reflect = '1.3.72'
 
     // Android Sdk and tools
     androidGradlePlugin = '3.1.2'
     buildToolsVersion = '27.0.3'
-    supportLibraryVersion = '1.0.0'
-    constraintLayout = '1.1.3'
-    androidArchitectureVersion = '2.0.0'
+    supportLibraryVersion = '1.2.0'
+    constraintLayout = '2.0.1'
+    androidArchitectureVersion = '2.2.0'
+    androidLegacy = '1.0.0'
+    androidLifecycleExtensions = '2.2.0'
+    androidLifecycleViewmodel = '2.2.0'
+    cardView = '1.0.0'
+    gridLayout = '1.0.0'
+    recyclerView = '1.1.0'
 
     // Framework
     okhttp_version = '3.8.1'
-    retrofit_version = '2.4.0'
+    retrofit_version = '2.6.2'
     rxjava_version = '2.1.0'
     anko_version='0.10.4'
     junit = '4.12'
-    gson = '2.8.5'
-    glide = '4.8.0'
+    gson = '2.8.6'
+    glide = '4.10.0'
     ktlint_version = '0.29.0'
     rxkotlin = '2.3.0'
 
@@ -26,14 +32,14 @@ ext {
     support_annotations = '27.0.0'
 
     // Testing
-    core_testing = '2.0.0'
+    core_testing = '2.1.0'
     mockito_kotlin = '2.0.0'
     kluent = '1.42'
     mockito_inline = '2.23.0'
 
     // Navigation
-    navigation = '1.0.0-alpha07'
+    navigation = '1.0.0'
 
     //Timber
-    timber = '4.7.0'
+    timber = '4.7.1'
 }

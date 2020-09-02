@@ -7,11 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.intive.selftraining.selftraining"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -68,16 +68,16 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
-    implementation "androidx.recyclerview:recyclerview:$supportLibraryVersion"
-    implementation "androidx.cardview:cardview:$supportLibraryVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
+    implementation "androidx.cardview:cardview:$cardView"
     implementation "com.google.android.material:material:$supportLibraryVersion"
-    implementation "androidx.gridlayout:gridlayout:$supportLibraryVersion"
+    implementation "androidx.gridlayout:gridlayout:$gridLayout"
 
     //ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:$androidArchitectureVersion"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation "androidx.legacy:legacy-support-v4:$androidLegacy"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycleExtensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycleViewmodel"
     kapt "androidx.lifecycle:lifecycle-compiler:$androidArchitectureVersion"
 
     //RxJava2
