@@ -1,9 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
@@ -33,6 +30,11 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -70,10 +72,10 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
-    implementation "androidx.recyclerview:recyclerview:$supportLibraryVersion"
-    implementation "androidx.cardview:cardview:$supportLibraryVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
+    implementation "androidx.cardview:cardview:$cardView"
     implementation "com.google.android.material:material:$supportLibraryVersion"
-    implementation "androidx.gridlayout:gridlayout:$supportLibraryVersion"
+    implementation "androidx.gridlayout:gridlayout:$gridLayout"
 
     //ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:$androidArchitectureVersion"
@@ -81,7 +83,7 @@ dependencies {
 
     //RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

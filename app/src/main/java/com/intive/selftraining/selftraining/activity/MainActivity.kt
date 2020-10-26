@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.firebase.ui.auth.AuthUI
@@ -15,15 +14,17 @@ import com.intive.selftraining.selftraining.R
 import com.intive.selftraining.selftraining.databinding.ActivityMainBinding
 import com.intive.selftraining.selftraining.search.SearchProvider
 import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_main.searchView
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
+class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
-    @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     @Inject
     lateinit var searchProvider: SearchProvider
@@ -66,6 +67,4 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         return super.onOptionsItemSelected(item)
     }
-
-    override fun supportFragmentInjector() = fragmentInjector
 }

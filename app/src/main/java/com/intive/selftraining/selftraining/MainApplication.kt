@@ -9,16 +9,17 @@ import com.intive.selftraining.selftraining.di.component.MovieApplicationCompone
 import com.intive.selftraining.selftraining.di.module.MovieApplicationModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainApplication : Application(), HasActivityInjector {
+class MainApplication : Application(), HasAndroidInjector {
 
     lateinit var component: MovieApplicationComponent
 
-    @Inject
-    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     override fun onCreate() {
         super.onCreate()
@@ -36,9 +37,5 @@ class MainApplication : Application(), HasActivityInjector {
         component = DaggerMovieApplicationComponent.builder()
             .movieApplicationModule(MovieApplicationModule(this)).build()
         component.inject(this)
-    }
-
-    override fun activityInjector(): AndroidInjector<Activity> {
-        return dispatchingActivityInjector
     }
 }
